@@ -1,0 +1,169 @@
+/*-----------------------------------*\
+  #FOOTER
+\*-----------------------------------*/
+
+.footer {
+  background: var(--raisin-black-1);
+  color: var(--white);
+  margin-bottom: 68px;
+}
+
+.footer .container {
+  padding-inline: 30px;
+}
+
+.footer a {
+  color: inherit;
+}
+
+.footer-top {
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+.footer-brand {
+  margin-bottom: 70px;
+}
+
+.footer-brand .logo {
+  margin-bottom: 15px;
+}
+
+.section-text {
+  font-size: var(--fs-5);
+  line-height: 1.8;
+  margin-bottom: 30px;
+  max-width: 45ch;
+}
+
+.contact-list {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.contact-link ion-icon {
+  font-size: 18px;
+}
+
+.contact-link :is(address, span) {
+  font-size: var(--fs-5);
+  transition: var(--transition);
+}
+
+.contact-link:is(:hover, :focus) span {
+  color: var(--orange-soda);
+}
+
+.social-list {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-list:not(:last-child) {
+  margin-bottom: 50px;
+}
+
+.footer-list-title {
+  font-family: var(--ff-poppins);
+  font-size: var(--fs-3);
+  font-weight: var(--fw-700);
+  margin-bottom: 15px;
+}
+
+.footer-link {
+  font-size: var(--fs-5);
+  padding-block: 10px;
+}
+
+.footer-link:is(:hover, :focus) {
+  color: var(--orange-soda);
+}
+
+.footer-bottom {
+  background: var(--raisin-black-2);
+  padding-block: 25px;
+}
+
+.copyright {
+  font-size: var(--fs-5);
+  text-align: center;
+}
+
+.copyright a {
+  display: inline-block;
+}
+
+.copyright a:is(:hover, :focus) {
+  color: var(--orange-soda);
+}
+
+/*-----------------------------------*\
+  #MEDIA QUERIES
+\*-----------------------------------*/
+
+/**
+ * responsive for larger than 600px screen
+ */
+
+@media (min-width: 600px) {
+  /**
+   * FOOTER
+   */
+
+  .footer-link-box {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+}
+
+/**
+  * responsive for larger than 768px screen
+  */
+
+@media (min-width: 768px) {
+  .footer {
+    margin-bottom: 0;
+  }
+}
+
+/**
+  * responsive for larger than 992px screen
+  */
+
+@media (min-width: 992px) {
+  .footer-top .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer-brand {
+    max-width: 300px;
+    margin-bottom: 0;
+  }
+
+  .footer-link-box {
+    flex-basis: 550px;
+  }
+}
+/**
+ * responsive for larger than 1200px screen
+ */
+
+@media (min-width: 1200px) {
+  .footer {
+    --fs-5: 1rem;
+  }
+
+  .footer-link-box {
+    flex-basis: 700px;
+  }
+}

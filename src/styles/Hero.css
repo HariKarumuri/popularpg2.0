@@ -1,0 +1,104 @@
+/*-----------------------------------*\
+  #HERO
+\*-----------------------------------*/
+
+.hero {
+  background: var(--cultured-2);
+  padding-block: var(--section-padding);
+}
+
+.hero-content { margin-bottom: 60px; }
+
+.hero-subtitle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.hero-subtitle ion-icon { color: var(--orange-soda); }
+
+.hero-subtitle span {
+  color: var(--dark-jungle-green);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-700);
+}
+
+.hero-title { margin-bottom: 20px; }
+
+.hero-text {
+  color: var(--cadet);
+  font-size: var(--fs-5);
+  line-height: 1.8;
+  padding-left: 15px;
+  border-left: 1px solid;
+  margin-bottom: 30px;
+}
+
+
+/*-----------------------------------*\
+  #MEDIA QUERIES
+\*-----------------------------------*/
+
+/**
+ * responsive for larger than 600px screen
+ */
+
+ @media (min-width: 600px) {
+
+ }
+ 
+ /**
+  * responsive for larger than 768px screen
+  */
+ 
+  @media (min-width: 768px) {
+
+    /**
+   * HERO
+   */
+
+  .hero-content { max-width: 400px; }
+ 
+  }
+ 
+ 
+ /**
+  * responsive for larger than 992px screen
+  */
+ 
+  @media (min-width: 992px) {
+
+    /**
+   * HERO
+   */
+
+  .hero-content {
+    max-width: unset;
+    margin-bottom: 0;
+  }
+
+  .hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+ 
+ }
+ /**
+ * responsive for larger than 1200px screen
+ */
+
+@media (min-width: 1200px) {
+  /**
+   * HERO
+   */
+
+   .hero-text {
+    padding-left: 30px;
+    max-width: 450px;
+    margin-bottom: 40px;
+  }
+
+}
