@@ -210,6 +210,12 @@
   color: var(--white);
 }
 
+/* otherbtn style */
+.otherbtn {
+  color: var(--orange-soda) !important;
+  background-color: var(--white) !important;
+}
+
 /*-----------------------------------*\
   #MEDIA QUERIES
 \*-----------------------------------*/

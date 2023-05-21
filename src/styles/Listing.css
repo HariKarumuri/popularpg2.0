@@ -1,0 +1,46 @@
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------------------------*\
+  #MEDIA QUERIES
+\*-----------------------------------*/
+
+/**
+ * responsive for larger than 600px screen
+ */
+
+ @media (min-width: 600px) {
+
+ }
+ 
+ /**
+  * responsive for larger than 768px screen
+  */
+ 
+  @media (min-width: 768px) {
+ 
+  }
+ 
+ 
+ /**
+  * responsive for larger than 992px screen
+  */
+ 
+  @media (min-width: 992px) {
+ 
+ }
+ /**
+ * responsive for larger than 1200px screen
+ */
+
+@media (min-width: 1200px) {
+  
+}

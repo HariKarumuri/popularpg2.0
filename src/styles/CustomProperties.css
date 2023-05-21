@@ -180,6 +180,10 @@
     --fs-5: 1rem;
     padding: 12px 28px;
   }
+  .btn2 {
+    --fs-5: 1rem;
+    padding: 12px 28px;
+  }
 }
 
 /**
@@ -209,6 +213,9 @@
   }
 
   .btn {
+    padding: 15px 40px;
+  }
+  .btn2 {
     padding: 15px 40px;
   }
 }

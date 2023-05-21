@@ -2,13 +2,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import HeaderTop from "./components/HeaderTop/HeaderTop";
 import NavBar from "./components/navBar/NavBar";
-import Hero from './components/Hero/Hero';
-import AboutUs from "./pages/AboutUs";
-import Services from "./components/Services/Services";
-import Featured from "./components/Featured/Featured";
 import Footer from "./components/Footer/Footer";
 import Cta from "./components/CTA/Cta";
-import BlogList from './components/Blog/BlogList';
+import PgListing from "./components/Pg-Listing/PgListing";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -18,16 +15,12 @@ function App() {
           <HeaderTop />
           <NavBar />
         </header>
-        <Hero/>
-        <AboutUs/>
-        <Services/>
-        <Featured/>
-        <BlogList/>
-        <Cta/>
-        <Footer/>
         <Routes>
-
+          <Route path="/" index element={<Home />} />
+          <Route path="/explorepg" element={<PgListing />} />
         </Routes>
+        <Cta />
+        <Footer />
       </div>
     </BrowserRouter>
   );
