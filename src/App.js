@@ -17,7 +17,7 @@ function App() {
         </header>
         <Routes>
           <Route path="/" index element={<Home />} />
-          <Route path="/explorepg" element={<PgListing />} />
+          <Route path="/listings" element={<PgListing />} />
         </Routes>
         <Cta />
         <Footer />
