@@ -1,4 +1,4 @@
-import React , {useState ,useEffect} from "react";
+import React , {useState} from "react";
 import Logo from "../../assets/images/popular pg logo.png"
 import { Link } from "react-router-dom";
 
