@@ -49,7 +49,7 @@ const PgDetail = () => {
                 in Koramangala
               </p>
             </div>
-            <div style={{ marginTop: "-75px" }}>
+            <div className="hideonsmall" style={{ marginTop: "-75px" }}>
               <p className="text-muted text-end">
                 posted by : <b>owner gharpayy</b>
               </p>
