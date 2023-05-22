@@ -123,7 +123,7 @@
  @media (min-width: 600px) {
 .responsiveness{
   max-width: 1040px;
-    height: 330px;
+    height: auto;
     overflow: hidden;
 }
 .verticleLine{

@@ -1,0 +1,63 @@
+/*-----------------------------------*\
+  #MEDIA QUERIES
+\*-----------------------------------*/
+
+/**
+ * responsive for larger than 600px screen
+ */
+ .bg_color{
+    background-color: #e8e8e8;
+ }
+ .trapez1 {
+    border-left: 0px solid transparent;
+     border-right: 20px solid transparent;
+     border-top: 26px solid #f2d48d;
+     width: 140px;
+    font-size: 12px;
+     z-index: 2;
+  }.trapez2 {
+    border-left: 0px solid transparent;
+     border-right: 20px solid transparent;
+     border-top: 26px solid #f2d48d;
+     width: auto;
+     font-size: 12px;
+     z-index: 2;
+  }
+ 
+  
+  
+ @media (min-width: 600px) {
+    /**
+     * FOOTER
+     */
+  
+  }
+  
+  /**
+    * responsive for larger than 768px screen
+    */
+  
+  @media (min-width: 768px) {
+    .verticleLinepg{
+        border-left: 2px solid #cbcbcb;
+        height: 6.5rem;
+        position:absolute;
+        top:28%;
+        left:30%
+      }
+  }
+  
+  /**
+    * responsive for larger than 992px screen
+    */
+  
+  @media (min-width: 992px) {
+  
+  }
+  /**
+   * responsive for larger than 1200px screen
+   */
+  
+  @media (min-width: 1200px) {
+    
+  }
