@@ -7,13 +7,13 @@ const PgListing = () => {
     <div>
       <div className="card mb-3 mx-auto cbackgrnd responsiveness">
         <div className="d-flex">
-          <div class="trapezoid1">
+          <div className="trapezoid1">
             <span className="brand d-flex">Brand new</span>
           </div>
-          <div class="trapezoid2">
+          <div className="trapezoid2">
             <span className="brand d-flex">Partner verified</span>
           </div>
-          <div class="trapezoid3">
+          <div className="trapezoid3">
             <span className="brand d-flex">Girls</span>
           </div>
         </div>
@@ -66,7 +66,7 @@ const PgListing = () => {
                 </h6>
                 <h6 className="text-muted mx-2"> in Koramangala</h6>
               </Link>
-              <div class="d-lg-none">
+              <div className="d-lg-none">
                 <div className="d-flex justify-content-center">
                   <hr
                     style={{
@@ -81,7 +81,7 @@ const PgListing = () => {
                   />
                 </div>
               </div>
-              <div class="d-none d-lg-block">
+              <div className="d-none d-lg-block">
                 <hr
                   style={{
                     background: "#a4a4a4",
@@ -111,7 +111,7 @@ const PgListing = () => {
                   <p style={{ marginTop: "-0.7rem" }}> Rs. 16,000</p>
                 </div>
               </Link>
-              <div class="d-lg-none">
+              <div className="d-lg-none">
                 <div className="d-flex justify-content-center">
                   <hr
                     style={{
@@ -126,7 +126,7 @@ const PgListing = () => {
                   />
                 </div>
               </div>
-              <div class="d-none d-lg-block">
+              <div className="d-none d-lg-block">
                 <hr
                   style={{
                     background: "#a4a4a4",
