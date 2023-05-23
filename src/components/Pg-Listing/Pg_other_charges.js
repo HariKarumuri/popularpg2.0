@@ -2,7 +2,7 @@ import React from "react";
 
 const PgOtherCharges = () => {
   return (
-    <div>
+    <div id="PgOtherCharges">
       <div className="card mb-3 mx-auto  responsiveness">
         <h4 className="name mr-2 mx-2 text-dark">Other Charges</h4>
         <div className="d-flex mx-3 justify-content-start flex-wrap">

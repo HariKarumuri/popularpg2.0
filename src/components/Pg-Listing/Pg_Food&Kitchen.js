@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const Pg_FoodKitchen = () => {
   return (
     <div>
-      <div className="card mb-3  mx-auto  responsiveness">
+      <div className="card mb-3  mx-auto  responsiveness" id="PgFoodKitchen">
         <div className="row g-0 ">
           <div className="col-md-9 ">
             <h4 className="name mr-2 mx-2 text-dark">Food and Kitchen</h4>
@@ -14,8 +14,8 @@ const Pg_FoodKitchen = () => {
                 <div className="d-flex justify-content-center fs-3">
                   <ion-icon name="fast-food-outline"></ion-icon>
                 </div>
-                <span className="fs-6 fw-normal text-center ">Food Available</span>
-                <span className="fs-6 fw-light">
+                <span className="fs-6 text-wrap fw-normal text-center ">Food Available</span>
+                <span className="fs-6 text-wrap fw-light">
                   Breakfast,Lunch,Dinner,Meals provided
                 </span>
               </div>
@@ -23,8 +23,8 @@ const Pg_FoodKitchen = () => {
                 <div className="d-flex justify-content-center fs-3">
                   <ion-icon name="pizza-outline"></ion-icon>
                 </div>
-                <span className="fs-6 fw-normal text-center">Meals Provided</span>
-                <span className="fs-6 fw-light">veg only</span>
+                <span className="fs-6 text-wrap fw-normal text-center">Meals Provided</span>
+                <span className="fs-6 text-wrap fw-light">veg only</span>
               </div>
               <div className="m-2 my-5">
                 <div className="d-flex justify-content-center fs-3">
@@ -35,14 +35,14 @@ const Pg_FoodKitchen = () => {
                     src="https://i.postimg.cc/DwQ3kqF6/fridge.png"
                   />
                 </div>
-                <span className="fs-6 fw-normal text-center">Fridge</span>
+                <span className="fs-6 text-wrap fw-normal text-center">Fridge</span>
               </div>
               <div className="m-2 my-5">
                 <div className="d-flex justify-content-center fs-3">
                 <ion-icon name="restaurant-outline"></ion-icon>
                 </div>
-                <span className="fs-6 fw-normal text-center">Food Charges</span>
-                <span className="fs-6 fw-light">Included in Rent</span>
+                <span className="fs-6 text-wrap fw-normal text-center">Food Charges</span>
+                <span className="fs-6 text-wrap fw-light">Included in Rent</span>
               </div>
             </div>
           </div>

@@ -4,6 +4,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PgAreaAmenities from "./Pg_Area_Amenities";
 import PgFoodKitchen from "./Pg_Food&Kitchen";
 import PgOtherCharges from "./Pg_other_charges";
+import PgMap from "./pg_map";
+import PGScrollBar from "./pg_scroll_nav";
+import { Link } from "react-scroll";
 const PgDetail = () => {
   const [showMore, setShowMore] = useState(false);
   var data =
@@ -83,11 +86,13 @@ const PgDetail = () => {
                 </span>
               </h6>
             </div>
+            
           </div>
-        </div>
+        </div> 
       </div>
       <div className="verticleLinepg"></div>
-      <div>
+      <PGScrollBar /> 
+      <div id="property">
         <div className="card mb-3 mx-auto my-2 responsiveness">
           <div className="row g-0">
             <div className="col-md-4 " style={{ zIndex: 1 }}>
@@ -148,7 +153,7 @@ const PgDetail = () => {
                   <h6 className="name mr-2 text-dark fw-bold">
                     Gharpayy PG, Koramangala, Bangalore
                   </h6>
-                  <a href="http://"  className="d-flex fw-light fs-6"><ion-icon name="location-outline"></ion-icon>view on map</a>
+                  <Link to="PgMap" spy={true} smooth={true} offset={-100} duration={300}  className="d-flex fw-light fs-6"><ion-icon name="location-outline"></ion-icon>view on map</Link>
                 </div>
                 <div className="">
                   <p>{showMore ? data : data.slice(0, 100)}</p>
@@ -160,7 +165,31 @@ const PgDetail = () => {
                     {showMore ? "Read Less" : "Read More"}
                   </div>
                 </div>
-                <table class="table">
+                <table class="table  visibleon360">
+                  <tbody>
+                    <tr>
+                      <th className="text-muted fw-light" scope="row"> Deposit Amount <span className="fw-normal">₹12,000</span> </th>
+                      <td className="text-muted fw-light">Maintenance  <span className="fw-normal">-</span> </td>
+                      <td className="text-muted fw-light">Notice Period <span className="fw-normal"> 1 Month</span></td>
+                    </tr>
+                    <tr>
+                      <th className="text-muted fw-light" scope="row">Food Availability <span className="fw-normal"> Veg Only</span></th>
+                      <td className="text-muted fw-light">AC Rooms <span className="fw-normal">Not Available</span> </td>
+                      <td className="text-muted fw-light">Parking  <span className="fw-normal">Available</span></td>
+                    </tr>
+                    <tr>
+                      <th className="text-muted fw-light" scope="row">Available for <span className="fw-normal">Girls</span> </th>
+                      <td className="text-muted fw-light">Preferred Tenants  <span className="fw-normal">Student</span></td>
+                      <td className="text-muted fw-light">Total Number of Beds <span className="fw-normal">180</span> </td>
+                    </tr>
+                    <tr>
+                      <td className="text-muted fw-light">Electricity Charges  <span className="fw-normal">-</span></td>
+                    <td className="text-muted fw-light">Operating Since <span className="fw-normal">2018</span> </td>
+                    <td className="text-muted fw-light">Power Backup <span className="fw-normal">Available</span> </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table class="table  visible360">
                   <tbody>
                     <tr>
                       <th className="text-muted fw-light" scope="row"> Deposit Amount <span className="fw-normal">₹12,000</span> </th>
@@ -204,10 +233,11 @@ const PgDetail = () => {
       <div className="card mb-3 mx-auto bg_review responsiveness  text-center px-4 py-3  ">
      <h6 className="d-flex justify-content-center"> Show some love & Let us know how good this PG is <a className="link text-danger mx-3" href="/">Write a review </a> <div className="text-danger my-1"><ion-icon  name="arrow-forward-outline"></ion-icon> </div> </h6>
       </div>
-      <PgAreaAmenities/>
-      <PgFoodKitchen/>
-      <PgOtherCharges/>
+      <PgAreaAmenities />
+      <PgFoodKitchen  />
+      <PgOtherCharges  />
       <br/>
+      <PgMap  />
     </div>
   );
 };

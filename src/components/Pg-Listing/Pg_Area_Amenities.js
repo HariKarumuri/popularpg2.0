@@ -3,7 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 const Pg_Area_Amenities = () => {
   return (
-    <div>
+    <div id="PgAreaAmenities" >
       <div className="card mb-3 mx-auto  responsiveness">
         <div className="row g-0">
           <div className="col-md-9 ">
