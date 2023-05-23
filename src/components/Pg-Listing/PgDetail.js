@@ -29,6 +29,8 @@ const PgDetail = () => {
                   className="text-secondary"
                   style={{
                     textAlign: "center",
+                    paddingTop: "12px",
+                    marginLeft: "5px",
                   }}
                 >
                   onwards
@@ -56,7 +58,7 @@ const PgDetail = () => {
               <p className="text-muted text-end">
                 posted by : <b>owner gharpayy</b>
               </p>
-              <div className="d-flex justify-content-end">
+              <div className="d-flex justify-content-end ">
                 <button className="btn btn-sm">view Phone Number</button>
               </div>
             </div>
@@ -120,32 +122,30 @@ const PgDetail = () => {
                   />
                 </div>
               </Carousel>
-              <div class="container hideonsmall">
-  <div class="row" style={{
+              <div className="container hideonsmall">
+  <div className="row" style={{
     maxHeight: "100px",
     margin: "auto",
   }} >
-    <div class="col ">
+    <div className="col ">
     <img            style={{ height: "100px", width: "90px" }}
                     className="  mt-2 rounded" 
                     src="https://img.staticmb.com/mbphoto/pg/grd2/cropped_images/2023/May/12/Photo_h400_w540/GR2-292167-1746859_400_540.jpeg"
                     alt="demo img"
                   />
     </div>
-    <div class="col ">
+    <div className="col ">
     <img
                     className=" mt-2 rounded"  style={{ height: "100px", width: "90px" }}
                     src="https://img.staticmb.com/mbphoto/pg/grd2/cropped_images/2022/Dec/27/Photo_h400_w540/GR2-292167-1597519_400_540.jpg"
                     alt="demo img"
                   />
     </div>
-    <div class="col rounded text-center py-4 badge-color my-2 px-2 ">
+    <div className="col rounded text-center py-4 badge-color my-2 px-2 ">
       <a href="/" className="text-dark fs-6"> More Photos</a>
     </div>
   </div>
 </div>
-
-
             </div>
             <div className="col-md-8">
               <div className="card-body">
@@ -165,7 +165,7 @@ const PgDetail = () => {
                     {showMore ? "Read Less" : "Read More"}
                   </div>
                 </div>
-                <table class="table  visibleon360">
+                <table className="table  visibleon360">
                   <tbody>
                     <tr>
                       <th className="text-muted fw-light" scope="row"> Deposit Amount <span className="fw-normal">₹12,000</span> </th>
@@ -189,7 +189,7 @@ const PgDetail = () => {
                     </tr>
                   </tbody>
                 </table>
-                <table class="table  visible360">
+                <table className="table  visible360">
                   <tbody>
                     <tr>
                       <th className="text-muted fw-light" scope="row"> Deposit Amount <span className="fw-normal">₹12,000</span> </th>
