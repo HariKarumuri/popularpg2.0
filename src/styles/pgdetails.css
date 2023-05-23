@@ -25,20 +25,36 @@
  .nav-item:hover {
   border-bottom: 2px solid var(--orange-soda);
 }
+
+
+
 /* add media query for 360px  */
-@media(min-width:360px){
+@media(min-width:365px){
   .visibleon360{
     display:none;
   }
-  
 }
 .visible360 {
   display: none; /* Hide the component by default */
 }
 
-@media (min-width: 361px) {
+@media (min-width: 365px) {
   .visible360 {
     display: block; /* Show the component for widths greater than 360px */
+  }
+}
+@media (max-width: 450px) {
+  .smallScreenRes{
+    display: flex; 
+    flex-direction: column;
+    text-align: center;
+  }
+}
+@media (min-width: 450px) {
+  .nodisplayflex {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
   }
 }
 

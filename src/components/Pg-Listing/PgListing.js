@@ -144,7 +144,7 @@ const PgListing = () => {
                   <ion-icon name="checkmark-circle-outline"></ion-icon>
                 </div>
                 PG 50 in Bangalore - Boys and Girls Different Building.
-                <div className="para_icons_grp d-flex ">
+                <div className="para_icons_grp d-flex justify-content-end">
                   <ion-icon name="wifi-outline"></ion-icon>
                   <ion-icon name="snow-outline"></ion-icon>
                 </div>
@@ -153,7 +153,7 @@ const PgListing = () => {
                 Move into Gharpayy PG, A Professionally Managed PG Home in
                 Koramangala.
               </p>
-              <div className="d-flex ">
+              <div className="d-flex flex-wrap justify-content-center ">
               <button type="button" className="btn btn-danger mr-2">
                 View Phone No.
               </button>

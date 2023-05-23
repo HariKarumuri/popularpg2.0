@@ -10,20 +10,20 @@ const Pg_Area_Amenities = () => {
             <h4 className="name mr-2 mx-2 text-dark">
               Common Area and Amenities (13)
             </h4>
-            <div className="d-flex mx-3 justify-content-between flex-wrap">
-              <div className="m-2 ">
+            <div className="d-flex mx-3 row justify-content-between flex-wrap">
+              <div className="my-2 col-3">
               <div className="d-flex justify-content-center fs-3"><ion-icon name="wifi-outline"></ion-icon> </div>
                 <span className="fs-6 fw-light">Wifi</span>
               </div>
-              <div className="m-2 ">
+              <div className="my-2 col-3">
                <div className="d-flex justify-content-center fs-3"><ion-icon name="power-outline"></ion-icon></div> 
                 <span className="fs-6 fw-light">Power backup</span>
               </div>
-              <div className="m-2 ">
+              <div className="my-2 col-3">
                <div className="d-flex justify-content-center fs-3"><ion-icon name="brush-outline"></ion-icon></div> 
                 <span className="fs-6 fw-light">Cleaning service</span>
               </div>
-              <div className="m-2 ">
+              <div className="my-2 col-3">
                 <div className="d-flex justify-content-center fs-3">
                   <img
                     alt="icon"

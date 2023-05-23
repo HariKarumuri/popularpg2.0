@@ -15,8 +15,8 @@ const Pg_FoodKitchen = () => {
                   <ion-icon name="fast-food-outline"></ion-icon>
                 </div>
                 <span className="fs-6 text-wrap fw-normal text-center ">Food Available</span>
-                <span className="fs-6 text-wrap fw-light">
-                  Breakfast,Lunch,Dinner,Meals provided
+                <span className="fs-6 text-wrap fw-light text-center">
+                  Breakfast,Lunch, <br/> Dinner,Meals provided
                 </span>
               </div>
               <div className="m-2 my-5">
@@ -30,12 +30,12 @@ const Pg_FoodKitchen = () => {
                 <div className="d-flex justify-content-center fs-3">
                   <img
                     alt="icon"
-                    classname="img-fluid"
+                    className="img-fluid"
                     style={{ height: "40px" }}
                     src="https://i.postimg.cc/DwQ3kqF6/fridge.png"
                   />
                 </div>
-                <span className="fs-6 text-wrap fw-normal text-center">Fridge</span>
+                <span className="fs-6 text-wrap fw-normal text-center">Fridge Available</span>
               </div>
               <div className="m-2 my-5">
                 <div className="d-flex justify-content-center fs-3">
