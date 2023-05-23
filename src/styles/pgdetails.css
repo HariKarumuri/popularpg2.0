@@ -11,6 +11,20 @@
  .bg_review{
     background-color: #f2d48d;
  }
+ .pg_nav{
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+    z-index: 22;
+ }
+ .nav-item .active{
+  border-bottom:2px solid var(--orange-soda);
+ }
+ .nav-item:hover {
+  border-bottom: 2px solid var(--orange-soda);
+}
 @media(max-width:600px){
     .trapez1 {
         border-left: 0px solid transparent;

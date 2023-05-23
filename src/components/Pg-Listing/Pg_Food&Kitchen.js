@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const Pg_FoodKitchen = () => {
   return (
     <div>
-      <div className="card mb-3  mx-auto  responsiveness">
+      <div className="card mb-3  mx-auto  responsiveness" id="PgFoodKitchen">
         <div className="row g-0 ">
           <div className="col-md-9 ">
             <h4 className="name mr-2 mx-2 text-dark">Food and Kitchen</h4>
