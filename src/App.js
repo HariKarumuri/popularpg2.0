@@ -6,7 +6,7 @@ import Footer from "./components/Footer/Footer";
 import Cta from "./components/CTA/Cta";
 import PgListing from "./components/Pg-Listing/PgListing";
 import Home from "./pages/Home";
-
+import Pgdetails from "./components/Pg-Listing/PgDetail"
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" index element={<Home />} />
           <Route path="/explorepg" element={<PgListing />} />
+          <Route path="/pgdetails" element={<Pgdetails />} />
         </Routes>
         <Cta />
         <Footer />

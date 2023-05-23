@@ -1,53 +1,52 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
+import { Link } from "react-router-dom";
 const PgListing = () => {
   return (
     <div>
-   
-      <div 
-        className="card mb-3 mx-auto cbackgrnd responsiveness"
-      
-      >
+      <div className="card mb-3 mx-auto cbackgrnd responsiveness">
         <div className="d-flex">
-         <div class="trapezoid1"><span className="brand d-flex">Brand new</span></div>
-        <div class="trapezoid2"><span className="brand d-flex">Partner verified</span>
-        
-        </div>
-         <div class="trapezoid3"><span className="brand d-flex">Girls</span></div>
-
+          <div class="trapezoid1">
+            <span className="brand d-flex">Brand new</span>
+          </div>
+          <div class="trapezoid2">
+            <span className="brand d-flex">Partner verified</span>
+          </div>
+          <div class="trapezoid3">
+            <span className="brand d-flex">Girls</span>
+          </div>
         </div>
         <div className="row g-0">
-          <div className="col-md-4 " style={{zIndex:1}}>
-           
+          <div className="col-md-4 " style={{ zIndex: 1 }}>
             <Carousel
-  autoPlay
-  infiniteLoop
-  showStatus={false}
-  showArrows={false}
-  showThumbs={false}
-  
->
-  <div className="slide">
-    <img style={{ height: "260px",width:"300px" }}
-      className="img-fluid mt-3"
-      src="https://img.staticmb.com/mbphoto/pg/grd2/cropped_images/2022/Dec/27/Photo_h400_w540/GR2-292167-1597519_400_540.jpg"
-      alt="demo img"
-    />
-  </div>
-  <div className="slide">
-    <img style={{ height: "260px",width:"300px" }}
-      className="img-fluid  mt-3 "
-      src="https://img.staticmb.com/mbphoto/pg/grd2/cropped_images/2023/May/12/Photo_h400_w540/GR2-292167-1746859_400_540.jpeg"
-      alt="demo img"
-    />
-  </div>
-</Carousel>
+              autoPlay
+              infiniteLoop
+              showStatus={false}
+              showArrows={false}
+              showThumbs={false}
+            >
+              <Link to="/pgdetails" className="slide">
+                <img
+                  style={{ height: "260px", width: "300px" }}
+                  className="img-fluid mt-3"
+                  src="https://img.staticmb.com/mbphoto/pg/grd2/cropped_images/2022/Dec/27/Photo_h400_w540/GR2-292167-1597519_400_540.jpg"
+                  alt="demo img"
+                />
+              </Link>
+              <Link to="/pgdetails" className="slide">
+                <img
+                  style={{ height: "260px", width: "300px" }}
+                  className="img-fluid  mt-3 "
+                  src="https://img.staticmb.com/mbphoto/pg/grd2/cropped_images/2023/May/12/Photo_h400_w540/GR2-292167-1746859_400_540.jpeg"
+                  alt="demo img"
+                />
+              </Link>
+            </Carousel>
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <div className="line1">
+              <Link to="/pgdetails" className="line1">
                 <h5 className="card-title rate text-danger mr-2">Rs. 12,000</h5>
                 <h6>
                   <small className="text-muted mx-2">Onwards</small>
@@ -60,14 +59,29 @@ const PgListing = () => {
                     <ion-icon name="checkmark-outline"></ion-icon>Beds available
                   </span>
                 </h6>
-              </div>
-              <div className="line1">
+              </Link>
+              <Link to="/pgdetails" className="line1">
                 <h6 className="name mr-2 text-secondary fw-bold">
                   Gharpayy PG/Paying Guest
                 </h6>
                 <h6 className="text-muted mx-2"> in Koramangala</h6>
+              </Link>
+              <div class="d-lg-none">
+                <div className="d-flex justify-content-center">
+                  <hr
+                    style={{
+                      background: "#a4a4a4",
+                      color: "#cbcbcb",
+                      borderColor: "#cbcbcb",
+                      height: "2px",
+                      marginBottom: "2px",
+                      marginTop: "2px",
+                      width: "50%",
+                    }}
+                  />
+                </div>
               </div>
-              <div class="d-lg-none"><div className="d-flex justify-content-center" >
+              <div class="d-none d-lg-block">
                 <hr
                   style={{
                     background: "#a4a4a4",
@@ -79,20 +93,9 @@ const PgListing = () => {
                     width: "50%",
                   }}
                 />
-              </div></div>
-<div class="d-none d-lg-block"><hr
-                  style={{
-                    background: "#a4a4a4",
-                    color: "#cbcbcb",
-                    borderColor: "#cbcbcb",
-                    height: "2px",
-                    marginBottom: "2px",
-                    marginTop: "2px",
-                    width: "50%",
-                  }}
-                /></div>
-              
-              <div className="line3 sharing">
+              </div>
+
+              <Link to="/pgdetails" className="line3 sharing text-muted">
                 <div className="type1 mr-2">
                   <p className="text-muted fs-6">Twin sharing</p>
                   <p style={{ marginTop: "-0.7rem" }}> Rs. 16,000</p>
@@ -107,8 +110,23 @@ const PgListing = () => {
                   <p className="text-muted fs-6">Twin sharing</p>
                   <p style={{ marginTop: "-0.7rem" }}> Rs. 16,000</p>
                 </div>
+              </Link>
+              <div class="d-lg-none">
+                <div className="d-flex justify-content-center">
+                  <hr
+                    style={{
+                      background: "#a4a4a4",
+                      color: "#cbcbcb",
+                      borderColor: "#cbcbcb",
+                      height: "2px",
+                      marginBottom: "2px",
+                      marginTop: "2px",
+                      width: "50%",
+                    }}
+                  />
+                </div>
               </div>
-              <div class="d-lg-none"><div className="d-flex justify-content-center" >
+              <div class="d-none d-lg-block">
                 <hr
                   style={{
                     background: "#a4a4a4",
@@ -120,20 +138,9 @@ const PgListing = () => {
                     width: "50%",
                   }}
                 />
-              </div></div>
-<div class="d-none d-lg-block"><hr
-                  style={{
-                    background: "#a4a4a4",
-                    color: "#cbcbcb",
-                    borderColor: "#cbcbcb",
-                    height: "2px",
-                    marginBottom: "2px",
-                    marginTop: "2px",
-                    width: "50%",
-                  }}
-                /></div>
+              </div>
               <p className="desc text-muted d-flex">
-                <div className="para_icons">
+                <div className="para_icons text-success">
                   <ion-icon name="checkmark-circle-outline"></ion-icon>
                 </div>
                 PG 50 in Bangalore - Boys and Girls Different Building.
@@ -146,24 +153,26 @@ const PgListing = () => {
                 Move into Gharpayy PG, A Professionally Managed PG Home in
                 Koramangala.
               </p>
+              <div className="d-flex ">
               <button type="button" className="btn btn-danger mr-2">
                 View Phone No.
               </button>
-              <button type="button" className="btn btn-outine-danger mx-2">
+              <button type="button" className="btn2  mx-2">
                 Contact Owner
               </button>
               <button
                 type="button"
-                className="btn  mx-2"
+                className="btn2  mx-2"
                 style={{
                   background: "none",
                   color: "red",
                   border: "none",
-                  pointerEvents: "none",
                 }}
               >
                 <b>view on map</b>
               </button>
+              </div>
+              
             </div>
           </div>
           <div className="mx-2">
