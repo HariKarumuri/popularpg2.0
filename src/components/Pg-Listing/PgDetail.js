@@ -165,7 +165,31 @@ const PgDetail = () => {
                     {showMore ? "Read Less" : "Read More"}
                   </div>
                 </div>
-                <table class="table">
+                <table class="table  visibleon360">
+                  <tbody>
+                    <tr>
+                      <th className="text-muted fw-light" scope="row"> Deposit Amount <span className="fw-normal">₹12,000</span> </th>
+                      <td className="text-muted fw-light">Maintenance  <span className="fw-normal">-</span> </td>
+                      <td className="text-muted fw-light">Notice Period <span className="fw-normal"> 1 Month</span></td>
+                    </tr>
+                    <tr>
+                      <th className="text-muted fw-light" scope="row">Food Availability <span className="fw-normal"> Veg Only</span></th>
+                      <td className="text-muted fw-light">AC Rooms <span className="fw-normal">Not Available</span> </td>
+                      <td className="text-muted fw-light">Parking  <span className="fw-normal">Available</span></td>
+                    </tr>
+                    <tr>
+                      <th className="text-muted fw-light" scope="row">Available for <span className="fw-normal">Girls</span> </th>
+                      <td className="text-muted fw-light">Preferred Tenants  <span className="fw-normal">Student</span></td>
+                      <td className="text-muted fw-light">Total Number of Beds <span className="fw-normal">180</span> </td>
+                    </tr>
+                    <tr>
+                      <td className="text-muted fw-light">Electricity Charges  <span className="fw-normal">-</span></td>
+                    <td className="text-muted fw-light">Operating Since <span className="fw-normal">2018</span> </td>
+                    <td className="text-muted fw-light">Power Backup <span className="fw-normal">Available</span> </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table class="table  visible360">
                   <tbody>
                     <tr>
                       <th className="text-muted fw-light" scope="row"> Deposit Amount <span className="fw-normal">₹12,000</span> </th>
