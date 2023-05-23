@@ -29,6 +29,8 @@ const PgDetail = () => {
                   className="text-secondary"
                   style={{
                     textAlign: "center",
+                    paddingTop: "12px",
+                    marginLeft: "5px",
                   }}
                 >
                   onwards
@@ -56,7 +58,7 @@ const PgDetail = () => {
               <p className="text-muted text-end">
                 posted by : <b>owner gharpayy</b>
               </p>
-              <div className="d-flex justify-content-end">
+              <div className="d-flex justify-content-end ">
                 <button className="btn btn-sm">view Phone Number</button>
               </div>
             </div>
