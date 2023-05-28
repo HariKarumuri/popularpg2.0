@@ -1,0 +1,15 @@
+.backcolor{
+    background-color: var(--orange-soda);
+}
+.addBorder{
+    border: 1px solid var(--orange-soda);
+}
+.form-select{
+    outline: none !important ;
+    border : none !important;
+}
+@media (max-width: 770px) {
+    .rounded-pill{
+        border-radius: 0px !important;
+    }
+}
