@@ -13,3 +13,6 @@
         border-radius: 0px !important;
     }
 }
+.custom-dropdown-toggle::after {
+    content: none;
+  }
