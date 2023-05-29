@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 // Define the async postPg action
-export const postPg = createAsyncThunk('pgs/postPg', async (pgData, { getState }) => {
+export const postPg = createAsyncThunk('pgs/postPg', async (pgData) => {
   try {
-    const { accessToken } = getState().auth.user; // Retrieve the access token from the auth state
+    const accessToken = Cookies.get('accessToken'); // Retrieve the access token from cookies
     const response = await axios.post('http://127.0.0.1:8000/api/pgs/', pgData, {
       headers: {
         Authorization: `Bearer ${accessToken}`, // Include the access token in the request headers
