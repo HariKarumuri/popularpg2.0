@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPGs } from '../../store/slices/pgsSlice';
 import Cookies from 'js-cookie';
-
+import UpdateModal from './updateModal';
 const ViewPGs = () => {
   const dispatch = useDispatch();
   const pgs = useSelector((state) => state.pgs.pgs);
   const isLoading = useSelector((state) => state.pgs.isLoading);
   const error = useSelector((state) => state.pgs.error);
- 
+  const [selectedPG, setSelectedPG] = useState(null);
   useEffect(() => {
     dispatch(fetchPGs());
   }, [dispatch]);
@@ -22,8 +22,12 @@ const ViewPGs = () => {
   }
 
   const handleUpdate = (id) => {
-    // Handle update logic here
-    console.log(`Update PG with ID: ${id}`);
+    const selectedPG = pgs.find((pg) => pg.id === id);
+    setSelectedPG(selectedPG);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedPG(null);
   };
 
   const handleDelete = (id) => {
@@ -89,9 +93,9 @@ const ViewPGs = () => {
                 </div>
                 <div className="row">
                   <div className="col">
-                    <button className="btn btn-primary" onClick={() => handleUpdate(pg.id)}>
-                      Update
-                    </button>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"  onClick={()=>handleUpdate(pg.id)} >
+                 update 
+                </button>
                   </div>
                   <div className="col d-flex justify-content-end">
                     <button className="btn btn-danger" onClick={() => handleDelete(pg.id)}>
@@ -103,7 +107,9 @@ const ViewPGs = () => {
             </div>
           </div>
         ))}
+
       </div>
+      <UpdateModal pg={selectedPG} handleCloseModal={handleCloseModal}/>
     </div>
   );
 };
