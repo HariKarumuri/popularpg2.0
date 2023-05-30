@@ -18,7 +18,7 @@ export const login = createAsyncThunk('auth/login', async (credentials) => {
     authorizeAccessToken(access);
 
     // Store the refresh token in cookies
-    Cookies.set('refreshToken', refresh, { expires: 30 }); // Expires in 30 days
+    Cookies.set('refreshToken', refresh, { expires: 14   }); // Expires in 30 days
 
     return response.data;
   } catch (error) {
