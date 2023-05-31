@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 // Action to authorize access token
 const authorizeAccessToken = (accessToken) => {
-  // Implement your authorization logic here (e.g., store the token in local storage)
-  localStorage.setItem('accessToken', accessToken);
+  // Implement your authorization logic here (e.g., store the token in cookies)
+  Cookies.set('accessToken', accessToken, { expires: 14 }); // Expires in 14 days
 };
 
 // Define the async login action
@@ -16,8 +17,8 @@ export const login = createAsyncThunk('auth/login', async (credentials) => {
     // Authorize access token
     authorizeAccessToken(access);
 
-    // Store the refresh token
-    localStorage.setItem('refreshToken', refresh);
+    // Store the refresh token in cookies
+    Cookies.set('refreshToken', refresh, { expires: 14   }); // Expires in 30 days
 
     return response.data;
   } catch (error) {
@@ -28,7 +29,7 @@ export const login = createAsyncThunk('auth/login', async (credentials) => {
 // Define the async refresh token action
 export const refreshToken = createAsyncThunk('auth/refreshToken', async () => {
   try {
-    const refreshToken = localStorage.getItem('refreshToken');
+    const refreshToken = Cookies.get('refreshToken');
     const response = await axios.post('http://127.0.0.1:8000/api/token/refresh', { refresh: refreshToken });
     const { access } = response.data;
 

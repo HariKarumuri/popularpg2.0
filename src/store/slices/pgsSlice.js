@@ -5,6 +5,7 @@ import axios from 'axios';
 export const fetchPGs = createAsyncThunk('pgs/fetchPGs', async () => {
   try {
     const response = await axios.get('http://127.0.0.1:8000/api/pgs');
+    console.log(response.data);
     return response.data;
   } catch (error) {
     throw new Error(error.response.data);
