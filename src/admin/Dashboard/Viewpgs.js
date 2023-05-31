@@ -1,25 +1,31 @@
-import React, { useEffect,useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchPGs } from '../../store/slices/pgsSlice';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Cookies from 'js-cookie';
 import UpdateModal from './updateModal';
+
 const ViewPGs = () => {
-  const dispatch = useDispatch();
-  const pgs = useSelector((state) => state.pgs.pgs);
-  const isLoading = useSelector((state) => state.pgs.isLoading);
-  const error = useSelector((state) => state.pgs.error);
+  const [pgs, setPGs] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [selectedPG, setSelectedPG] = useState(null);
+
   useEffect(() => {
-    dispatch(fetchPGs());
-  }, [dispatch]);
+    fetchPGs();
+  }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  const fetchPGs = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      const response = await axios.get('http://127.0.0.1:8000/api/pgs');
+      console.log(response.data);
+      setPGs(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      setError(error.response.data);
+      setIsLoading(false);
+    }
+  };
 
   const handleUpdate = (id) => {
     const selectedPG = pgs.find((pg) => pg.id === id);
@@ -32,18 +38,19 @@ const ViewPGs = () => {
 
   const handleDelete = (id) => {
     const accessToken = Cookies.get('accessToken');
-    fetch(`http://127.0.0.1:8000/api/pgs/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`, // Replace with your actual access token
-      },
-    })
+    axios
+      .delete(`http://127.0.0.1:8000/api/pgs/${id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
       .then((response) => {
-        if (response.ok) {
+        if (response.status === 200) {
           // Delete successful, update the UI accordingly
-          dispatch(fetchPGs()); // Fetch the updated list of PGs
+          fetchPGs(); // Fetch the updated list of PGs
         } else {
+          fetchPGs();
           // Delete failed, handle the error
           throw new Error('Delete failed');
         }
@@ -53,7 +60,14 @@ const ViewPGs = () => {
         console.error(error);
       });
   };
-  
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="container">
@@ -93,9 +107,15 @@ const ViewPGs = () => {
                 </div>
                 <div className="row">
                   <div className="col">
-                  <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"  onClick={()=>handleUpdate(pg.id)} >
-                 update 
-                </button>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      onClick={() => handleUpdate(pg.id)}
+                    >
+                      Update
+                    </button>
                   </div>
                   <div className="col d-flex justify-content-end">
                     <button className="btn btn-danger" onClick={() => handleDelete(pg.id)}>
@@ -107,9 +127,8 @@ const ViewPGs = () => {
             </div>
           </div>
         ))}
-
       </div>
-      <UpdateModal pg={selectedPG} handleCloseModal={handleCloseModal}/>
+      <UpdateModal pg={selectedPG} handleCloseModal={handleCloseModal} />
     </div>
   );
 };

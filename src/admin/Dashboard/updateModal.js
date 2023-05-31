@@ -80,7 +80,7 @@ const UpdateModal = ({ pg, handleCloseModal }) => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await fetch(`http://127.0.0.1:8000/api/pgs/${pg.id}/`, {
         method: 'PUT',
@@ -90,19 +90,19 @@ const UpdateModal = ({ pg, handleCloseModal }) => {
         },
         body: JSON.stringify(updatedData),
       });
-
+  
       if (response.ok) {
-        // Data updated successfully
+        alert('PG updated successfully!');
         handleCloseModal();
       } else {
-        // Handle error if the update was unsuccessful
-        // ...
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Update failed');
       }
     } catch (error) {
-      // Handle error if the API call fails
-      // ...
+      alert('Error while updating the PG: ' + error.message);
     }
   };
+  
 
   return (
     <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
