@@ -93,7 +93,7 @@ const ViewPGs = () => {
                 </div>
                 <div className="row">
                   <div className="col">
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"  onClick={()=>handleUpdate(pg.id)} >
+                  <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"  onClick={()=>handleUpdate(pg.id)} >
                  update 
                 </button>
                   </div>
