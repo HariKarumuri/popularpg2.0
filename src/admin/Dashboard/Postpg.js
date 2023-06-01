@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { postPg } from '../../store/slices/pgSlice';
-
+import axios from 'axios';
+import Cookies from 'js-cookie';
 const PostPg = () => {
-  const dispatch = useDispatch();
-  const { accessToken } = useSelector((state) => state.auth);
-
   const [postData, setPostData] = useState({
     common_areas: [''],
     aminities: [''],
@@ -35,13 +31,12 @@ const PostPg = () => {
     if (name === 'images') {
       const imageUrls = value.split(',');
       setPostData({ ...postData, [name]: imageUrls });
-    }else if (name === "gender_type" || name === "working") {
+    } else if (name === 'gender_type' || name === 'working') {
       setPostData({ ...postData, [name]: value.slice(0, 1) }); // Limit to 1 character
     } else {
       setPostData({ ...postData, [name]: value });
     }
   };
-  
 
   const handleCheckboxChange = (e) => {
     setPostData({ ...postData, [e.target.name]: e.target.checked });
@@ -73,15 +68,44 @@ const PostPg = () => {
       alert('Please fill in all the required fields.');
       return;
     }
-    dispatch(postPg(postData, accessToken))
-      .then(() => {
+    const accessToken = Cookies.get('accessToken');
+    axios
+      .post('http://127.0.0.1:8000/api/pgs/', postData, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`, // Include the access token in the request headers
+        },
+      })
+      .then((response) => {
+        setPostData({
+          common_areas: [''],
+          aminities: [''],
+          rules: [''],
+          address_locality: '',
+          name: '',
+          popularity: 0,
+          featured: 0,
+          address_building: '',
+          beds_count: 0,
+          gender_type: '',
+          working: '',
+          meals_available: true,
+          notice_period_days: 0,
+          lock_in_period: 0,
+          property_manager: '',
+          property_owner_stays: true,
+          onetime_move_in_charge: 0,
+          monthly_meals_charges: 0,
+          monthly_electricity_charges: 0,
+          additional_info: '',
+          images: [''],
+        });
+        alert("Post Pg successful! ");
         console.log('Post Pg successful!');
       })
       .catch((error) => {
         console.error('Post Pg failed:', error);
       });
   };
-
   return (
     <div className="container">
       <h2>Post Pg</h2>
