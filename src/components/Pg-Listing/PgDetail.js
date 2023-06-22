@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PgAreaAmenities from "./Pg_Area_Amenities";
@@ -7,11 +7,17 @@ import PgOtherCharges from "./Pg_other_charges";
 import PgMap from "./pg_map";
 import PGScrollBar from "./pg_scroll_nav";
 import { Link } from "react-scroll";
+import { useLocation } from 'react-router-dom';
 const PgDetail = () => {
+  const location = useLocation();
+  const { state } = location;
+  const [pg, setpg] = useState(state);
   const [showMore, setShowMore] = useState(false);
-  var data =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla condimentum est sit amet eros consectetur, ettincidunt metus faucibus. Phasellus eu felis at justotincidunt lobortis. Mauris a aliquam nunc, a consecteturmauris. Quisque feugiat, nisi vitae iaculis finibus, erat migravida velit, nec pulvinar enim turpis vel nisi.";
-  return (
+  useEffect(() => {
+    setpg(state);
+  }, [state]);
+  var data = pg.description;
+    return (
     <div className="bg_color" >
       <div className=" bg-white" style={{
         paddingLeft: "10%",
@@ -24,7 +30,7 @@ const PgDetail = () => {
                 <small className="text-muted mx-2">Rent/Bed</small>
               </h6>
               <div className="d-flex flex-wrap">
-                <div className="fs-3"> Rs. 12,000</div>
+                <div className="fs-3"> Rs.{pg.min_price}</div>
                 <p
                   className="text-secondary"
                   style={{
@@ -49,14 +55,14 @@ const PgDetail = () => {
               </div>
             </div>
             <div className="line1">
-              <h3 className="name mr-2 text-dark">Gharpayy PG/Hostel</h3>
+              <h3 className="name mr-2 text-dark">{pg.pg_name}</h3>
               <p className="text-muted text-decoration-underline">
-                in Koramangala
+                in {pg.city}
               </p>
             </div>
             <div className="hideonsmall" style={{ marginTop: "-75px" }}>
               <p className="text-muted text-end">
-                posted by : <b>owner gharpayy</b>
+                posted by : <b>{pg.property_managed_by}</b>
               </p>
               <div className="d-flex justify-content-end ">
                 <button className="btn btn-sm">view Phone Number</button>
@@ -71,15 +77,16 @@ const PgDetail = () => {
             </p>
             <div style={{ marginTop: "-15px" }}>
               <h6>
-                <span className="badge badge-color mx-2">For girls</span>
+              {pg.pg_for?<span className="badge badge-color mx-2">For {pg.pg_for} </span>:(null) }
+                
               </h6>
               <h6>
                 <span className="badge badge-color mx-2">
-                  Preferred Students
+                  Preferred {pg.best_suited_for}
                 </span>
               </h6>
               <h6>
-                <span className="badge badge-color mx-2">Food Included</span>
+               {pg.meals_available?<span className="badge badge-color mx-2">meals available</span>:(null)} 
               </h6>
 
               <h6>
@@ -105,22 +112,20 @@ const PgDetail = () => {
                 showArrows={false}
                 showThumbs={false}
               >
-                <div className="slide">
-                  <img
-                    style={{ height: "260px", width: "300px" }}
-                    className="img-fluid mt-3"
-                    src="https://img.staticmb.com/mbphoto/pg/grd2/cropped_images/2022/Dec/27/Photo_h400_w540/GR2-292167-1597519_400_540.jpg"
-                    alt="demo img"
-                  />
-                </div>
-                <div className="slide">
+                {pg.additional_images.map((img) => {
+                  var url = img.image;
+                  return (
+                    <div className="slide">
                   <img
                     style={{ height: "260px", width: "300px" }}
                     className="img-fluid  mt-3 "
-                    src="https://img.staticmb.com/mbphoto/pg/grd2/cropped_images/2023/May/12/Photo_h400_w540/GR2-292167-1746859_400_540.jpeg"
+                    src={url}
                     alt="demo img"
                   />
                 </div>
+                  );
+                } )}
+                
               </Carousel>
               <div className="container hideonsmall">
   <div className="row" style={{
@@ -130,14 +135,14 @@ const PgDetail = () => {
     <div className="col ">
     <img            style={{ height: "100px", width: "90px" }}
                     className="  mt-2 rounded" 
-                    src="https://img.staticmb.com/mbphoto/pg/grd2/cropped_images/2023/May/12/Photo_h400_w540/GR2-292167-1746859_400_540.jpeg"
+                    src={pg.image}
                     alt="demo img"
                   />
     </div>
     <div className="col ">
     <img
                     className=" mt-2 rounded"  style={{ height: "100px", width: "90px" }}
-                    src="https://img.staticmb.com/mbphoto/pg/grd2/cropped_images/2022/Dec/27/Photo_h400_w540/GR2-292167-1597519_400_540.jpg"
+                    src={pg.additional_images[0].image}
                     alt="demo img"
                   />
     </div>
@@ -151,7 +156,7 @@ const PgDetail = () => {
               <div className="card-body">
                 <div className="line1 d-flex justify-content-between flex-wrap">
                   <h6 className="name mr-2 text-dark fw-bold">
-                    Gharpayy PG, Koramangala, Bangalore
+                    {pg.locality}
                   </h6>
                   <Link to="PgMap" spy={true} smooth={true} offset={-100} duration={300}  className="d-flex fw-light fs-6"><ion-icon name="location-outline"></ion-icon>view on map</Link>
                 </div>
@@ -168,23 +173,23 @@ const PgDetail = () => {
                 <table className="table  visibleon360">
                   <tbody>
                     <tr>
-                      <th className="text-muted fw-light" scope="row"> Deposit Amount <span className="fw-normal">₹12,000</span> </th>
+                      <th className="text-muted fw-light" scope="row"> Deposit Amount <span className="fw-normal">{pg.security_deposite?pg.security_deposite:('-')}</span> </th>
                       <td className="text-muted fw-light">Maintenance  <span className="fw-normal">-</span> </td>
-                      <td className="text-muted fw-light">Notice Period <span className="fw-normal"> 1 Month</span></td>
+                      <td className="text-muted fw-light">Notice Period <span className="fw-normal"> {pg.notice_period?pg.notice_period:(null)}</span></td>
                     </tr>
                     <tr>
-                      <th className="text-muted fw-light" scope="row">Food Availability <span className="fw-normal"> Veg Only</span></th>
+                      <th className="text-muted fw-light" scope="row">Food Availability <span className="fw-normal"> {pg.meals_available?'yes':'No'}</span></th>
                       <td className="text-muted fw-light">AC Rooms <span className="fw-normal">Not Available</span> </td>
                       <td className="text-muted fw-light">Parking  <span className="fw-normal">Available</span></td>
                     </tr>
                     <tr>
-                      <th className="text-muted fw-light" scope="row">Available for <span className="fw-normal">Girls</span> </th>
-                      <td className="text-muted fw-light">Preferred Tenants  <span className="fw-normal">Student</span></td>
-                      <td className="text-muted fw-light">Total Number of Beds <span className="fw-normal">180</span> </td>
+                      <th className="text-muted fw-light" scope="row">Available for <span className="fw-normal">{pg.pg_for}</span> </th>
+                      <td className="text-muted fw-light">Preferred Tenants  <span className="fw-normal">{pg.best_suited_for}</span></td>
+                      <td className="text-muted fw-light">Total Number of Beds <span className="fw-normal">{pg.total_beds}</span> </td>
                     </tr>
                     <tr>
                       <td className="text-muted fw-light">Electricity Charges  <span className="fw-normal">-</span></td>
-                    <td className="text-muted fw-light">Operating Since <span className="fw-normal">2018</span> </td>
+                      <td className="text-muted fw-light">Lock-In Period <span className="fw-normal">{pg.lock_in_period?pg.lock_in_period:('-')}</span> </td>
                     <td className="text-muted fw-light">Power Backup <span className="fw-normal">Available</span> </td>
                     </tr>
                   </tbody>
@@ -192,31 +197,40 @@ const PgDetail = () => {
                 <table className="table  visible360">
                   <tbody>
                     <tr>
-                      <th className="text-muted fw-light" scope="row"> Deposit Amount <span className="fw-normal">₹12,000</span> </th>
+                      <th className="text-muted fw-light" scope="row"> Deposit Amount <span className="fw-normal">₹{pg.security_deposite?pg.security_deposite:('-')}</span> </th>
                       <td className="text-muted fw-light">Maintenance  <span className="fw-normal">-</span> </td>
-                      <td className="text-muted fw-light">Notice Period <span className="fw-normal"> 1 Month</span></td>
+                      <td className="text-muted fw-light">Notice Period <span className="fw-normal">{pg.notice_period?pg.notice_period:(null)} </span></td>
                       <td className="text-muted fw-light">Electricity Charges  <span className="fw-normal">-</span></td>
                     </tr>
                     <tr>
-                      <th className="text-muted fw-light" scope="row">Food Availability <span className="fw-normal"> Veg Only</span></th>
+                      <th className="text-muted fw-light" scope="row">Food Availability <span className="fw-normal"> {pg.meals_available?'yes':'No'}</span></th>
                       <td className="text-muted fw-light">AC Rooms <span className="fw-normal">Not Available</span> </td>
                       <td className="text-muted fw-light">Parking  <span className="fw-normal">Available</span></td>
                       <td className="text-muted fw-light">Power Backup <span className="fw-normal">Available</span> </td>
                     </tr>
                     <tr>
-                      <th className="text-muted fw-light" scope="row">Available for <span className="fw-normal">Girls</span> </th>
-                      <td className="text-muted fw-light">Preferred Tenants  <span className="fw-normal">Student</span></td>
-                      <td className="text-muted fw-light">Total Number of Beds <span className="fw-normal">180</span> </td>
-                      <td className="text-muted fw-light">Operating Since <span className="fw-normal">2018</span> </td>
+                      <th className="text-muted fw-light" scope="row">Available for <span className="fw-normal">{pg.pg_for}</span> </th>
+                      <td className="text-muted fw-light">Preferred Tenants  <span className="fw-normal">{pg.best_suited_for}</span></td>
+                      <td className="text-muted fw-light">Total Number of Beds <span className="fw-normal">{pg.total_beds}</span> </td>
+                      <td className="text-muted fw-light">Lock-In Period <span className="fw-normal">{pg.lock_in_period?pg.lock_in_period:('-')}</span> </td>
                     </tr>
                   </tbody>
                 </table>
-                <p className="desc text-muted d-flex">
+                <p className="desc text-muted d-flex justify-content-around ">
+                {pg.topAmenities_in_property.map((amenity) => {
+                  return (<div className="d-flex">
                   <div className="para_icons text-success">
-                    <ion-icon name="checkmark-circle-outline"></ion-icon>
-                  </div>
-                  PG 50 in Bangalore - Boys and Girls Different Building.
-                </p>
+                  <ion-icon name="checkmark-circle-outline"></ion-icon>
+                </div>
+                    <span className="mx-2" key={amenity}>
+                      {amenity}
+                    </span>
+                     <div className="para_icons_grp d-flex justify-content-end">
+                </div></div>
+                  );
+                } )}
+               
+              </p>
                 <div className="d-flex ">
                   <button type="button" className="btn btn-danger mr-2">
                     View Phone No.
@@ -233,9 +247,9 @@ const PgDetail = () => {
       <div className="card mb-3 mx-auto bg_review responsiveness  text-center px-4 py-3  ">
      <h6 className="d-flex justify-content-center"> Show some love & Let us know how good this PG is <a className="link text-danger mx-3" href="/">Write a review </a> <div className="text-danger my-1"><ion-icon  name="arrow-forward-outline"></ion-icon> </div> </h6>
       </div>
-      <PgAreaAmenities />
-      <PgFoodKitchen  />
-      <PgOtherCharges  />
+      <PgAreaAmenities data = {pg.services_in_property} />
+      <PgFoodKitchen  data={pg.furnishing_in_property} />
+      <PgOtherCharges />
       <br/>
       <PgMap  />
     </div>

@@ -2,6 +2,7 @@ import React,{useState,useEffect} from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 const PgListing = () => {
   const Pgelement =(props)=>{
     return(
@@ -10,12 +11,15 @@ const PgListing = () => {
           <div className="trapezoid1">
             <span className="brand d-flex">Brand new</span>
           </div>
-          <div className="trapezoid2">
-            <span className="brand d-flex">Partner verified</span>
-          </div>
-          <div className="trapezoid3">
-            <span className="brand d-flex">Girls</span>
-          </div>
+          {props.best_suited_for?(<div className="trapezoid2">
+            <span className="brand d-flex"> {props.best_suited_for}
+            </span>
+          </div>):(null)}
+          {props.pg_for?(<div className="trapezoid3">
+            <span className="brand d-flex"> {props.pg_for}
+            </span>
+          </div>):(null)}
+          
         </div>
         <div className="row g-0">
           <div className="col-md-4 " style={{ zIndex: 1 }}>
@@ -26,33 +30,31 @@ const PgListing = () => {
               showArrows={false}
               showThumbs={false}
             >
-              <Link to="/pgdetails" className="slide">
-                <img
-                  style={{ height: "260px", width: "300px" }}
-                  className="img-fluid mt-3"
-                  src="https://img.staticmb.com/mbphoto/pg/grd2/cropped_images/2022/Dec/27/Photo_h400_w540/GR2-292167-1597519_400_540.jpg"
-                  alt="demo img"
-                />
-              </Link>
-              <Link to="/pgdetails" className="slide">
-                <img
-                  style={{ height: "260px", width: "300px" }}
-                  className="img-fluid  mt-3 "
-                  src="https://img.staticmb.com/mbphoto/pg/grd2/cropped_images/2023/May/12/Photo_h400_w540/GR2-292167-1746859_400_540.jpeg"
-                  alt="demo img"
-                />
-              </Link>
+              {props.additional_images.map((img) => {
+                  var url = img.image;
+                  return (
+                    <div className="slide">
+                  <img
+                    style={{ height: "260px", width: "300px" }}
+                    className="img-fluid  mt-3 "
+                    src={url}
+                    alt="demo img"
+                  />
+                </div>
+                  );
+                } )}
             </Carousel>
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <Link to="/pgdetails" className="line1">
-                <h5 className="card-title rate text-danger mr-2">Rs. 12,000</h5>
+              <Link to="/pgdetails" state={props} className="line1">
+              <h5 className="card-title rate text-danger mr-2">Rs. {props.min_price}</h5>
                 <h6>
                   <small className="text-muted mx-2">Onwards</small>
                 </h6>
                 <h6>
-                  <span className="badge badge-color mx-2">Food Included</span>
+                {props.meals_available ?( <span className="badge badge-color mx-2">Meals Available</span>):(null)}
+                 
                 </h6>
                 <h6>
                   <span className="badge bg-green-outline mx-2 d-flex">
@@ -61,11 +63,11 @@ const PgListing = () => {
                 </h6>
               </Link>
               <br/>
-              <Link to="/pgdetails" className="line1">
+              <Link to="/pgdetails" state={props} className="line1">
                 <h6 className="name mr-2 text-secondary fw-bold">
-                  {props}
+                  {props.pg_name}
                 </h6>
-                <h6 className="text-muted mx-2"> in Koramangala</h6>
+                <h6 className="text-muted mx-2"> in {props.city}</h6>
               </Link>
               <div className="d-lg-none">
                 <div className="d-flex justify-content-center">
@@ -96,20 +98,22 @@ const PgListing = () => {
                 />
               </div>
 
-              <Link to="/pgdetails" className="line3 sharing text-muted">
-                <div className="type1 mr-2">
-                  <p className="text-muted fs-6">Twin sharing</p>
-                  <p style={{ marginTop: "-0.7rem" }}> Rs. 16,000</p>
+              <Link to="/pgdetails" state={props} className="line3 sharing text-muted">
+
+                  <div className="type1 mr-2">
+                  <p className="text-muted fs-6">No sharing</p>
+                  <p style={{ marginTop: "-0.7rem" }}> Rs{ props.single_sharing_price?(props.single_sharing_price):('NA')}</p>
                 </div>
+
                 <div className="verticleLine mx-3"></div>
                 <div className="type2 mx-3">
-                  <p className="text-muted fs-6">Twin sharing</p>
-                  <p style={{ marginTop: "-0.7rem" }}> Rs. 16,000</p>
-                </div>
-                <div className="verticleLine2 mx-3"></div>
+                  <p className="text-muted fs-6">double sharing</p>
+                  <p style={{ marginTop: "-0.7rem" }}> Rs.{props.double_sharing_price? (props.double_sharing_price):('NA')}</p>
+                </div>   
+                  <div className="verticleLine2 mx-3"></div>
                 <div className="type3 mx-3">
-                  <p className="text-muted fs-6">Twin sharing</p>
-                  <p style={{ marginTop: "-0.7rem" }}> Rs. 16,000</p>
+                  <p className="text-muted fs-6">triple sharing</p>
+                  <p style={{ marginTop: "-0.7rem" }}> Rs.{props.triple_sharing_price? (props.triple_sharing_price):('NA')} </p>
                 </div>
               </Link>
               <div className="d-lg-none">
@@ -140,19 +144,23 @@ const PgListing = () => {
                   }}
                 />
               </div>
-              <p className="desc text-muted d-flex">
-                <div className="para_icons text-success">
+              <p className="desc text-muted ">
+                {props.topAmenities_in_property.map((amenity) => {
+                  return (<div className="d-flex">
+                  <div className="para_icons text-success">
                   <ion-icon name="checkmark-circle-outline"></ion-icon>
                 </div>
-                PG 50 in Bangalore - Boys and Girls Different Building.
-                <div className="para_icons_grp d-flex justify-content-end">
-                  <ion-icon name="wifi-outline"></ion-icon>
-                  <ion-icon name="snow-outline"></ion-icon>
-                </div>
+                    <span className="mx-2" key={amenity}>
+                      {amenity}
+                    </span>
+                     <div className="para_icons_grp d-flex justify-content-end">
+                </div></div>
+                  );
+                } )}
+               
               </p>
               <p className="desc text-muted" style={{ marginTop: "-0.6rem" }}>
-                Move into Gharpayy PG, A Professionally Managed PG Home in
-                Koramangala.
+              {props.locality}
               </p>
               <div className="d-flex flex-wrap justify-content-center ">
               <button type="button" className="btn btn-danger mr-2">
@@ -199,27 +207,26 @@ const PgListing = () => {
     )
   }
   const [pgs, setpgs] = useState([]);
-  const fetchpgs = async () => {
-    try {
-      const res = await fetch("/products");
-      console.log(res);
-      const data = await res.json();
-      
-      setpgs(data);
-    }
-    catch (err) {
-      console.log(err);
-    }
-  }
+  const fetchProducts = () => {
+    axios.get('http://13.53.149.253/products/')
+      .then(response => {
+        // Handle the response data
+        const products = response.data;
+        console.log(products);
+        setpgs(products);
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error);
+      });
+  };
   useEffect(() => {
-    fetchpgs();
-  }, [])
-
-
+    fetchProducts();
+  }, []);
   return (
     <div>
-      {Pgelement('ghar pay pg')}
-
+      {pgs.map((pg) => (
+        Pgelement(pg)
+      ))}
     </div>
   );
 };
