@@ -11,6 +11,7 @@ import LoginPage from "./admin/LoginPage";
 import Dashboard from "./admin/Dashboard/Dashboard";
 import PostPg from './admin/Dashboard/Postpg';
 import ViewPGs from './admin/Dashboard/Viewpgs';
+import ContactPage from './pages/ContactPage';
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" index element={<Home />} />
           <Route path="/listings" element={<PgListing />} />
           <Route path="pgdetails" element={<Pgdetails />} />
+          <Route path="/contact" element={<ContactPage />} />
 
 
           {/* admin routes  */}
