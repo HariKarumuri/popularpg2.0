@@ -2,7 +2,7 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const Pg_FoodKitchen = () => {
+const Pg_FoodKitchen = ({data}) => {
   return (
     <div>
       <div className="card mb-3  mx-auto  responsiveness" id="PgFoodKitchen">
@@ -10,40 +10,40 @@ const Pg_FoodKitchen = () => {
           <div className="col-md-9 ">
             <h4 className="name mr-2 mx-2 text-dark">Food and Kitchen</h4>
             <div className="d-flex mx-3 justify-content-between flex-wrap">
-              <div className="m-2 my-5">
-                <div className="d-flex justify-content-center fs-3">
-                  <ion-icon name="fast-food-outline"></ion-icon>
-                </div>
-                <span className="fs-6 text-wrap fw-normal text-center ">Food Available</span>
-                <span className="fs-6 text-wrap fw-light text-center">
-                  Breakfast,Lunch, <br/> Dinner,Meals provided
-                </span>
-              </div>
-              <div className="m-2 my-5">
-                <div className="d-flex justify-content-center fs-3">
-                  <ion-icon name="pizza-outline"></ion-icon>
-                </div>
-                <span className="fs-6 text-wrap fw-normal text-center">Meals Provided</span>
-                <span className="fs-6 text-wrap fw-light">veg only</span>
-              </div>
-              <div className="m-2 my-5">
-                <div className="d-flex justify-content-center fs-3">
-                  <img
-                    alt="icon"
-                    className="img-fluid"
-                    style={{ height: "40px" }}
-                    src="https://i.postimg.cc/DwQ3kqF6/fridge.png"
-                  />
-                </div>
-                <span className="fs-6 text-wrap fw-normal text-center">Fridge Available</span>
-              </div>
-              <div className="m-2 my-5">
-                <div className="d-flex justify-content-center fs-3">
-                <ion-icon name="restaurant-outline"></ion-icon>
-                </div>
-                <span className="fs-6 text-wrap fw-normal text-center">Food Charges</span>
-                <span className="fs-6 text-wrap fw-light">Included in Rent</span>
-              </div>
+            {data.map((item) => {
+  const words = item.split(' ');
+  const firstWord = words[0].toLowerCase();
+
+  let iconName;
+
+  switch (firstWord) {
+    case 'washing':
+      iconName = 'box';
+      break;
+    case 'gas':
+      iconName = 'stove';
+      break;
+    case 'fridge':
+      iconName = 'square';
+      break;
+    case 'microwave':
+      iconName = 'toilet-portable';
+      break;
+    default:
+      iconName = firstWord;
+      break;
+  }
+
+  return (
+    <div className="m-2 my-5" key={item}>
+      <div className="d-flex justify-content-center fs-3">
+        <i className={`fas fa-light fa-${iconName}`}></i>
+      </div>
+      <span className="fs-6 text-wrap fw-normal text-center">{item}</span>
+    </div>
+  );
+})}
+
             </div>
           </div>
           <div className="col-md-3 " style={{ zIndex: 1 }}>
