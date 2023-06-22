@@ -135,14 +135,14 @@ const PgDetail = () => {
     <div className="col ">
     <img            style={{ height: "100px", width: "90px" }}
                     className="  mt-2 rounded" 
-                    src="https://img.staticmb.com/mbphoto/pg/grd2/cropped_images/2023/May/12/Photo_h400_w540/GR2-292167-1746859_400_540.jpeg"
+                    src={pg.image}
                     alt="demo img"
                   />
     </div>
     <div className="col ">
     <img
                     className=" mt-2 rounded"  style={{ height: "100px", width: "90px" }}
-                    src="https://img.staticmb.com/mbphoto/pg/grd2/cropped_images/2022/Dec/27/Photo_h400_w540/GR2-292167-1597519_400_540.jpg"
+                    src={pg.additional_images[0].image}
                     alt="demo img"
                   />
     </div>
