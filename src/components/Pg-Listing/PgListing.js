@@ -2,8 +2,10 @@ import React,{useState,useEffect} from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
+import SearchBar from "../SearchBar/SearchBar";
 import axios from 'axios';
 const PgListing = () => {
+  const [copypgs,setCopypgs]=useState([]);
   const Pgelement =(props)=>{
     return(
         <div className="card mb-3 mx-auto cbackgrnd responsiveness">
@@ -144,25 +146,23 @@ const PgListing = () => {
                   }}
                 />
               </div>
-              <p className="desc text-muted ">
+              <p className="desc text-muted d-flex">
                 {props.topAmenities_in_property.map((amenity) => {
                   return (<div className="d-flex">
                   <div className="para_icons text-success">
                   <ion-icon name="checkmark-circle-outline"></ion-icon>
                 </div>
-                    <span className="mx-2" key={amenity}>
+                    <div className="mx-2" key={amenity}>
                       {amenity}
-                    </span>
-                     <div className="para_icons_grp d-flex justify-content-end">
-                </div></div>
+                    </div>
+                     </div>
                   );
                 } )}
-               
               </p>
               <p className="desc text-muted" style={{ marginTop: "-0.6rem" }}>
               {props.locality}
               </p>
-              <div className="d-flex flex-wrap justify-content-center ">
+              <div className="d-flex flex-wrap justify-content-center " style={{ marginTop:"-0.9rem"}}>
               <button type="button" className="btn btn-danger mr-2">
                 View Phone No.
               </button>
@@ -184,7 +184,9 @@ const PgListing = () => {
               
             </div>
           </div>
-          <div className="mx-2">
+          <div className="mx-2" style={{
+            marginTop:"-0.7 rem"
+          }}>
             <h6>
               <span className="badge badge-color mr-2">
                 0.2 Km from Green Wood High Interna
@@ -214,6 +216,7 @@ const PgListing = () => {
         const products = response.data;
         console.log(products);
         setpgs(products);
+        setCopypgs(products);
       })
       .catch(error => {
         console.error('Error fetching products:', error);
@@ -224,6 +227,8 @@ const PgListing = () => {
   }, []);
   return (
     <div>
+    <SearchBar pgs={pgs} setpgs={setpgs} copypgs={copypgs} />
+    <br/>
       {pgs.map((pg) => (
         Pgelement(pg)
       ))}
