@@ -50,16 +50,16 @@ return (
               Home
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/about" className="navbar-link" onClick={closeNavbar}>
               About
             </Link>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <Link to="/service" className="navbar-link" onClick={closeNavbar}>
               Service
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/listings" className="navbar-link" onClick={closeNavbar}>
               Explore Pg
@@ -80,14 +80,14 @@ return (
     </nav>
 
     <div className="header-bottom-actions">
-      <button className="header-bottom-actions-btn" aria-label="Search">
+      {/* <button className="header-bottom-actions-btn" aria-label="Search">
         <ion-icon name="search-outline"></ion-icon>
         <span>Search</span>
       </button>
       <button className="header-bottom-actions-btn" aria-label="Profile">
         <ion-icon name="person-outline"></ion-icon>
         <span>Profile</span>
-      </button>
+      </button> */}
       
       <button
         className="header-bottom-actions-btn"
