@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const SearchBar = () => {
+const SearchBar = ({ pgs, setpgs,copypgs }) => {
   const [data, setData] = useState("Budget");
   const [minValue, setMinValue] = useState("");
   const [maxValue, setMaxValue] = useState("");
+  const [location, setLocation] = useState("");
+  const [occupancytype, setOccupancyType] = useState("");
   const dropdownRef = useRef(null);
 
   const handleMinValueChange = (e) => {
@@ -22,9 +24,78 @@ const SearchBar = () => {
     } else if (maxValue) {
       setData(`Up to ${maxValue}`);
     } else {
-      setData("Budget");
+      setData(data);
+    }
+  
+    // Filter the pgs based on the selected value from the dropdown, location, and occupancy type
+    const filteredPgs = pgs.filter((pg) => {
+      const val = parseInt(pg.min_price);
+      const dataval = parseInt(data);
+      const minVal = parseInt(minValue);
+      const maxVal = parseInt(maxValue);
+      const lowercasePgLocation = pg.city.toLowerCase();
+      const lowercaseSearchLocation = location.toLowerCase();
+  
+      const occupancyTypeMatch = () => {
+        if (occupancytype === "Single") {
+          return pg.single_sharing;
+        } else if (occupancytype === "Double") {
+          return pg.double_sharing;
+        } else if (occupancytype === "Triple") {
+          return pg.triple_sharing;
+        } else {
+          return true; // Return true if occupancytype is not specified
+        }
+      };
+  
+      const locationMatch = () => {
+        if (location) {
+          return lowercasePgLocation.includes(lowercaseSearchLocation);
+        } else {
+          return true;
+        }
+      };
+  
+      if (!minVal && !maxVal && !dataval && !location) {
+        return occupancyTypeMatch();
+      } else if (!minVal && !maxVal && !dataval) {
+        return locationMatch() && occupancyTypeMatch();
+      } else if (minVal && maxVal) {
+        return (
+          val >= minVal &&
+          val <= maxVal &&
+          locationMatch() &&
+          occupancyTypeMatch()
+        );
+      } else if (minVal) {
+        return val >= minVal && locationMatch() && occupancyTypeMatch();
+      } else if (maxVal) {
+        return val <= maxVal && locationMatch() && occupancyTypeMatch();
+      } else if (!minVal && !maxVal) {
+        return (
+          val === dataval &&
+          locationMatch() &&
+          occupancyTypeMatch()
+        );
+      }
+  
+      return pg;
+    });
+  
+    if (
+      !location &&
+      (!occupancytype || occupancytype === "occupancy Type") &&
+      (!minValue || isNaN(parseInt(minValue))) &&
+      (!maxValue || isNaN(parseInt(maxValue))) &&
+      (!data || isNaN(parseInt(data)))
+    ) {
+      console.log("No filters applied");
+      setpgs(copypgs);
+    } else {
+      setpgs(filteredPgs);
     }
   };
+  
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -37,17 +108,16 @@ const SearchBar = () => {
         } else if (maxValue) {
           setData(`Up to ${maxValue}`);
         } else {
-          setData("Budget");
+          setData(data);
         }
       }
     };
-
     document.addEventListener("click", handleClickOutside);
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [minValue, maxValue]);
+  }, [minValue, maxValue,occupancytype,location,data]);
 
   return (
     <div>
@@ -72,13 +142,16 @@ const SearchBar = () => {
                               marginRight: "10px",
                               fontWeight: "bold",
                               fontSize: "20px",
-                              
                             }}
                             name="location"
                           ></ion-icon>
                           <input
                             id="inputState"
                             className="form-select "
+                            value={location}
+                            onChange={(e) => {
+                              setLocation(e.target.value);                            
+                              }}
                             placeholder="Enter Location"
                           ></input>
                         </div>
@@ -93,12 +166,17 @@ const SearchBar = () => {
                               marginRight: "10px",
                               fontWeight: "bold",
                               fontSize: "20px",
-                              
                             }}
                             name="home"
                           ></ion-icon>
                         </div>
-                        <select id="inputState" className="form-select ">
+                        <select id="inputState" className="form-select "
+                          value={occupancytype}
+                          onChange={(e) => {
+                            setOccupancyType(e.target.value);
+                            console.log(e.target.value);
+                            }}
+                        >
                           <option selected> occupancy Type</option>
                           <option>Single</option>
                           <option>Double</option>
@@ -121,7 +199,10 @@ const SearchBar = () => {
                             >
                               {data}
                             </button>
-                            <div className="dropdown-menu" aria-labelledby="budgetDropdown">
+                            <div
+                              className="dropdown-menu"
+                              aria-labelledby="budgetDropdown"
+                            >
                               <div className="d-flex justify-content-between">
                                 <input
                                   className="dropdown-item form-control"
@@ -248,7 +329,6 @@ const SearchBar = () => {
                             name="search-outline"
                           ></ion-icon>
                           <div className="px-2">
-                            
                             <b>Search</b>
                           </div>
                         </div>
