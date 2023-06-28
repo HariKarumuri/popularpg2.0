@@ -2,8 +2,14 @@
   #PROPERTY
 \*-----------------------------------*/
 
+.container-custom{
+  width: 1080px;
+  margin: auto;
+}
+
 .property {
   padding-block: var(--section-padding);
+  
 }
 
 .property-card {
@@ -17,12 +23,14 @@
 }
 .property-list > .property-card {
   flex: 0 0 auto;
+  width: 320px;
 }
 
 .property-card .card-banner {
   position: relative;
   aspect-ratio: 2 / 1.5;
   overflow: hidden;
+  width: 300px !important;
 }
 
 .property-card .card-banner a {
@@ -60,6 +68,7 @@
   z-index: 1;
 }
 
+
 .banner-actions-btn {
   color: var(--white);
   font-size: var(--fs-6);
@@ -86,7 +95,7 @@
 }
 
 .property-card .card-content {
-  padding: 30px 15px 15px;
+  /* padding: 30px 15px 15px; */
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
 }
 
@@ -122,7 +131,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  row-gap: 15px;
+  /* row-gap: 15px; */
+  padding: 0;
+
 }
 
 .property-card .card-item {
@@ -216,6 +227,7 @@
   background-color: var(--white) !important;
 }
 
+
 /*-----------------------------------*\
   #MEDIA QUERIES
 \*-----------------------------------*/
@@ -251,9 +263,9 @@
    * PROPERTY
    */
 
-  .property-card .card-content {
+  /* .property-card .card-content {
     padding-inline: 30px;
-  }
+  } */
 
   .card-footer {
     padding: 20px 30px 30px;
