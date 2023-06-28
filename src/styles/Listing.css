@@ -126,19 +126,20 @@
   max-width: 1040px;
     height: auto;
     overflow: hidden;
+    
 }
 .verticleLine{
   border-left: 2px solid #cbcbcb;
-  height: 60px;
+  height: 50px;
   position:absolute;
-  top:28%;
+  top:26.5%;
   left: 41.9%;
 }
 .verticleLine2{
   border-left: 2px solid #cbcbcb;
-  height: 60px;
+  height: 50px;
   position:absolute;
-  top:28%;
+  top:26.5%;
   left: 54.5%;
 }
 
@@ -176,6 +177,7 @@
     .line1 {
       display: inline-block;
     }
+    
   }
   
 
@@ -186,6 +188,9 @@
   */
  
   @media (min-width: 992px) {
+    .responsiveness{
+      margin-left: 7rem;
+    }
  
  }
  /**
