@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const SearchBar = ({ pgs, setpgs,copypgs }) => {
+const SearchBar = ({ pgs, setpgs, copypgs }) => {
   const [data, setData] = useState("Budget");
   const [minValue, setMinValue] = useState("");
   const [maxValue, setMaxValue] = useState("");
   const [location, setLocation] = useState("");
+  const [gender, setGender] = useState("");
   const [occupancytype, setOccupancyType] = useState("");
+  const [sortType, setSortType] = useState(""); // New state for sorting
   const dropdownRef = useRef(null);
 
   const handleMinValueChange = (e) => {
@@ -16,86 +18,127 @@ const SearchBar = ({ pgs, setpgs,copypgs }) => {
     setMaxValue(e.target.value);
   };
 
-  const handleSearch = () => {
-    if (minValue && maxValue) {
-      setData(`${minValue} - ${maxValue}`);
-    } else if (minValue) {
-      setData(`> ${minValue}`);
-    } else if (maxValue) {
-      setData(`Up to ${maxValue}`);
-    } else {
-      setData(data);
-    }
-  
-    // Filter the pgs based on the selected value from the dropdown, location, and occupancy type
-    const filteredPgs = pgs.filter((pg) => {
-      const val = parseInt(pg.min_price);
-      const dataval = parseInt(data);
-      const minVal = parseInt(minValue);
-      const maxVal = parseInt(maxValue);
-      const lowercasePgLocation = pg.city.toLowerCase();
-      const lowercaseSearchLocation = location.toLowerCase();
-  
-      const occupancyTypeMatch = () => {
-        if (occupancytype === "Single") {
-          return pg.single_sharing;
-        } else if (occupancytype === "Double") {
-          return pg.double_sharing;
-        } else if (occupancytype === "Triple") {
-          return pg.triple_sharing;
-        } else {
-          return true; // Return true if occupancytype is not specified
-        }
-      };
-  
-      const locationMatch = () => {
-        if (location) {
-          return lowercasePgLocation.includes(lowercaseSearchLocation);
-        } else {
+  const handleSortChange = (e) => {
+    setSortType(e.target.value);
+  };
+
+  useEffect(() => {
+    const handleSearch = () => {
+      // Retrieve the data before the search without changing any properties
+      const updatedPgs = copypgs.map((pg) => ({ ...pg }));
+      console.log(updatedPgs);
+      console.log(copypgs)
+      // Filter the pgs based on the selected value from the dropdown, location, occupancy type, and gender
+      const filteredPgs = updatedPgs.filter((pg) => {
+        const val = parseInt(pg.min_price);
+        const dataval = parseInt(data);
+        const minVal = parseInt(minValue);
+        const maxVal = parseInt(maxValue);
+        const lowercasePgLocation = pg.city.toLowerCase();
+        const lowercaseSearchLocation = location.toLowerCase();
+    
+        const occupancyTypeMatch = () => {
+          if (occupancytype === "Single") {
+            return pg.single_sharing;
+          } else if (occupancytype === "Double") {
+            return pg.double_sharing;
+          } else if (occupancytype === "Triple") {
+            return pg.triple_sharing;
+          } else {
+            return true; // Return true if occupancytype is not specified
+          }
+        };
+    
+        const genderType = () => {
+          if (gender.toLowerCase() === "boys") {
+            return pg.pg_for === "boys";
+          } else if (gender.toLowerCase() === "girls") {
+            return pg.pg_for === "girls";
+          } else if (gender.toLowerCase() === "coliving") {
+            return pg.pg_for === "coliving";
+          } else {
+            return true; // Return true if gender is not specified
+          }
+        };
+    
+        const locationMatch = () => {
+          if (location) {
+            return lowercasePgLocation.includes(lowercaseSearchLocation);
+          } else {
+            return true;
+          }
+        };
+    
+        if (
+          !minVal &&
+          !maxVal &&
+          !dataval &&
+          !location &&
+          occupancyTypeMatch() &&
+          genderType()
+        ) {
+          // Return all the original data if no filters are applied
           return true;
         }
-      };
-  
-      if (!minVal && !maxVal && !dataval && !location) {
-        return occupancyTypeMatch();
-      } else if (!minVal && !maxVal && !dataval) {
-        return locationMatch() && occupancyTypeMatch();
-      } else if (minVal && maxVal) {
-        return (
-          val >= minVal &&
-          val <= maxVal &&
-          locationMatch() &&
-          occupancyTypeMatch()
-        );
-      } else if (minVal) {
-        return val >= minVal && locationMatch() && occupancyTypeMatch();
-      } else if (maxVal) {
-        return val <= maxVal && locationMatch() && occupancyTypeMatch();
-      } else if (!minVal && !maxVal) {
-        return (
-          val === dataval &&
-          locationMatch() &&
-          occupancyTypeMatch()
-        );
+    
+        if (minVal && maxVal) {
+          return (
+            val >= minVal &&
+            val <= maxVal &&
+            locationMatch() &&
+            occupancyTypeMatch() &&
+            genderType()
+          );
+        } else if (minVal) {
+          return (
+            val >= minVal &&
+            locationMatch() &&
+            occupancyTypeMatch() &&
+            genderType()
+          );
+        } else if (maxVal) {
+          return (
+            val <= maxVal &&
+            locationMatch() &&
+            occupancyTypeMatch() &&
+            genderType()
+          );
+        } else if (dataval) {
+          return (
+            val === dataval &&
+            locationMatch() &&
+            occupancyTypeMatch() &&
+            genderType()
+          );
+        }
+    
+        return false;
+      });
+    
+      const sortedPgs = sortData(filteredPgs, sortType);
+    
+      if (
+        !location &&
+        (!occupancytype || occupancytype === "occupancy Type") &&
+        (!minValue || isNaN(parseInt(minValue))) &&
+        (!maxValue || isNaN(parseInt(maxValue))) &&
+        (gender === "Gender" || gender === "") &&
+        (sortType === "sort" || sortType === "") &&
+        (!data || isNaN(parseInt(data)))
+      ) {
+        console.log("No filters applied");
+        setpgs(pgs);
+        setpgs(copypgs);
+
+      } else {
+        setpgs(sortedPgs);
       }
-  
-      return pg;
-    });
-  
-    if (
-      !location &&
-      (!occupancytype || occupancytype === "occupancy Type") &&
-      (!minValue || isNaN(parseInt(minValue))) &&
-      (!maxValue || isNaN(parseInt(maxValue))) &&
-      (!data || isNaN(parseInt(data)))
-    ) {
-      console.log("No filters applied");
-      setpgs(copypgs);
-    } else {
-      setpgs(filteredPgs);
-    }
-  };
-  
+    };
+    
+    setTimeout(() => {
+        handleSearch();
+    }, 3000);
+  }, [minValue, maxValue, occupancytype, location, data, gender, sortType,copypgs]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -113,15 +156,27 @@ const SearchBar = ({ pgs, setpgs,copypgs }) => {
       }
     };
     document.addEventListener("click", handleClickOutside);
-
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [minValue, maxValue,occupancytype,location,data]);
+  }, [minValue, maxValue, data]);
+
+  // Helper function to sort the data based on sort type
+  const sortData = (data, sortType) => {
+    if (sortType === "Price : Low to High") {
+      return [...data].sort((a, b) => parseInt(a.min_price) - parseInt(b.min_price));
+    } else if (sortType === "Price : High to Low") {
+      return [...data].sort((a, b) => parseInt(b.min_price) - parseInt(a.min_price));
+    }
+    return data;
+  };
 
   return (
     <div>
-      <section className="search-banner backcolor text-white " id="search-banner">
+      <section
+        className="search-banner backcolor text-white "
+        id="search-banner"
+      >
         <div className="container py-5 ">
           <div className="row text-center pb-4">
             <div className="col-md-12">
@@ -150,14 +205,14 @@ const SearchBar = ({ pgs, setpgs,copypgs }) => {
                             className="form-select "
                             value={location}
                             onChange={(e) => {
-                              setLocation(e.target.value);                            
-                              }}
+                              setLocation(e.target.value);
+                            }}
                             placeholder="Enter Location"
                           ></input>
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-2">
                       <div className="form-group d-flex ">
                         <div className="py-2">
                           <ion-icon
@@ -170,12 +225,14 @@ const SearchBar = ({ pgs, setpgs,copypgs }) => {
                             name="home"
                           ></ion-icon>
                         </div>
-                        <select id="inputState" className="form-select "
+                        <select
+                          id="inputState"
+                          className="form-select "
                           value={occupancytype}
                           onChange={(e) => {
                             setOccupancyType(e.target.value);
                             console.log(e.target.value);
-                            }}
+                          }}
                         >
                           <option selected> occupancy Type</option>
                           <option>Single</option>
@@ -313,26 +370,42 @@ const SearchBar = ({ pgs, setpgs,copypgs }) => {
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-3 d-flex ">
-                      <button
-                        type="button"
-                        className="btn rounded-pill px-5 "
-                        onClick={handleSearch}
-                      >
-                        <div className="d-flex justify-content-between  ">
+                    <div className="col-md-2 d-flex ">
+                      <div className="form-group d-flex ">
+                        <div className="py-2">
                           <ion-icon
                             style={{
                               paddingTop: "5px",
                               marginRight: "10px",
                               fontWeight: "bold",
+                              fontSize: "20px",
                             }}
-                            name="search-outline"
+                            name="people-circle-outline"
                           ></ion-icon>
-                          <div className="px-2">
-                            <b>Search</b>
-                          </div>
                         </div>
-                      </button>
+                        <select
+                          id="inputState"
+                          className="form-select "
+                          value={gender}
+                          onChange={(e) => {
+                            setGender(e.target.value);
+                          }}
+                        >
+                          <option selected>Gender</option>
+                          <option>Boys</option>
+                          <option>Girls</option>
+                          <option>Coliving</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="d-flex col-md-2">
+                      <select id="inputState" className="form-select "
+                      value={sortType}
+                        onChange={handleSortChange}>
+                        <option selected>sort</option>
+                        <option>Price : Low to High</option>
+                        <option>Price : High to Low</option>
+                      </select>
                     </div>
                   </div>
                 </div>
