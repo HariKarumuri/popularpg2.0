@@ -198,9 +198,9 @@ const PgDetail = () => {
                   <tbody>
                     <tr>
                       <th className="text-muted fw-light" scope="row"> Deposit Amount <span className="fw-normal">₹{pg.security_deposite?pg.security_deposite:('-')}</span> </th>
-                      <td className="text-muted fw-light">Maintenance  <span className="fw-normal">-</span> </td>
-                      <td className="text-muted fw-light">Notice Period <span className="fw-normal">{pg.notice_period?pg.notice_period:(null)} </span></td>
-                      <td className="text-muted fw-light">Electricity Charges  <span className="fw-normal">-</span></td>
+                      <td className="text-muted fw-light">Maintenance  <span className="fw-normal">{pg.maintaince_charge?pg.maintaince_charge:('-')}</span> </td>
+                      <td className="text-muted fw-light">Notice Period <span className="fw-normal">{pg.notice_period?pg.notice_period:("-")} </span></td>
+                      <td className="text-muted fw-light">Electricity Charges  <span className="fw-normal">{pg.electric_charge?pg.electric_charge:("-")} </span></td>
                     </tr>
                     <tr>
                       <th className="text-muted fw-light" scope="row">Food Availability <span className="fw-normal"> {pg.meals_available?'yes':'No'}</span></th>
@@ -251,7 +251,7 @@ const PgDetail = () => {
       <PgFoodKitchen  data={pg.furnishing_in_property} />
       <PgOtherCharges />
       <br/>
-      <PgMap  />
+<PgMap  data={pg.embedded_map_src_link} />
     </div>
   );
 };

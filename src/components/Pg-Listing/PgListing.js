@@ -201,7 +201,6 @@ const PgListing = () => {
       .then(response => {
         // Handle the response data
         const products = response.data;
-        console.log(products);
         setpgs(products);
         setCopypgs(products);
       })
@@ -211,6 +210,7 @@ const PgListing = () => {
   };
   useEffect(() => {
     fetchProducts();
+    console.log(pgs);
   }, []);
   return (
     <div>

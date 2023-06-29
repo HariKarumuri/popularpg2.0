@@ -28,7 +28,6 @@ const SearchBar = ({ pgs, setpgs, copypgs }) => {
       const updatedPgs = copypgs.map((pg) => ({ ...pg }));
       console.log(updatedPgs);
       console.log(copypgs)
-    
       // Filter the pgs based on the selected value from the dropdown, location, occupancy type, and gender
       const filteredPgs = updatedPgs.filter((pg) => {
         const val = parseInt(pg.min_price);
@@ -128,17 +127,18 @@ const SearchBar = ({ pgs, setpgs, copypgs }) => {
         (!data || isNaN(parseInt(data)))
       ) {
         console.log("No filters applied");
+        setpgs(pgs);
         setpgs(copypgs);
+
       } else {
         setpgs(sortedPgs);
       }
     };
     
     setTimeout(() => {
-      
         handleSearch();
     }, 3000);
-  }, [minValue, maxValue, occupancytype, location, data, gender, sortType]);
+  }, [minValue, maxValue, occupancytype, location, data, gender, sortType,copypgs]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
