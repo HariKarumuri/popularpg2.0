@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes ,useLocation } from "react-router-dom";
 import "./App.css";
 import HeaderTop from "./components/HeaderTop/HeaderTop";
 import NavBar from "./components/navBar/NavBar";
@@ -9,11 +9,15 @@ import Home from "./pages/Home";
 import Pgdetails from "./components/Pg-Listing/PgDetail"
 import ContactPage from './pages/ContactPage';
 function App() {
+
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
   return (
-    <BrowserRouter>
+    
       <div className="App">
         <header>
-          <HeaderTop />
+        {isHomePage && <HeaderTop />}
           <NavBar />
         </header>
         <Routes>
@@ -26,7 +30,7 @@ function App() {
         <Cta />
         <Footer />
       </div>
-    </BrowserRouter>
+    
   );
 }
 
