@@ -1,6 +1,6 @@
 import React from "react";
-import HeroBack from "../../assets/images/hero-banner.png";
-
+import HeroBack from "../../assets/images/popularhero.png";
+import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <div>
@@ -13,16 +13,21 @@ const Hero = () => {
               <span>PG Booking Website</span>
             </p>
 
-            <h2 className="h1 hero-title">Find Your Dream PG By Us</h2>
+            <h2 className="h1 hero-title">Explore Our Verified PG's </h2>
 
-            <p className="hero-text">
-              We understand how challenging it can be to find a comfortable,
-              safe, and affordable PG accommodation in a new city. That's why
-              we've created Popular PG - a platform that makes it easy and
-              convenient to find the best PGs in town!
-            </p>
+            <div className="d-flex my-3">
+              <p className="fs-5">Budget Friendly  </p><ion-icon style={{color: ' var(--orange-soda)',fontSize:"28px",marginRight:"10px",marginLeft:"2px", "--ionicon-stroke-width": "40px"}} name="checkmark"></ion-icon>
+              <p className="fs-5">Amenities </p> <ion-icon style={{color: ' var(--orange-soda)',fontSize:"28px",marginRight:"10px",marginLeft:"2px", "--ionicon-stroke-width": "40px"}} name="checkmark"></ion-icon></div>
+              <div className=" d-flex my-2">
+              <p className="fs-5">Boys  </p><ion-icon style={{color: ' var(--orange-soda)',fontSize:"28px",marginRight:"10px",marginLeft:"2px", "--ionicon-stroke-width": "40px"}} name="checkmark"></ion-icon>
+              <p className="fs-5">Girls   </p><ion-icon style={{color: ' var(--orange-soda)',fontSize:"28px",marginRight:"10px",marginLeft:"2px", "--ionicon-stroke-width": "40px"}} name="checkmark"></ion-icon>
+              <p className="fs-5">UniSex </p><ion-icon style={{color: ' var(--orange-soda)',fontSize:"28px",marginRight:"10px",marginLeft:"2px", "--ionicon-stroke-width": "40px"}} name="checkmark"></ion-icon>
+              </div>
+              
+              
+            
 
-            <button className="btn">Make An Enquiry</button>
+            <Link className="btn" to="/listings" >Make An Enquiry</Link>
           </div>
 
           <figure className="hero-banner MobiledisplayNone">

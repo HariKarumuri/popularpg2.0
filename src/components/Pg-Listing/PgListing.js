@@ -82,7 +82,7 @@ const PgListing = () => {
                     color: "#cbcbcb",
                     borderColor: "#cbcbcb",
                     height: "2px",
-                    width: "50%",
+                    width: "80%",
                   }}
                 />
               </div>
@@ -110,12 +110,12 @@ const PgListing = () => {
     
               <div className="verticleLine mx-3"></div>
               <div className="type2 mx-3">
-                <p className="text-muted fs-6">double sharing</p>
+                <p className="text-muted fs-6">Double sharing</p>
                 <p style={{ marginTop: "-0.7rem" }}>Rs.{props.double_sharing_price ? props.double_sharing_price : 'NA'}</p>
               </div>
               <div className="verticleLine2 mx-3"></div>
               <div className="type3 mx-3">
-                <p className="text-muted fs-6">triple sharing</p>
+                <p className="text-muted fs-6">Triple sharing</p>
                 <p style={{ marginTop: "-0.7rem" }}>Rs.{props.triple_sharing_price ? props.triple_sharing_price : 'NA'}</p>
               </div>
             </Link>
@@ -130,7 +130,7 @@ const PgListing = () => {
                     height: "2px",
                     marginBottom: "2px",
                     marginTop: "2px",
-                    width: "50%",
+                    width: "80%",
                   }}
                 />
               </div>
@@ -166,7 +166,7 @@ const PgListing = () => {
             <p className="desc text-muted" style={{ marginTop: "-1.3rem" }}>
               {props.locality}
             </p>
-            <div className="d-flex flex-wrap justify-content-center " style={{ marginTop: "-1.5rem" }}>
+            <div className="d-flex flex-wrap justify-content-center " style={{ marginTop: "-0.9rem" }}>
               <button type="button" className="btn btn-danger mr-2">
                 View Phone No.
               </button>
