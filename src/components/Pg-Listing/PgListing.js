@@ -6,6 +6,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import axios from "axios";
 const PgListing = () => {
   const [copypgs, setCopypgs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const Pgelement = (props) => {
     return (
       <div className="card cbackgrnd responsiveness my-2">
@@ -243,14 +244,33 @@ const PgListing = () => {
     fetchProducts();
     console.log(pgs);
   }, []);
+
+  const setloadingfalseafter3sec = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  };
   return (
     <div>
-      <SearchBar pgs={pgs} setpgs={setpgs} copypgs={copypgs} />
+      <SearchBar pgs={pgs} setpgs={setpgs} copypgs={copypgs} setloadingfalseafter3sec={setloadingfalseafter3sec} setIsLoading={setIsLoading} />
       <br />
       {pgs.length > 0 ? (
         pgs.map((pg) => <Pgelement key={pg.id} {...pg} />)
       ) : (
-        <p>Loading...</p>
+        <div>
+      {isLoading ? (
+        <div className="d-flex justify-content-center">
+           <div class="loading-container">
+             <img src="https://i.postimg.cc/WpY7QKVD/popular-pg-logo.png" alt="Logo" class="spinner"/>
+           </div>
+        </div>
+      ) : (
+        <div className="d-flex justify-content-center" >
+            <div className="no-record-found fs-1">No record found.</div>
+        </div>
+          )}
+    </div>
       )}
     </div>
   );

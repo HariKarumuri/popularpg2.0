@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const SearchBar = ({ pgs, setpgs, copypgs }) => {
+const SearchBar = ({ pgs, setpgs, copypgs,setloadingfalseafter3sec,setIsLoading }) => {
   const [data, setData] = useState("Budget");
   const [minValue, setMinValue] = useState("");
   const [maxValue, setMaxValue] = useState("");
@@ -21,13 +21,21 @@ const SearchBar = ({ pgs, setpgs, copypgs }) => {
   const handleSortChange = (e) => {
     setSortType(e.target.value);
   };
+  const [shouldRunSearch, setShouldRunSearch] = useState(false); // Add this state
 
   useEffect(() => {
+    setShouldRunSearch(true);
+  }, []);
+
+
+  useEffect(() => {
+    if (!shouldRunSearch) {
+        return; 
+       }
     const handleSearch = () => {
       // Retrieve the data before the search without changing any properties
       const updatedPgs = copypgs.map((pg) => ({ ...pg }));
-      console.log(updatedPgs);
-      console.log(copypgs)
+      setIsLoading(true);
       // Filter the pgs based on the selected value from the dropdown, location, occupancy type, and gender
       const filteredPgs = updatedPgs.filter((pg) => {
         const val = parseInt(pg.min_price);
@@ -36,7 +44,7 @@ const SearchBar = ({ pgs, setpgs, copypgs }) => {
         const maxVal = parseInt(maxValue);
         const lowercasePgLocation = pg.city.toLowerCase();
         const lowercaseSearchLocation = location.toLowerCase();
-    
+        
         const occupancyTypeMatch = () => {
           if (occupancytype === "Single") {
             return pg.single_sharing;
@@ -62,25 +70,24 @@ const SearchBar = ({ pgs, setpgs, copypgs }) => {
         };
     
         const locationMatch = () => {
-          if (location) {
-            return lowercasePgLocation.includes(lowercaseSearchLocation);
+          if (lowercaseSearchLocation) {
+            return lowercasePgLocation.includes(lowercaseSearchLocation) || lowercasePgLocation.startsWith(lowercaseSearchLocation);
           } else {
-            return true;
+            return true; // Return true if no search location is specified
           }
         };
-    
+        
         if (
           !minVal &&
           !maxVal &&
           !dataval &&
           !location &&
           occupancyTypeMatch() &&
-          genderType()
+          genderType() 
         ) {
-          // Return all the original data if no filters are applied
           return true;
         }
-    
+
         if (minVal && maxVal) {
           return (
             val >= minVal &&
@@ -89,7 +96,7 @@ const SearchBar = ({ pgs, setpgs, copypgs }) => {
             occupancyTypeMatch() &&
             genderType()
           );
-        } else if (minVal) {
+        } else if(minVal) {
           return (
             val >= minVal &&
             locationMatch() &&
@@ -110,13 +117,28 @@ const SearchBar = ({ pgs, setpgs, copypgs }) => {
             occupancyTypeMatch() &&
             genderType()
           );
-        }
-    
+        }else if(location){
+          return (
+            locationMatch() &&
+            occupancyTypeMatch() &&
+            genderType()
+          );
+        }else if(location && occupancyTypeMatch()){
+          return (
+            locationMatch() &&
+            occupancyTypeMatch() &&
+            genderType()
+          );
+        }         
         return false;
       });
+      setIsLoading(false);
     
       const sortedPgs = sortData(filteredPgs, sortType);
-    
+      if(filteredPgs.length===0){
+        console.log("No pgs found")
+        setloadingfalseafter3sec()
+      }
       if (
         !location &&
         (!occupancytype || occupancytype === "occupancy Type") &&
@@ -129,15 +151,13 @@ const SearchBar = ({ pgs, setpgs, copypgs }) => {
         console.log("No filters applied");
         setpgs(pgs);
         setpgs(copypgs);
-
       } else {
         setpgs(sortedPgs);
       }
     };
-    
     setTimeout(() => {
-        handleSearch();
-    }, 3000);
+    handleSearch();
+    }, 1000);
   }, [minValue, maxValue, occupancytype, location, data, gender, sortType,copypgs]);
 
   useEffect(() => {
