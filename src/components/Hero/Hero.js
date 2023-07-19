@@ -27,7 +27,7 @@ const Hero = () => {
               
             
 
-            <Link className="btn" to="/listings" >Make An Enquiry</Link>
+            <Link className="btn" to="/listings" >Explore Your Pg</Link>
           </div>
 
           <figure className="hero-banner MobiledisplayNone">
