@@ -59,7 +59,7 @@
    position: absolute;
    right:0;
    top: 0;
-   padding-right: 15%;
+   padding-right: 20%;
    z-index: 2;
 }
 
@@ -128,20 +128,6 @@
     overflow: hidden;
     
 }
-.verticleLine{
-  border-left: 2px solid #cbcbcb;
-  height: 50px;
-  position:absolute;
-  top:26.5%;
-  left: 41.9%;
-}
-.verticleLine2{
-  border-left: 2px solid #cbcbcb;
-  height: 50px;
-  position:absolute;
-  top:26.5%;
-  left: 54.5%;
-}
 
 .trapezoid1 {
   border-left: 0px solid transparent;
@@ -177,7 +163,7 @@
     .line1 {
       display: inline-block;
     }
-    
+   
   }
   
 
@@ -187,9 +173,23 @@
   * responsive for larger than 992px screen
   */
  
-  @media (min-width: 992px) {
+  @media (min-width: 1002px) {
     .responsiveness{
       margin-left: 7rem;
+    }
+    .verticleLine{
+      border-left: 2px solid #cbcbcb;
+      height: 50px;
+      position:absolute;
+      top:26.5%;
+      left: 41.9%;
+    }
+    .verticleLine2{
+      border-left: 2px solid #cbcbcb;
+      height: 50px;
+      position:absolute;
+      top:26.5%;
+      left: 54.5%;
     }
  
  }
