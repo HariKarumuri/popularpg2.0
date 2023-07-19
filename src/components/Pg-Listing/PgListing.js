@@ -228,7 +228,7 @@ const PgListing = () => {
   const [pgs, setpgs] = useState([]);
   const fetchProducts = () => {
     axios
-      .get("http://13.53.149.253/products/")
+      .get("https://popularpg.in/products/")
       .then((response) => {
         // Handle the response data
         const products = response.data;
