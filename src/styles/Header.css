@@ -11,6 +11,9 @@
   background: var(--prussian-blue);
   padding-block: 15px;
 }
+.header-top ul , .header-bottom ul{
+  margin-bottom: 0;
+}
 
 .header-top .container,
 .header-top-list {
@@ -69,7 +72,8 @@
 
 .header-bottom {
   background: var(--white);
-  padding-block: 25px;
+  padding-block: 20px;
+  padding: 10px 0 !important;
 }
 
 .header-bottom .logo img { margin-inline: auto; }
