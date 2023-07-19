@@ -1,6 +1,6 @@
 {
   "name": "popularpg2.0",
-  "proxy": "http://13.53.149.253",
+  "proxy": "https://popularpg.in",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
