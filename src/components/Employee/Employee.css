@@ -1,0 +1,7 @@
+.Employee p {
+  font-size: 1.2rem;
+}
+.Employee span {
+  display: inline-block;
+  font-weight: 600;
+}

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes ,useLocation } from "react-router-dom";
+import {  Route, Routes ,useLocation } from "react-router-dom";
 import "./App.css";
 import HeaderTop from "./components/HeaderTop/HeaderTop";
 import NavBar from "./components/navBar/NavBar";
@@ -8,6 +8,8 @@ import PgListing from "./components/Pg-Listing/PgListing";
 import Home from "./pages/Home";
 import Pgdetails from "./components/Pg-Listing/PgDetail"
 import ContactPage from './pages/ContactPage';
+import Employee from './components/Employee/Employee';
+
 function App() {
 
   const location = useLocation();
@@ -25,6 +27,9 @@ function App() {
           <Route path="/listings" element={<PgListing />} />
           <Route path="pgdetails" element={<Pgdetails />} />
           <Route path="/contact" element={<ContactPage />} />
+
+
+          <Route  path="/employee/:uniqueId" element={<Employee/>} />
 
         </Routes>
         <Cta />
