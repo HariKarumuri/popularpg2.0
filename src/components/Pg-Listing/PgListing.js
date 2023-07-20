@@ -208,7 +208,7 @@ const PgListing = () => {
               </p>
               <div
                 className="d-flex flex-wrap justify-content-center "
-                style={{ marginTop: "-1.5rem" }}
+                style={{ marginTop: "-1.3 rem" }}
               >
                 <button type="button" className="btn btn-danger mr-2">
                   View Phone No.
