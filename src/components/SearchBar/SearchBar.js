@@ -133,7 +133,6 @@ const SearchBar = ({ pgs, setpgs, copypgs,setloadingfalseafter3sec,setIsLoading 
         return false;
       });
       setIsLoading(false);
-    
       const sortedPgs = sortData(filteredPgs, sortType);
       if(filteredPgs.length===0){
         console.log("No pgs found")
