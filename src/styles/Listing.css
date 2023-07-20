@@ -248,4 +248,9 @@
   font-size: 24px;
   color: #333;
 }
-
+.modal-title{
+  color:var(--orange-soda)
+}
+.modal-label{
+  color:var(--orange-soda)
+}

@@ -7,9 +7,19 @@ import axios from "axios";
 const PgListing = () => {
   const [copypgs, setCopypgs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [contactData, setContactData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [selectedPG, setSelectedPG] = useState({});
+  const pgselectfunc=(pg)=>{
+    console.log(pg);
+    setSelectedPG(pg);
+  }
   const Pgelement = (props) => {
     return (
-      <div className="card cbackgrnd responsiveness my-2">
+      <div className="card cbackgrnd responsiveness my-2" key={props.id}>
         <div className="d-flex">
           <div className="trapezoid1">
             <span className="brand d-flex">Brand new</span>
@@ -198,12 +208,15 @@ const PgListing = () => {
               </p>
               <div
                 className="d-flex flex-wrap justify-content-center "
-                style={{ marginTop: "-1.5rem" }}
+                style={{ marginTop: "-1.3 rem" }}
               >
                 <button type="button" className="btn btn-danger mr-2">
                   View Phone No.
                 </button>
-                <button type="button" className="btn2 mx-2">
+                <button type="button" className="btn2 mx-5" data-bs-toggle="modal"  data-bs-target="#exampleModalCenter" onClick={(e)=>{
+                  e.preventDefault();
+                  pgselectfunc(props)
+                  }}>
                   Contact Owner
                 </button>
                 {props.embedded_map_src_link ? (
@@ -261,8 +274,8 @@ const PgListing = () => {
         <div>
       {isLoading ? (
         <div className="d-flex justify-content-center">
-           <div class="loading-container">
-             <img src="https://i.postimg.cc/WpY7QKVD/popular-pg-logo.png" alt="Logo" class="spinner"/>
+           <div className="loading-container">
+             <img src="https://i.postimg.cc/WpY7QKVD/popular-pg-logo.png" alt="Logo" className="spinner"/>
            </div>
         </div>
       ) : (
@@ -272,6 +285,53 @@ const PgListing = () => {
           )}
     </div>
       )}
+
+      <div className="modal fade" id="exampleModalCenter"  tabIndex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered" role="document" >
+          <div className="modal-content">
+            <div className="d-flex justify-content-between mx-3 mt-2">
+              <h5 className="modal-title " >Contact Owner</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <form>
+              <label htmlFor="PGname" className="fs-4 " style={{marginTop:"-1 rem" }} > <b>{selectedPG.pg_name}</b> </label>
+              <p className="text-dark" style={{
+                  fontSize:"0.9 rem"
+                }} >{selectedPG.locality}</p>
+                <div className="form-group">
+                  <label htmlFor="name" className="modal-label">Name</label>
+                  <input type="text" className="form-control" id="name" placeholder="Enter your name" onChange={()=>{
+                    setContactData({...contactData,name:document.getElementById("name").value})
+                  }} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email" className="modal-label">Email</label>
+                  <input type="email" className="form-control" id="email" placeholder="Enter your email" 
+                  onChange={()=>{
+                    setContactData({...contactData,email:document.getElementById("email").value})
+                  }
+                  }
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="message" className="modal-label">Message</label>
+                  <textarea className="form-control" id="message" rows="3" placeholder="Enter your message"
+                  onChange={()=>{
+                    setContactData({...contactData,message:document.getElementById("message").value})
+                  }
+                  }
+                  ></textarea>
+                </div>
+                <p className="text-dark" style={{
+                  fontSize:"0.8rem"
+                }} >{selectedPG.description}</p>
+              </form>
+                 <button type="button" className="btn2 my-2 btn-primary">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
