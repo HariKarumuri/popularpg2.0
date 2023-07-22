@@ -24,6 +24,16 @@ const Data =  [
     "Unique-Id":"8ee0605f-e8c5-4096-b80a-17b083e7dc8d",
     "certificate":"https://i.postimg.cc/RhM3PCDH/Hritesh-Popular-PG-Internship-Certificate.png",
   }, 
+  {
+    "name":"Monesh R",
+    "Unique-Id":"559d0eb5-2ce7-41af-a2cc-21d56851e5a2",
+    "certificate":"https://i.postimg.cc/mDs8N298/Monesh-Popular-PG-Internship-Certificate.png",
+  }, 
+  {
+    "name":"Dakaraju Uday Karthik",
+    "Unique-Id":"3ea2b29c-b45f-4fc7-aca2-f54115e68dbc",
+    "certificate":"https://i.postimg.cc/W4JHwHHb/Karthik-Popular-PG-Internship-Certificate.png",
+  }, 
 ]
 
 export default Data;
