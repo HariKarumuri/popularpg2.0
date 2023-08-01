@@ -3,6 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
+import AdsCard from "./AdsCard";
 import axios from "axios";
 const PgListing = () => {
   const [copypgs, setCopypgs] = useState([]);
@@ -19,7 +20,7 @@ const PgListing = () => {
   }
   const Pgelement = (props) => {
     return (
-      <div className="card cbackgrnd responsiveness my-2" key={props.id}>
+      <div className="card cbackgrnd responsiveness my-2 shadow" key={props.id}>
         <div className="d-flex">
           <div className="trapezoid1">
             <span className="brand d-flex">Brand new</span>
@@ -233,6 +234,7 @@ const PgListing = () => {
                   </button>
                 ) : null}
               </div>
+              
             </div>
           </div>
         </div>
@@ -268,8 +270,12 @@ const PgListing = () => {
     <div>
       <SearchBar pgs={pgs} setpgs={setpgs} copypgs={copypgs} setloadingfalseafter3sec={setloadingfalseafter3sec} setIsLoading={setIsLoading} />
       <br />
-      {pgs.length > 0 ? (
-        pgs.map((pg) => <Pgelement key={pg.id} {...pg} />)
+      <div className="container">
+  <div className="row">
+    <div className="col-md-11">
+    {pgs.length > 0 ? (
+        pgs.map((pg) => 
+        <Pgelement key={pg.id} {...pg} />)
       ) : (
         <div>
       {isLoading ? (
@@ -284,8 +290,18 @@ const PgListing = () => {
         </div>
           )}
     </div>
-      )}
-
+      )
+      }
+    </div>
+    <div className="col-md-1">
+    <div className="d-flex justify-content-center">
+    <AdsCard />
+    </div>
+      
+    </div>
+  </div>
+</div>
+ {/* code for the form contact pg owner  */}
       <div className="modal fade" id="exampleModalCenter"  tabIndex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered" role="document" >
           <div className="modal-content">

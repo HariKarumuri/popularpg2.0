@@ -174,9 +174,6 @@
   */
  
   @media (min-width: 1002px) {
-    .responsiveness{
-      margin-left: 7rem;
-    }
     .verticleLine{
       border-left: 2px solid #cbcbcb;
       height: 50px;
