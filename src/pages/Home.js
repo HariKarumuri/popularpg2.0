@@ -5,9 +5,10 @@ import Services from "./../components/Services/Services";
 import Featured from "./../components/Featured/Featured";
 import BlogList from "./../components/Blog/BlogList";
 import Popular from "./../components/Popular/Popular";
-import SearchBar from "./../components/SearchBar/SearchBar";
+import SearchBar from "./../components/SearchBar/SearchbarHome";
 import ImageAd from "./../assets/images/Ads banner test.png";
 import ImageAd2 from "./../assets/images/ads side.jpg";
+
 
 const Home = () => {
   return (
@@ -18,8 +19,10 @@ const Home = () => {
             <div className="row">
               <SearchBar />
             </div>
-            <div className="row">
-              <h1>Simplifying PG Life</h1>
+            <div className="row homeTitle ">
+              <h1 className="d-flex justify-content-center mx-2 font-weight-bold"> <span >Simplifying </span>  <span style={{ 
+                marginTop: "30px",marginLeft: "20px",marginRight: "20px",
+              }} >PG </span> Life</h1>
             </div>
             <div className="row ads1test">
               <img src={ImageAd} />

@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const SearchBar = ({ pgs, setpgs, copypgs,setloadingfalseafter3sec,setIsLoading }) => {
+const SearchBar = ({ pgs, setpgs, copypgs,setloadingfalseafter3sec,setIsLoading,gende,occupancytyp,locatio }) => {
   const [data, setData] = useState("Budget");
   const [minValue, setMinValue] = useState("");
   const [maxValue, setMaxValue] = useState("");
-  const [location, setLocation] = useState("");
-  const [gender, setGender] = useState("");
-  const [occupancytype, setOccupancyType] = useState("");
+  const [location, setLocation] = useState(locatio);
+  const [gender, setGender] = useState(gende);
+  const [occupancytype, setOccupancyType] = useState(occupancytyp);
   const [sortType, setSortType] = useState(""); // New state for sorting
   const dropdownRef = useRef(null);
 

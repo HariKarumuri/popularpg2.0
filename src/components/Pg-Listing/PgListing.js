@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import AdsCard from "./AdsCard";
 import axios from "axios";
+import { useLocation } from 'react-router-dom';
+
 const PgListing = () => {
   const [copypgs, setCopypgs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -13,6 +15,10 @@ const PgListing = () => {
     email: "",
     message: "",
   });
+  const location = useLocation();
+  const { state } = location;
+  console.log(state);
+
   const [selectedPG, setSelectedPG] = useState({});
   const pgselectfunc=(pg)=>{
     console.log(pg);
@@ -268,7 +274,7 @@ const PgListing = () => {
   };
   return (
     <div>
-      <SearchBar pgs={pgs} setpgs={setpgs} copypgs={copypgs} setloadingfalseafter3sec={setloadingfalseafter3sec} setIsLoading={setIsLoading} />
+      <SearchBar gende={state.gender?state.gender:""} locatio={state.locality?state.locality:""} occupancytyp={state.occupancytype?state.occupancytype:""}  pgs={pgs} setpgs={setpgs} copypgs={copypgs} setloadingfalseafter3sec={setloadingfalseafter3sec} setIsLoading={setIsLoading} />
       <br />
       <div className="container">
   <div className="row">

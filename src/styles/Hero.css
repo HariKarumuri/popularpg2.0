@@ -104,3 +104,12 @@
   }
 
 }
+@import url('https://fonts.googleapis.com/css2?family=Simonetta:wght@400&display=swap');
+
+.homeTitle{
+  margin: 1rem;
+	font-family: "Simonetta", cursive;
+	letter-spacing: 0.15em;
+	font-size: 3rem;
+}
+
