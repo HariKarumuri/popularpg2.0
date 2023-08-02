@@ -95,7 +95,7 @@ const SearchBarHome = ({
                   fontSize: "15px",
                   borderRadius: "20px",
                   paddingLeft: "10px",
-                  paddingRight: "10px",
+                  paddingRight: "60px",
                   marginTop: "5.1px",
                   border: "none",
                   outline: "none",
