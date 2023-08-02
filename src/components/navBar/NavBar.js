@@ -88,6 +88,9 @@ return (
         <ion-icon name="person-outline"></ion-icon>
         <span>Profile</span>
       </button> */}
+      <div className="wrapper">
+          <button className="header-top-btn">Add Listing</button>
+          </div>
       
       <button
         className="header-bottom-actions-btn"

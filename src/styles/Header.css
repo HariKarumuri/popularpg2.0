@@ -49,6 +49,7 @@
 .header-top-social-list {
   display: flex;
   align-items: center;
+  
 }
 
 .header-top .wrapper { gap: 20px; }
