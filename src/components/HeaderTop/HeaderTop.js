@@ -9,7 +9,6 @@ const HeaderTop = () => {
             <li className="MobileViewAlign">
               <a href="mailto:info@homeverse.com" className="header-top-link">
                 <ion-icon name="mail-outline"></ion-icon>
-
                 <span>popolarpg629@gmail.com</span>
               </a>
             </li>

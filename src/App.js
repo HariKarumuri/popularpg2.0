@@ -19,7 +19,7 @@ function App() {
     
       <div className="App">
         <header>
-        {isHomePage && <HeaderTop />}
+        {/* {isHomePage && <HeaderTop />} */}
           <NavBar />
         </header>
         <Routes>
