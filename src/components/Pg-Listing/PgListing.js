@@ -17,7 +17,6 @@ const PgListing = () => {
   });
   const location = useLocation();
   const { state } = location;
-  console.log(state);
 
   const [selectedPG, setSelectedPG] = useState({});
   const pgselectfunc=(pg)=>{
@@ -274,8 +273,9 @@ const PgListing = () => {
   };
   return (
     <div>
-      <SearchBar gende={state.gender?state.gender:""} locatio={state.locality?state.locality:""} occupancytyp={state.occupancytype?state.occupancytype:""}  pgs={pgs} setpgs={setpgs} copypgs={copypgs} setloadingfalseafter3sec={setloadingfalseafter3sec} setIsLoading={setIsLoading} />
-      <br />
+      {state? <SearchBar gende={state.gender?state.gender:""} locatio={state.locality?state.locality:""} occupancytyp={state.occupancytype?state.occupancytype:""}  pgs={pgs} setpgs={setpgs} copypgs={copypgs} setloadingfalseafter3sec={setloadingfalseafter3sec} setIsLoading={setIsLoading} />
+      :<SearchBar gende={""} locatio={""} occupancytyp={""}  pgs={pgs} setpgs={setpgs} copypgs={copypgs} setloadingfalseafter3sec={setloadingfalseafter3sec} setIsLoading={setIsLoading} />}
+     <br />
       <div className="container">
   <div className="row">
     <div className="col-md-11">
