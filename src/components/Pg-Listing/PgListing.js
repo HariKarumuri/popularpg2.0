@@ -52,8 +52,8 @@ const PgListing = () => {
               showIndicators={false}
               interval={3000}
             >
-              {props.additional_images.map((img) => {
-                var url = img.image;
+              {props?.additional_images?.map((img) => {
+                var url = img?.image;
                 return (
                   <div className="slide">
                     <img

@@ -36,7 +36,7 @@ const Home = () => {
 
       <Hero />
       <Featured />
-      <Popular />
+      {/* <Popular /> */}
       <AboutUs />
       <Services />
       <BlogList />

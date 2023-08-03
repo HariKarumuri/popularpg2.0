@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PgAreaAmenities from "./Pg_Area_Amenities";
@@ -7,7 +7,7 @@ import PgOtherCharges from "./Pg_other_charges";
 import PgMap from "./pg_map";
 import PGScrollBar from "./pg_scroll_nav";
 import { Link } from "react-scroll";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 const PgDetail = () => {
   const location = useLocation();
   const { state } = location;
@@ -17,12 +17,15 @@ const PgDetail = () => {
     setpg(state);
   }, [state]);
   var data = pg.description;
-    return (
-    <div className="bg_color" >
-      <div className=" bg-white" style={{
-        paddingLeft: "10%",
-        paddingRight: "10%",
-      }}  >
+  return (
+    <div className="bg_color">
+      <div
+        className=" bg-white"
+        style={{
+          paddingLeft: "10%",
+          paddingRight: "10%",
+        }}
+      >
         <div className="row gx-2">
           <div className="col-md-3">
             <div className="line1 ">
@@ -77,8 +80,11 @@ const PgDetail = () => {
             </p>
             <div style={{ marginTop: "-15px" }}>
               <h6>
-              {pg.pg_for?<span className="badge badge-color mx-2">For {pg.pg_for} </span>:(null) }
-                
+                {pg.pg_for ? (
+                  <span className="badge badge-color mx-2">
+                    For {pg.pg_for}{" "}
+                  </span>
+                ) : null}
               </h6>
               <h6>
                 <span className="badge badge-color mx-2">
@@ -86,7 +92,11 @@ const PgDetail = () => {
                 </span>
               </h6>
               <h6>
-               {pg.meals_available?<span className="badge badge-color mx-2">meals available</span>:(null)} 
+                {pg.meals_available ? (
+                  <span className="badge badge-color mx-2">
+                    meals available
+                  </span>
+                ) : null}
               </h6>
 
               <h6>
@@ -95,12 +105,11 @@ const PgDetail = () => {
                 </span>
               </h6>
             </div>
-            
           </div>
-        </div> 
+        </div>
       </div>
       <div className="verticleLinepg"></div>
-      <PGScrollBar /> 
+      <PGScrollBar />
       <div id="property">
         <div className="card mb-3 mx-auto my-2 responsiveness">
           <div className="row g-0">
@@ -112,53 +121,69 @@ const PgDetail = () => {
                 showArrows={false}
                 showThumbs={false}
               >
-                {pg.additional_images.map((img) => {
-                  var url = img.image;
+                {pg?.additional_images?.map((img) => {
+                  var url = img?.image;
                   return (
                     <div className="slide">
-                  <img
-                    style={{ height: "260px", width: "300px" }}
-                    className="img-fluid  mt-3 "
-                    src={url}
-                    alt="demo img"
-                  />
-                </div>
+                      <img
+                        style={{ height: "260px", width: "300px" }}
+                        className="img-fluid  mt-3 "
+                        src={url}
+                        alt="demo img"
+                      />
+                    </div>
                   );
-                } )}
-                
+                })}
               </Carousel>
               <div className="container hideonsmall">
-  <div className="row" style={{
-    maxHeight: "100px",
-    margin: "auto",
-  }} >
-    <div className="col ">
-    <img            style={{ height: "100px", width: "90px" }}
-                    className="  mt-2 rounded" 
-                    src={pg.image}
-                    alt="demo img"
-                  />
-    </div>
-    <div className="col ">
-    <img
-                    className=" mt-2 rounded"  style={{ height: "100px", width: "90px" }}
-                    src={pg.additional_images[0].image}
-                    alt="demo img"
-                  />
-    </div>
-    <div className="col rounded text-center py-4 badge-color my-2 px-2 ">
-      <a href="/" className="text-dark fs-6"> More Photos</a>
-    </div>
-  </div>
-</div>
+                <div
+                  className="row"
+                  style={{
+                    maxHeight: "100px",
+                    margin: "auto",
+                  }}
+                >
+                  <div className="col ">
+                    <img
+                      style={{ height: "100px", width: "90px" }}
+                      className="  mt-2 rounded"
+                      src={pg.image}
+                      alt="demo img"
+                    />
+                  </div>
+                  {pg?.additional_images[0]?.image && (
+                    <div className="col ">
+                      <img
+                        className=" mt-2 rounded"
+                        style={{ height: "100px", width: "90px" }}
+                        src={pg?.additional_images[0]?.image}
+                        alt="demo img"
+                      />
+                    </div>
+                  )}
+                  <div className="col rounded text-center py-4 badge-color my-2 px-2 ">
+                    <a href="/" className="text-dark fs-6">
+                      {" "}
+                      More Photos
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="col-md-8">
               <div className="card-body">
                 <div className="line1 d-flex justify-content-between flex-wrap">
-                  <h6 className="name mr-2 text-dark fw-bold">
-                    {pg.locality}
-                  </h6>
-                  <Link to="PgMap" spy={true} smooth={true} offset={-100} duration={300}  className="d-flex fw-light fs-6"><ion-icon name="location-outline"></ion-icon>view on map</Link>
+                  <h6 className="name mr-2 text-dark fw-bold">{pg.locality}</h6>
+                  <Link
+                    to="PgMap"
+                    spy={true}
+                    smooth={true}
+                    offset={-100}
+                    duration={300}
+                    className="d-flex fw-light fs-6"
+                  >
+                    <ion-icon name="location-outline"></ion-icon>view on map
+                  </Link>
                 </div>
                 <div className="">
                   <p>{showMore ? data : data.slice(0, 100)}</p>
@@ -173,64 +198,157 @@ const PgDetail = () => {
                 <table className="table  visibleon360">
                   <tbody>
                     <tr>
-                      <th className="text-muted fw-light" scope="row"> Deposit Amount <span className="fw-normal">{pg.security_deposite?pg.security_deposite:('-')}</span> </th>
-                      <td className="text-muted fw-light">Maintenance  <span className="fw-normal">-</span> </td>
-                      <td className="text-muted fw-light">Notice Period <span className="fw-normal"> {pg.notice_period?pg.notice_period:(null)}</span></td>
+                      <th className="text-muted fw-light" scope="row">
+                        {" "}
+                        Deposit Amount{" "}
+                        <span className="fw-normal">
+                          {pg.security_deposite ? pg.security_deposite : "-"}
+                        </span>{" "}
+                      </th>
+                      <td className="text-muted fw-light">
+                        Maintenance <span className="fw-normal">-</span>{" "}
+                      </td>
+                      <td className="text-muted fw-light">
+                        Notice Period{" "}
+                        <span className="fw-normal">
+                          {" "}
+                          {pg.notice_period ? pg.notice_period : null}
+                        </span>
+                      </td>
                     </tr>
                     <tr>
-                      <th className="text-muted fw-light" scope="row">Food Availability <span className="fw-normal"> {pg.meals_available?'yes':'No'}</span></th>
-                      <td className="text-muted fw-light">AC Rooms <span className="fw-normal">Not Available</span> </td>
-                      <td className="text-muted fw-light">Parking  <span className="fw-normal">Available</span></td>
+                      <th className="text-muted fw-light" scope="row">
+                        Food Availability{" "}
+                        <span className="fw-normal">
+                          {" "}
+                          {pg.meals_available ? "yes" : "No"}
+                        </span>
+                      </th>
+                      <td className="text-muted fw-light">
+                        AC Rooms{" "}
+                        <span className="fw-normal">Not Available</span>{" "}
+                      </td>
+                      <td className="text-muted fw-light">
+                        Parking <span className="fw-normal">Available</span>
+                      </td>
                     </tr>
                     <tr>
-                      <th className="text-muted fw-light" scope="row">Available for <span className="fw-normal">{pg.pg_for}</span> </th>
-                      <td className="text-muted fw-light">Preferred Tenants  <span className="fw-normal">{pg.best_suited_for}</span></td>
-                      <td className="text-muted fw-light">Total Number of Beds <span className="fw-normal">{pg.total_beds}</span> </td>
+                      <th className="text-muted fw-light" scope="row">
+                        Available for{" "}
+                        <span className="fw-normal">{pg.pg_for}</span>{" "}
+                      </th>
+                      <td className="text-muted fw-light">
+                        Preferred Tenants{" "}
+                        <span className="fw-normal">{pg.best_suited_for}</span>
+                      </td>
+                      <td className="text-muted fw-light">
+                        Total Number of Beds{" "}
+                        <span className="fw-normal">{pg.total_beds}</span>{" "}
+                      </td>
                     </tr>
                     <tr>
-                      <td className="text-muted fw-light">Electricity Charges  <span className="fw-normal">-</span></td>
-                      <td className="text-muted fw-light">Lock-In Period <span className="fw-normal">{pg.lock_in_period?pg.lock_in_period:('-')}</span> </td>
-                    <td className="text-muted fw-light">Power Backup <span className="fw-normal">Available</span> </td>
+                      <td className="text-muted fw-light">
+                        Electricity Charges <span className="fw-normal">-</span>
+                      </td>
+                      <td className="text-muted fw-light">
+                        Lock-In Period{" "}
+                        <span className="fw-normal">
+                          {pg.lock_in_period ? pg.lock_in_period : "-"}
+                        </span>{" "}
+                      </td>
+                      <td className="text-muted fw-light">
+                        Power Backup{" "}
+                        <span className="fw-normal">Available</span>{" "}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
                 <table className="table  visible360">
                   <tbody>
                     <tr>
-                      <th className="text-muted fw-light" scope="row"> Deposit Amount <span className="fw-normal">₹{pg.security_deposite?pg.security_deposite:('-')}</span> </th>
-                      <td className="text-muted fw-light">Maintenance  <span className="fw-normal">{pg.maintaince_charge?pg.maintaince_charge:('-')}</span> </td>
-                      <td className="text-muted fw-light">Notice Period <span className="fw-normal">{pg.notice_period?pg.notice_period:("-")} </span></td>
-                      <td className="text-muted fw-light">Electricity Charges  <span className="fw-normal">{pg.electric_charge?pg.electric_charge:("-")} </span></td>
+                      <th className="text-muted fw-light" scope="row">
+                        {" "}
+                        Deposit Amount{" "}
+                        <span className="fw-normal">
+                          ₹{pg.security_deposite ? pg.security_deposite : "-"}
+                        </span>{" "}
+                      </th>
+                      <td className="text-muted fw-light">
+                        Maintenance{" "}
+                        <span className="fw-normal">
+                          {pg.maintaince_charge ? pg.maintaince_charge : "-"}
+                        </span>{" "}
+                      </td>
+                      <td className="text-muted fw-light">
+                        Notice Period{" "}
+                        <span className="fw-normal">
+                          {pg.notice_period ? pg.notice_period : "-"}{" "}
+                        </span>
+                      </td>
+                      <td className="text-muted fw-light">
+                        Electricity Charges{" "}
+                        <span className="fw-normal">
+                          {pg.electric_charge ? pg.electric_charge : "-"}{" "}
+                        </span>
+                      </td>
                     </tr>
                     <tr>
-                      <th className="text-muted fw-light" scope="row">Food Availability <span className="fw-normal"> {pg.meals_available?'yes':'No'}</span></th>
-                      <td className="text-muted fw-light">AC Rooms <span className="fw-normal">Not Available</span> </td>
-                      <td className="text-muted fw-light">Parking  <span className="fw-normal">Available</span></td>
-                      <td className="text-muted fw-light">Power Backup <span className="fw-normal">Available</span> </td>
+                      <th className="text-muted fw-light" scope="row">
+                        Food Availability{" "}
+                        <span className="fw-normal">
+                          {" "}
+                          {pg.meals_available ? "yes" : "No"}
+                        </span>
+                      </th>
+                      <td className="text-muted fw-light">
+                        AC Rooms{" "}
+                        <span className="fw-normal">Not Available</span>{" "}
+                      </td>
+                      <td className="text-muted fw-light">
+                        Parking <span className="fw-normal">Available</span>
+                      </td>
+                      <td className="text-muted fw-light">
+                        Power Backup{" "}
+                        <span className="fw-normal">Available</span>{" "}
+                      </td>
                     </tr>
                     <tr>
-                      <th className="text-muted fw-light" scope="row">Available for <span className="fw-normal">{pg.pg_for}</span> </th>
-                      <td className="text-muted fw-light">Preferred Tenants  <span className="fw-normal">{pg.best_suited_for}</span></td>
-                      <td className="text-muted fw-light">Total Number of Beds <span className="fw-normal">{pg.total_beds}</span> </td>
-                      <td className="text-muted fw-light">Lock-In Period <span className="fw-normal">{pg.lock_in_period?pg.lock_in_period:('-')}</span> </td>
+                      <th className="text-muted fw-light" scope="row">
+                        Available for{" "}
+                        <span className="fw-normal">{pg.pg_for}</span>{" "}
+                      </th>
+                      <td className="text-muted fw-light">
+                        Preferred Tenants{" "}
+                        <span className="fw-normal">{pg.best_suited_for}</span>
+                      </td>
+                      <td className="text-muted fw-light">
+                        Total Number of Beds{" "}
+                        <span className="fw-normal">{pg.total_beds}</span>{" "}
+                      </td>
+                      <td className="text-muted fw-light">
+                        Lock-In Period{" "}
+                        <span className="fw-normal">
+                          {pg.lock_in_period ? pg.lock_in_period : "-"}
+                        </span>{" "}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
                 <p className="desc text-muted d-flex justify-content-around ">
-                {pg.topAmenities_in_property.map((amenity) => {
-                  return (<div className="d-flex">
-                  <div className="para_icons text-success">
-                  <ion-icon name="checkmark-circle-outline"></ion-icon>
-                </div>
-                    <span className="mx-2" key={amenity}>
-                      {amenity}
-                    </span>
-                     <div className="para_icons_grp d-flex justify-content-end">
-                </div></div>
-                  );
-                } )}
-               
-              </p>
+                  {pg.topAmenities_in_property.map((amenity) => {
+                    return (
+                      <div className="d-flex">
+                        <div className="para_icons text-success">
+                          <ion-icon name="checkmark-circle-outline"></ion-icon>
+                        </div>
+                        <span className="mx-2" key={amenity}>
+                          {amenity}
+                        </span>
+                        <div className="para_icons_grp d-flex justify-content-end"></div>
+                      </div>
+                    );
+                  })}
+                </p>
                 <div className="d-flex ">
                   <button type="button" className="btn btn-danger mr-2">
                     View Phone No.
@@ -245,13 +363,22 @@ const PgDetail = () => {
         </div>
       </div>
       <div className="card mb-3 mx-auto bg_review responsiveness  text-center px-4 py-3  ">
-     <h6 className="d-flex justify-content-center"> Show some love & Let us know how good this PG is <a className="link text-danger mx-3" href="/">Write a review </a> <div className="text-danger my-1"><ion-icon  name="arrow-forward-outline"></ion-icon> </div> </h6>
+        <h6 className="d-flex justify-content-center">
+          {" "}
+          Show some love & Let us know how good this PG is{" "}
+          <a className="link text-danger mx-3" href="/">
+            Write a review{" "}
+          </a>{" "}
+          <div className="text-danger my-1">
+            <ion-icon name="arrow-forward-outline"></ion-icon>{" "}
+          </div>{" "}
+        </h6>
       </div>
-      <PgAreaAmenities data = {pg.services_in_property} />
-      <PgFoodKitchen  data={pg.furnishing_in_property} />
+      <PgAreaAmenities data={pg.services_in_property} />
+      <PgFoodKitchen data={pg.furnishing_in_property} />
       <PgOtherCharges />
-      <br/>
-<PgMap  data={pg.embedded_map_src_link} />
+      <br />
+      <PgMap data={pg.embedded_map_src_link} />
     </div>
   );
 };

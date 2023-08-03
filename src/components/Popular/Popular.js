@@ -37,7 +37,7 @@ const Popular = () => {
               <figure className="card-banner">
                 <Link to="">
                   <img
-                    src={item.products[0].cover_image}
+                    src={item.products[0]?.cover_image}
                     alt="New Apartment Nice View"
                     className="w-100"
                     
