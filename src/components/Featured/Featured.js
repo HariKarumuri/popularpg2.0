@@ -5,7 +5,7 @@ import axios from "axios";
 const Featured = () => {
   const [data, setData] = useState([]);
   const fetchdata =() => {
-     axios.get("https://popularpg.in/categories/").then(
+     axios.get("/categories/").then(
       (res) => {
       console.log(res.data);
       setData(res.data);

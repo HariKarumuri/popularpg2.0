@@ -3,7 +3,10 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
+import AdsCard from "./AdsCard";
 import axios from "axios";
+import { useLocation } from 'react-router-dom';
+
 const PgListing = () => {
   const [copypgs, setCopypgs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -12,6 +15,9 @@ const PgListing = () => {
     email: "",
     message: "",
   });
+  const location = useLocation();
+  const { state } = location;
+
   const [selectedPG, setSelectedPG] = useState({});
   const pgselectfunc=(pg)=>{
     console.log(pg);
@@ -19,7 +25,7 @@ const PgListing = () => {
   }
   const Pgelement = (props) => {
     return (
-      <div className="card cbackgrnd responsiveness my-2" key={props.id}>
+      <div className="card cbackgrnd responsiveness my-2 shadow" key={props.id}>
         <div className="d-flex">
           <div className="trapezoid1">
             <span className="brand d-flex">Brand new</span>
@@ -233,6 +239,7 @@ const PgListing = () => {
                   </button>
                 ) : null}
               </div>
+              
             </div>
           </div>
         </div>
@@ -242,7 +249,7 @@ const PgListing = () => {
   const [pgs, setpgs] = useState([]);
   const fetchProducts = () => {
     axios
-      .get("https://popularpg.in/products/")
+      .get("/products/")
       .then((response) => {
         // Handle the response data
         const products = response.data;
@@ -266,10 +273,15 @@ const PgListing = () => {
   };
   return (
     <div>
-      <SearchBar pgs={pgs} setpgs={setpgs} copypgs={copypgs} setloadingfalseafter3sec={setloadingfalseafter3sec} setIsLoading={setIsLoading} />
-      <br />
-      {pgs.length > 0 ? (
-        pgs.map((pg) => <Pgelement key={pg.id} {...pg} />)
+      {state? <SearchBar gende={state.gender?state.gender:""} locatio={state.locality?state.locality:""} occupancytyp={state.occupancytype?state.occupancytype:""}  pgs={pgs} setpgs={setpgs} copypgs={copypgs} setloadingfalseafter3sec={setloadingfalseafter3sec} setIsLoading={setIsLoading} />
+      :<SearchBar gende={""} locatio={""} occupancytyp={""}  pgs={pgs} setpgs={setpgs} copypgs={copypgs} setloadingfalseafter3sec={setloadingfalseafter3sec} setIsLoading={setIsLoading} />}
+     <br />
+      <div className="container">
+  <div className="row">
+    <div className="col-md-11">
+    {pgs.length > 0 ? (
+        pgs.map((pg) => 
+        <Pgelement key={pg.id} {...pg} />)
       ) : (
         <div>
       {isLoading ? (
@@ -284,8 +296,18 @@ const PgListing = () => {
         </div>
           )}
     </div>
-      )}
-
+      )
+      }
+    </div>
+    <div className="col-md-1">
+    <div className="d-flex justify-content-center">
+    <AdsCard />
+    </div>
+      
+    </div>
+  </div>
+</div>
+ {/* code for the form contact pg owner  */}
       <div className="modal fade" id="exampleModalCenter"  tabIndex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered" role="document" >
           <div className="modal-content">
