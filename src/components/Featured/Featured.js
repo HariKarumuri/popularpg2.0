@@ -28,7 +28,7 @@ const Featured = () => {
           <h2 className="h2 section-title">Featured Listings</h2>
 
           <div className="property-list has-scrollbar row container-custom">
-            {data &&
+            {Array.isArray(data) &&
               data.map((item) => {
                 if (item.products && item.products.length > 0) {
                   return (
