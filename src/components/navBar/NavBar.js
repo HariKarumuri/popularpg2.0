@@ -65,11 +65,11 @@ return (
               Explore Pg
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/blog" className="navbar-link" onClick={closeNavbar}>
               Blog
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/contact" className="navbar-link" onClick={closeNavbar}>
               Contact
