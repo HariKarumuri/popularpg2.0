@@ -27,12 +27,7 @@ const SearchBar = ({ pgs, setpgs, copypgs,setloadingfalseafter3sec,setIsLoading,
     setShouldRunSearch(true);
   }, []);
 
-
-  useEffect(() => {
-    if (!shouldRunSearch) {
-        return; 
-       }
-    const handleSearch = () => {
+const handleSearch = () => {
       // Retrieve the data before the search without changing any properties
       const updatedPgs = copypgs.map((pg) => ({ ...pg }));
       setIsLoading(true);
@@ -154,10 +149,6 @@ const SearchBar = ({ pgs, setpgs, copypgs,setloadingfalseafter3sec,setIsLoading,
         setpgs(sortedPgs);
       }
     };
-    setTimeout(() => {
-    handleSearch();
-    }, 1000);
-  }, [minValue, maxValue, occupancytype, location, data, gender, sortType,copypgs]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -260,7 +251,7 @@ const SearchBar = ({ pgs, setpgs, copypgs,setloadingfalseafter3sec,setIsLoading,
                         </select>
                       </div>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-2">
                       <div className="row">
                         <div className="col-auto py-2">&#x20B9;</div>
                         <div className="col">
@@ -417,7 +408,7 @@ const SearchBar = ({ pgs, setpgs, copypgs,setloadingfalseafter3sec,setIsLoading,
                         </select>
                       </div>
                     </div>
-                    <div className="d-flex col-md-2">
+                    <div className="d-flex col-md-1">
                       <select id="inputState" className="form-select "
                       value={sortType}
                         onChange={handleSortChange}>
@@ -426,6 +417,11 @@ const SearchBar = ({ pgs, setpgs, copypgs,setloadingfalseafter3sec,setIsLoading,
                         <option>Price : High to Low</option>
                       </select>
                     </div>
+                    <div className="d-flex col-md-1">
+  <button className="btn btn-primary" onClick={handleSearch}>
+    Search
+  </button>
+</div>
                   </div>
                 </div>
               </div>

@@ -20,12 +20,7 @@ const PGScrollBar = () => {
         <li className="nav-item">
         <Link to="PgAreaAmenities" spy={true} smooth={true} offset={-100} duration={300} className="nav-link" >Common Amenities</Link>
         </li>
-        <li className="nav-item">
-          <Link to="PgFoodKitchen" spy={true} smooth={true} offset={-100} duration={300} className="nav-link" >Food and Kitchen</Link>
-        </li>
-        <li className="nav-item">
-          <Link to="PgOtherCharges" spy={true} smooth={true} offset={-100} duration={300} className="nav-link" >OtherCharges</Link>
-        </li>
+     
         <li className="nav-item">
         <Link to="PgMap" spy={true} smooth={true} offset={-100} duration={300} className="nav-link" > Explore Neighbourhood </Link>
         </li>

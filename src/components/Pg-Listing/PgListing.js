@@ -96,7 +96,7 @@ const PgListing = () => {
                 </h6>
                 <h6 className="text-muted mx-2">in {props.city}</h6>
               </Link>
-              <div className="d-lg-none">
+              {/* <div className="d-lg-none">
                 <div className="d-flex justify-content-center">
                   <hr
                     className="hr-line"
@@ -109,8 +109,8 @@ const PgListing = () => {
                     }}
                   />
                 </div>
-              </div>
-              <div className="d-none d-lg-block">
+              </div> */}
+              {/* <div className="d-none d-lg-block">
                 <hr
                   className="hr-line"
                   style={{
@@ -123,46 +123,36 @@ const PgListing = () => {
                     marginTop: "-0.2rem",
                   }}
                 />
-              </div>
-
+              </div> */}
+    <div className="d-flex "> <p className="text-muted fw-bold fs-6">Available Room type : </p>
               <Link
                 to="/pgdetails"
                 state={props}
                 className="line3 sharing text-muted "
-                style={{ marginTop: "-0.3rem" }}
+                // style={{ marginTop: "-0.3rem" }}
               >
-                <div className="type1 mr-2">
-                  <p className="text-muted fs-6">No sharing</p>
+                <div className=" mr-2">
+                  
                   <p style={{ marginTop: "-0.7rem" }}>
-                    Rs
-                    {props.single_sharing_price
-                      ? props.single_sharing_price
-                      : "NA"}
+                    {props.single_sharing_price && "Single "}
                   </p>
                 </div>
 
-                <div className="verticleLine mx-3"></div>
-                <div className="type2 mx-3">
-                  <p className="text-muted fs-6">double sharing</p>
+                <div className=" mx-3"></div>
+                <div className=" mx-3">
                   <p style={{ marginTop: "-0.7rem" }}>
-                    Rs.
-                    {props.double_sharing_price
-                      ? props.double_sharing_price
-                      : "NA"}
+                      {props.double_sharing_price && "Double "}
                   </p>
                 </div>
-                <div className="verticleLine2 mx-3"></div>
-                <div className="type3 mx-3">
-                  <p className="text-muted fs-6">triple sharing</p>
+                <div className=" mx-3"></div>
+                <div className=" mx-3">
                   <p style={{ marginTop: "-0.7rem" }}>
-                    Rs.
-                    {props.triple_sharing_price
-                      ? props.triple_sharing_price
-                      : "NA"}
+                      {props.triple_sharing_price && "Triple "}
                   </p>
                 </div>
               </Link>
-              <div className="d-lg-none">
+              </div> 
+              {/* <div className="d-lg-none">
                 <div className="d-flex justify-content-center">
                   <hr
                     className="hr-line"
@@ -191,7 +181,7 @@ const PgListing = () => {
                     width: "50%",
                   }}
                 />
-              </div>
+              </div> */}
               <p
                 className="desc text-muted d-flex"
                 style={{ marginTop: "-0.3rem" }}
@@ -213,17 +203,19 @@ const PgListing = () => {
                 {props.locality}
               </p>
               <div
-                className="d-flex flex-wrap justify-content-center "
+                className="d-flex flex-wrap justify-content-start "
                 style={{ marginTop: "-1.3 rem" }}
               >
-                <button type="button" className="btn btn-danger mr-2">
-                  View Phone No.
-                </button>
+                <Link
+                to="/pgdetails"
+                state={props} type="button" className="btn btn-danger mr-2">
+                View more details
+                </Link>
                 <button type="button" className="btn2 mx-5" data-bs-toggle="modal"  data-bs-target="#exampleModalCenter" onClick={(e)=>{
                   e.preventDefault();
                   pgselectfunc(props)
                   }}>
-                  Contact Owner
+                  View Phone No.
                 </button>
                 {props.embedded_map_src_link ? (
                   <button
