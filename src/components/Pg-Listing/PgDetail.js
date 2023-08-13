@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PgAreaAmenities from "./Pg_Area_Amenities";
-import PgFoodKitchen from "./Pg_Food&Kitchen";
 import PgOtherCharges from "./Pg_other_charges";
 import PgMap from "./pg_map";
 import PGScrollBar from "./pg_scroll_nav";
@@ -15,7 +14,9 @@ const PgDetail = () => {
   const [showMore, setShowMore] = useState(false);
   useEffect(() => {
     setpg(state);
+    console.log(state);
   }, [state]);
+
   var data = pg.description;
   return (
     <div className="bg_color">
@@ -59,19 +60,19 @@ const PgDetail = () => {
             </div>
             <div className="line1">
               <h3 className="name mr-2 text-dark">{pg.pg_name}</h3>
-              <p className="text-muted text-decoration-underline">
+              {/* <p className="text-muted text-decoration-underline" >
                 in {pg.city}
-              </p>
+              </p> */}
             </div>
-            <div className="hideonsmall" style={{ marginTop: "-75px" }}>
+            {/* <div className="hideonsmall" style={{ marginTop: "-75px" }}>
               <p className="text-muted text-end">
                 posted by : <b>{pg.property_managed_by}</b>
               </p>
               <div className="d-flex justify-content-end ">
                 <button className="btn btn-sm">view Phone Number</button>
               </div>
-            </div>
-            <br />
+            </div> */}
+            <br /> <br />
             <p className="fw-light d-flex" style={{ marginTop: "-35px" }}>
               occupancy type :
               <p className=" text-decoration-underline">
@@ -82,7 +83,7 @@ const PgDetail = () => {
               <h6>
                 {pg.pg_for ? (
                   <span className="badge badge-color mx-2">
-                    For {pg.pg_for}{" "}
+                    For {pg.pg_for}
                   </span>
                 ) : null}
               </h6>
@@ -143,27 +144,8 @@ const PgDetail = () => {
                     margin: "auto",
                   }}
                 >
-                  <div className="col ">
-                    <img
-                      style={{ height: "100px", width: "90px" }}
-                      className="  mt-2 rounded"
-                      src={pg.image}
-                      alt="demo img"
-                    />
-                  </div>
-                  {pg?.additional_images[0]?.image && (
-                    <div className="col ">
-                      <img
-                        className=" mt-2 rounded"
-                        style={{ height: "100px", width: "90px" }}
-                        src={pg?.additional_images[0]?.image}
-                        alt="demo img"
-                      />
-                    </div>
-                  )}
-                  <div className="col rounded text-center py-4 badge-color my-2 px-2 ">
+                  <div className="col rounded text-center px-3 badge-color my-2 mx-2 ">
                     <a href="/" className="text-dark fs-6">
-                      {" "}
                       More Photos
                     </a>
                   </div>
@@ -195,146 +177,162 @@ const PgDetail = () => {
                     {showMore ? "Read Less" : "Read More"}
                   </div>
                 </div>
-                <table className="table  visibleon360">
-                  <tbody>
-                    <tr>
-                      <th className="text-muted fw-light" scope="row">
-                        {" "}
-                        Deposit Amount{" "}
-                        <span className="fw-normal">
-                          {pg.security_deposite ? pg.security_deposite : "-"}
-                        </span>{" "}
-                      </th>
-                      <td className="text-muted fw-light">
-                        Maintenance <span className="fw-normal">-</span>{" "}
-                      </td>
-                      <td className="text-muted fw-light">
-                        Notice Period{" "}
-                        <span className="fw-normal">
-                          {" "}
-                          {pg.notice_period ? pg.notice_period : null}
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th className="text-muted fw-light" scope="row">
-                        Food Availability{" "}
-                        <span className="fw-normal">
-                          {" "}
-                          {pg.meals_available ? "yes" : "No"}
-                        </span>
-                      </th>
-                      <td className="text-muted fw-light">
-                        AC Rooms{" "}
-                        <span className="fw-normal">Not Available</span>{" "}
-                      </td>
-                      <td className="text-muted fw-light">
-                        Parking <span className="fw-normal">Available</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th className="text-muted fw-light" scope="row">
-                        Available for{" "}
-                        <span className="fw-normal">{pg.pg_for}</span>{" "}
-                      </th>
-                      <td className="text-muted fw-light">
-                        Preferred Tenants{" "}
-                        <span className="fw-normal">{pg.best_suited_for}</span>
-                      </td>
-                      <td className="text-muted fw-light">
-                        Total Number of Beds{" "}
-                        <span className="fw-normal">{pg.total_beds}</span>{" "}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="text-muted fw-light">
-                        Electricity Charges <span className="fw-normal">-</span>
-                      </td>
-                      <td className="text-muted fw-light">
-                        Lock-In Period{" "}
-                        <span className="fw-normal">
-                          {pg.lock_in_period ? pg.lock_in_period : "-"}
-                        </span>{" "}
-                      </td>
-                      <td className="text-muted fw-light">
-                        Power Backup{" "}
-                        <span className="fw-normal">Available</span>{" "}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+ <table className="table visibleon360">
+ <div className="d-flex justify-content-between visibleon360 flex-wrap">
+  <div className="text-muted fw-light mx-3">
+    Deposit Amount
+    <span className="fw-normal mx-3">
+      {pg.security_deposite ? pg.security_deposite : "-"}
+    </span>
+  </div>
+  <div className="text-muted fw-light mx-3">
+    Maintenance <span className="fw-normal mx-3">-</span>
+  </div>
+  <div className="text-muted fw-light mx-3">
+    Notice Period
+    <span className="fw-normal mx-3">
+      {pg.notice_period ? pg.notice_period : "-"}
+    </span>
+  </div>
+  <div className="text-muted fw-light mx-3">
+    Electricity Charges
+    <span className="fw-normal mx-3">
+      {pg.electric_charge ? pg.electric_charge : "-"}
+    </span>
+  </div>
+</div>
+    </table>
+    <table className="table visibleon360 "> 
+    <div className="d-flex justify-content-center visibleon360 flex-wrap">
+  <div className="text-muted fw-light rounded my-2">
+    <div className="column-bg rounded " style={{ backgroundColor: "#e6e6e6", width:"10rem" }}>
+      Single Sharing
+      <span className="fw-normal">
+        ₹{pg.single_sharing_price ? pg.single_sharing_price : "NA"}
+      </span>
+    </div>
+  </div>
+  <div className="text-muted fw-light rounded my-2">
+    <div className="column-bg rounded " style={{ backgroundColor: "#e6e6e6", width:"10rem" }}>
+      Double Sharing
+      <span className="fw-normal">
+        ₹{pg.double_sharing_price ? pg.double_sharing_price : "NA"}
+      </span>
+    </div>
+  </div>
+  <div className="text-muted fw-light rounded my-2">
+    <div className="column-bg rounded " style={{ backgroundColor: "#e6e6e6", width:"10rem" }}>
+      Triple Sharing
+      <span className="fw-normal">
+        ₹{pg.triple_sharing_price ? pg.triple_sharing_price : "NA"}
+      </span>
+    </div>
+  </div>
+  <div className="text-muted fw-light rounded my-2">
+    <div className="column-bg rounded " style={{ backgroundColor: "#e6e6e6", width:"10rem" }}>
+      Four Sharing
+      <span className="fw-normal">
+        ₹{pg.four_sharing_price ? pg.four_sharing_price : "NA"}
+      </span>
+    </div>
+  </div>
+</div>
+</table>
+
+
                 <table className="table  visible360">
-                  <tbody>
-                    <tr>
-                      <th className="text-muted fw-light" scope="row">
-                        {" "}
-                        Deposit Amount{" "}
-                        <span className="fw-normal">
+                  <tbody   >
+                    <tr className=" mx-4">
+                      <th className="text-muted fw-light mx-4" scope="row">
+                        Deposit Amount
+                        <span className="fw-normal mx-4">
                           ₹{pg.security_deposite ? pg.security_deposite : "-"}
-                        </span>{" "}
+                        </span>
                       </th>
-                      <td className="text-muted fw-light">
-                        Maintenance{" "}
-                        <span className="fw-normal">
+                      <td className="text-muted fw-light mx-4">
+                        Maintenance
+                        <span className="fw-normal mx-4">
                           {pg.maintaince_charge ? pg.maintaince_charge : "-"}
-                        </span>{" "}
-                      </td>
-                      <td className="text-muted fw-light">
-                        Notice Period{" "}
-                        <span className="fw-normal">
-                          {pg.notice_period ? pg.notice_period : "-"}{" "}
                         </span>
                       </td>
-                      <td className="text-muted fw-light">
-                        Electricity Charges{" "}
-                        <span className="fw-normal">
-                          {pg.electric_charge ? pg.electric_charge : "-"}{" "}
+                      <td className="text-muted fw-light mx-4">
+                        Notice Period
+                        <span className="fw-normal mx-4">
+                          {pg.notice_period ? pg.notice_period : "-"}
                         </span>
                       </td>
-                    </tr>
-                    <tr>
-                      <th className="text-muted fw-light" scope="row">
-                        Food Availability{" "}
-                        <span className="fw-normal">
-                          {" "}
-                          {pg.meals_available ? "yes" : "No"}
+                      <td className="text-muted fw-light mx-4">
+                        Electricity Charges
+                        <span className="fw-normal mx-4">
+                          {pg.electric_charge ? pg.electric_charge : "-"}
                         </span>
-                      </th>
-                      <td className="text-muted fw-light">
-                        AC Rooms{" "}
-                        <span className="fw-normal">Not Available</span>{" "}
-                      </td>
-                      <td className="text-muted fw-light">
-                        Parking <span className="fw-normal">Available</span>
-                      </td>
-                      <td className="text-muted fw-light">
-                        Power Backup{" "}
-                        <span className="fw-normal">Available</span>{" "}
-                      </td>
-                    </tr>
-                    <tr>
-                      <th className="text-muted fw-light" scope="row">
-                        Available for{" "}
-                        <span className="fw-normal">{pg.pg_for}</span>{" "}
-                      </th>
-                      <td className="text-muted fw-light">
-                        Preferred Tenants{" "}
-                        <span className="fw-normal">{pg.best_suited_for}</span>
-                      </td>
-                      <td className="text-muted fw-light">
-                        Total Number of Beds{" "}
-                        <span className="fw-normal">{pg.total_beds}</span>{" "}
-                      </td>
-                      <td className="text-muted fw-light">
-                        Lock-In Period{" "}
-                        <span className="fw-normal">
-                          {pg.lock_in_period ? pg.lock_in_period : "-"}
-                        </span>{" "}
                       </td>
                     </tr>
                   </tbody>
+                  <div style={{ 
+                    marginLeft: "-10rem",
+                  }} >
+                    <div className="d-flex justify-content-center my-2">
+                      <div
+                        className="text-muted fw-light rounded px-3"
+                        style={{ backgroundColor: "#e6e6e6",width:"9rem", }}
+                      >
+                        Single Sharing
+                        <span className="fw-normal">
+                          ₹
+                          {pg.single_sharing_price
+                            ? pg.single_sharing_price
+                            : "NA"}
+                        </span>
+                      </div>
+                      <div
+                        className="text-muted fw-light rounded px-3"
+                        style={{
+                          backgroundColor: "#e6e6e6",width:"9rem",
+                          marginLeft: "2rem",
+                        }}
+                      >
+                        Double Sharing
+                        <span className="fw-normal">
+                          ₹
+                          {pg.double_sharing_price
+                            ? pg.double_sharing_price
+                            : "NA"}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{ 
+                    marginLeft: "-10rem",
+                  }}  >
+                    <div className="d-flex justify-content-center my-2">
+                      <div
+                        className="text-muted fw-light rounded px-3"
+                        style={{ backgroundColor: "#e6e6e6",width:"9rem", }}
+                      >
+                        Triple Sharing
+                        <span className="fw-normal">
+                          ₹
+                          {pg.triple_sharing_price
+                            ? pg.triple_sharing_price
+                            : "NA"}
+                        </span>
+                      </div>
+                      <div
+                        className="text-muted fw-light rounded px-3"
+                        style={{ backgroundColor: "#e6e6e6",width:"9rem",
+                          marginLeft: "2rem" }}
+                      >
+                        Four Sharing
+                        <span className="fw-normal">
+                          ₹
+                          {pg.four_sharing_price ? pg.four_sharing_price : "NA"}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </table>
-                <p className="desc text-muted d-flex justify-content-around ">
+                <p className="desc text-muted ">
                   {pg.topAmenities_in_property.map((amenity) => {
                     return (
                       <div className="d-flex">
@@ -353,9 +351,6 @@ const PgDetail = () => {
                   <button type="button" className="btn btn-danger mr-2">
                     View Phone No.
                   </button>
-                  <button type="button" className="btn2  mx-2">
-                    Contact Owner
-                  </button>
                 </div>
               </div>
             </div>
@@ -364,18 +359,10 @@ const PgDetail = () => {
       </div>
       <div className="card mb-3 mx-auto bg_review responsiveness  text-center px-4 py-3  ">
         <h6 className="d-flex justify-content-center">
-          {" "}
-          Show some love & Let us know how good this PG is{" "}
-          <a className="link text-danger mx-3" href="/">
-            Write a review{" "}
-          </a>{" "}
-          <div className="text-danger my-1">
-            <ion-icon name="arrow-forward-outline"></ion-icon>{" "}
-          </div>{" "}
+          Show some love & Let us know how good this PG is !!
         </h6>
       </div>
-      <PgAreaAmenities data={pg.services_in_property} />
-      <PgFoodKitchen data={pg.furnishing_in_property} />
+      <PgAreaAmenities data={pg.services_in_property} data1={pg.furnishing_in_property}/>
       <PgOtherCharges />
       <br />
       <PgMap data={pg.embedded_map_src_link} />
