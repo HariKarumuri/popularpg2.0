@@ -30,10 +30,10 @@
 }
 
 .section-text {
-  font-size: var(--fs-5);
+  font-size: var(--fs-6);
   line-height: 1.8;
   margin-bottom: 30px;
-  max-width: 45ch;
+  max-width: 90ch;
 }
 
 .contact-list {
@@ -53,7 +53,7 @@
 }
 
 .contact-link :is(address, span) {
-  font-size: var(--fs-5);
+  font-size: var(--fs-6);
   transition: var(--transition);
 }
 
@@ -79,7 +79,7 @@
 }
 
 .footer-link {
-  font-size: var(--fs-5);
+  font-size: var(--fs-6);
   padding-block: 10px;
 }
 
@@ -88,13 +88,13 @@
 }
 
 .footer-bottom {
-  background: var(--raisin-black-2);
+  background: var(--raisin-black-1);
   padding-block: 25px;
 }
 
 .copyright {
-  font-size: var(--fs-5);
-  text-align: center;
+  font-size: var(--fs-7);
+  
 }
 
 .copyright a {
@@ -146,7 +146,7 @@
   }
 
   .footer-brand {
-    max-width: 300px;
+    max-width: 600px;
     margin-bottom: 0;
   }
 
@@ -160,7 +160,7 @@
 
 @media (min-width: 1200px) {
   .footer {
-    --fs-5: 1rem;
+    --fs-6: 1rem;
   }
 
   .footer-link-box {

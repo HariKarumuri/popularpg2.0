@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../../assets/images/popular pg logo.png"
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -12,8 +13,7 @@ const Footer = () => {
             </a>
 
             <p className="section-text">
-              Lorem Ipsum is simply dummy text of the and typesetting industry.
-              Lorem Ipsum is dummy text of the printing.
+            Popular PG is a marketplace for paying guest (PG) accommodation in Bangalore. We connect PG seekers with PG providers, making it easy to find the perfect PG for your needs. Whether you are looking for a PG near your college or workplace, or you are on a budget, we have the PG for you.
             </p>
 
             <ul className="contact-list">
@@ -21,7 +21,7 @@ const Footer = () => {
                 <a href="#" className="contact-link">
                   <ion-icon name="location-outline"></ion-icon>
 
-                  <address>electronic city Lorem ipsum dolor sit amet.</address>
+                  <address>electronic city Phase 2</address>
                 </a>
               </li>
 
@@ -77,53 +77,107 @@ const Footer = () => {
 
               <li>
                 <a href="#" className="footer-link">
-                  About
+                  About Us
                 </a>
               </li>
 
               <li>
                 <a href="#" className="footer-link">
-                  Blog
+                Contact us
                 </a>
               </li>
 
               <li>
                 <a href="#" className="footer-link">
-                  All PGs
+                Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="footer-link">
+                Terms & Conditions
                 </a>
               </li>
 
+
               <li>
                 <a href="#" className="footer-link">
-                  Locations Map
+                Grievances
+                </a>
+              </li>
+              <li>
+                <a href="#" className="footer-link">
+                Safety Guide
                 </a>
               </li>
             </ul>
 
             <ul className="footer-list">
               <li>
-                <p className="footer-list-title">Services</p>
+                <p className="footer-list-title">PGs in Bangalore</p>
               </li>
 
               <li>
-                <a href="#" className="footer-link">
-                  Terms & Conditions
-                </a>
+                <Link to="" className="footer-link">
+                 Pg in  Marthahalli
+                </Link>
               </li>
               <li>
-                <a href="#" className="footer-link">
-                  Privacy Policy
-                </a>
+                <Link to="" className="footer-link">
+                 Pg in  Manyata Tech Park
+                </Link>
               </li>
+              <li>
+                <Link to="" className="footer-link">
+                 Pg in BTM Layout
+                </Link>
+              </li>
+              <li>
+                <Link to="" className="footer-link">
+                 Pg in BTM Layout
+                </Link>
+              </li>
+              <li>
+                <Link to="" className="footer-link">
+                 Pg in Whitefield
+                </Link>
+              </li>
+              <li>
+                <Link to="" className="footer-link">
+                 Pg in Electronic city
+                </Link>
+              </li>
+              <li>
+                <Link to="" className="footer-link">
+                 Pg in Sarjapur Road
+                </Link>
+              </li>
+              <li>
+                <Link to="" className="footer-link">
+                 Pg in Madiwala
+                </Link>
+              </li>
+              <li>
+                <Link to="" className="footer-link">
+                 Pg in Kormangala
+                </Link>
+              </li>
+              <li>
+                <Link to="" className="footer-link">
+                 Pg in HSR Layout
+                </Link>
+              </li>
+              <li>
+                <Link to="" className="footer-link">
+                 Pg in Bellandur
+                </Link>
+              </li>
+              
 
-              <li>
-                <a href="#" className="footer-link">
-                  Promotional Offers
-                </a>
-              </li>
+
+              
             </ul>
 
-            <ul className="footer-list">
+            {/* <ul className="footer-list">
               <li>
                 <p className="footer-list-title">Customer Care</p>
               </li>
@@ -157,20 +211,21 @@ const Footer = () => {
                   Contact us
                 </a>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
       </div>
 
-      {/* <div className="footer-bottom">
+      <div className="footer-bottom">
       <div className="container">
 
         <p className="copyright">
-          &copy; 2022 <a href="#">harikarumuri</a>. All Rights Reserved
+          {/* &copy; 2022 <a href="#">harikarumuri</a>. All Rights Reserved */}
+          Disclaimer: Popularpg is only an intermediary offering its platform to advertise properties of Seller for a Customer/Buyer/User coming on its Website and is not and cannot be a party to or privy to or control in any manner any transactions between the Seller and the Customer/Buyer/User. All the offers and discounts on this Website have been extended by various Builder(s)/Developer(s) who have advertised their products. PopularPG is only communicating the offers and not selling or rendering any of those products or services. It neither warrants nor is it making any representations with respect to offer(s) made on the site. PopularPG shall neither be responsible nor liable to mediate or resolve any disputes or disagreements between the Customer/Buyer/User and the Seller and both Seller and Customer/Buyer/User shall settle all such disputes without involving PopularPG in any manner. All trademarks, logos and names are properties of their respective owners. All Rights Reserved. © Copyright 2023 PopularPG.
         </p>
 
       </div>
-    </div> */}
+    </div>
     </footer>
   );
 };
