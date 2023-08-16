@@ -10,7 +10,7 @@ const AdsCard = () => {
         <img
           className="img-fluid"
           style={{ width: "8rem",height: "8rem",borderRadius: 0 }}
-          src="https://popularpg.s3.amazonaws.com/more_images/dozo_dwaraka_1.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVU2TDJIPHIJVZY4S%2F20230801%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20230801T085804Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=2029fa751d2aca615da07fd35cfd16e6517abba4df725f8681d0d80b682248c0"
+          src="dummy"
           alt="Card imag cap"
         />
         <div className="mx-2">

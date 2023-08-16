@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import PgAreaAmenities from "./Pg_Area_Amenities";
-import PgOtherCharges from "./Pg_other_charges";
-import PgMap from "./pg_map";
-import PGScrollBar from "./pg_scroll_nav";
+import PgAreaAmenities from "./Util/Pg_Area_Amenities";
+import PgOtherCharges from "./Util/Pg_other_charges";
+import PgMap from "./Util/pg_map";
+import PGScrollBar from "./Util/pg_scroll_nav";
 import { Link } from "react-scroll";
 import { useLocation } from "react-router-dom";
 const PgDetail = () => {

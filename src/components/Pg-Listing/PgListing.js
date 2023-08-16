@@ -3,7 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
-import AdsCard from "./AdsCard";
+import AdsCard from "./Cards/AdsCard";
 import axios from "axios";
 import { useLocation } from 'react-router-dom';
 
