@@ -8,7 +8,7 @@ const ContactDetailsPage = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [submitting, setSubmitting] = useState(false);
-
+  const [showAlert, setShowAlert] = useState(false);
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -28,6 +28,12 @@ const ContactDetailsPage = () => {
         setName("");
         setEmail("");
         setPhone("");
+         setShowAlert(true);
+
+        // Hide the alert after 3 seconds (adjust as needed)
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 3000);
       } else {
         console.error("Failed to submit contact details");
       }
@@ -42,40 +48,50 @@ const ContactDetailsPage = () => {
   };
 
   return (
-    <div>
+    <div className="container mt-5">
+    {showAlert && (
+        <div className="alert alert-success alert-dismissible fade show" role="alert">
+          Form submitted successfully!
+          <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      )}
       <h1>Contact Information</h1>
+      <p className="text-muted fs-6"> PropertyId : {id} </p>
       <form onSubmit={handleFormSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">Name:</label>
           <input
             type="text"
             id="name"
+            className="form-control"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">Email:</label>
           <input
             type="email"
             id="email"
+            className="form-control"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label htmlFor="phone">Phone:</label>
+        <div className="mb-3">
+          <label htmlFor="phone" className="form-label">Phone:</label>
           <input
             type="text"
             id="phone"
+            className="form-control"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required
           />
         </div>
-        <button type="submit" disabled={submitting}>
+        <button type="submit" className="btn btn-primary" disabled={submitting}>
           {submitting ? "Submitting..." : "Submit"}
         </button>
       </form>

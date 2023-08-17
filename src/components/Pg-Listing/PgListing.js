@@ -238,15 +238,16 @@ const PgListing = () => {
       </div>
     );
   };
-  const [pgs, setpgs] = useState([]);
+  const [pgs, setpgs] = useState({});
   const fetchProducts = () => {
     axios
       .get("/products/")
       .then((response) => {
-        // Handle the response data
         const products = response.data;
+        
         setpgs(products);
         setCopypgs(products);
+        console.log(products)
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
@@ -254,7 +255,6 @@ const PgListing = () => {
   };
   useEffect(() => {
     fetchProducts();
-    console.log(pgs);
   }, []);
 
   const setloadingfalseafter3sec = () => {
@@ -272,7 +272,7 @@ const PgListing = () => {
   <div className="row">
     <div className="col-md-11">
     {pgs.length > 0 ? (
-        pgs.map((pg) => 
+      pgs && pgs.map && pgs.map((pg) => 
         <Pgelement key={pg.id} {...pg} />)
       ) : (
         <div>
