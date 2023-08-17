@@ -9,6 +9,12 @@ import Home from "./pages/Home";
 import Pgdetails from "./components/Pg-Listing/PgDetail"
 import ContactPage from './pages/ContactPage';
 import Employee from './components/Employee/Employee';
+import Pg_Product_List from "./components/Pg-Listing/Pg_Product_List";
+import ProductFetchExample from './pages/ProductFetchExample';
+import Pg_Listing_Card from "./components/Pg-Listing/Cards/Pg_Listing_Card";
+import ContactDetailsPage from "./components/Pg-Listing/Util/ContactDetailPage";
+
+
 
 function App() {
 
@@ -24,9 +30,12 @@ function App() {
         </header>
         <Routes>
           <Route path="/" index element={<Home />} />
-          <Route path="/listings" element={<PgListing />} />
+          <Route path="/listings" element={<Pg_Product_List />} />
+          <Route path="/listings/contact-details/:id" element={<ContactDetailsPage/>} /> 
           <Route path="pgdetails" element={<Pgdetails />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/newListings" element={<Pg_Listing_Card />} />
+          <Route path="/tester" element={<ProductFetchExample/>} />
 
 
           <Route  path="/employee/:uniqueId" element={<Employee/>} />

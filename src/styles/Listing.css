@@ -82,6 +82,14 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
+.PgPropertyId{
+  font-size: smaller;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 2rem;
+  color: #33333363;
+}
 
 /*-----------------------------------*\
   #MEDIA QUERIES
