@@ -17,33 +17,41 @@ const Pg_Listing_Card = ({ pgData }) => {
         </div>
         <div className="row g-0">
           <div className="col-md-4" style={{ zIndex: 1 }}>
-            {pgData.additional_images.length > 0 ? (
-              <Carousel
+          <Carousel
                 autoPlay
                 infiniteLoop
                 showStatus={false}
                 showArrows={false}
                 showThumbs={false}
               >
-                {pgData.additional_images.map((image, index) => (
-                  <div className="slide" key={index}>
-                    <img
-                      style={{ height: "230px", width: "300px" }}
-                      className="img-fluid p-1"
-                      src={image.image}
-                      alt={`Image ${index}`}
-                    />
-                  </div>
-                ))}
-              </Carousel>
-            ) : (
-              <img
-                style={{ height: "230px", width: "300px" }}
-                className="img-fluid p-1"
-                src={NoimgAvailable} // Replace with your default image path
-                alt="No Additional Images"
-              />
-            )}
+      {pgData ? (
+  pgData.additional_images && pgData.additional_images.length > 0 ? (
+    pgData.additional_images.map((img) => {
+      var url = img.image;
+      return (
+        <div className="slide" key={url}>
+          <img
+            style={{ height: "200px", width: "260px" }}
+            className="img-fluid mt-3"
+            src={url}
+            alt="demo img"
+          />
+        </div>
+      );
+    })
+  ) : (
+    <div className="slide">
+      <img
+        style={{ height: "200px", width: "260px"  }}
+        className="img-fluid mt-3"
+        src={pgData.cover_image}
+        alt="demo img"
+      />
+    </div>
+  )
+) : null}
+
+            </Carousel>
           </div>
           <div className="col-md-8">
             <div className="card-body">
@@ -153,25 +161,21 @@ const Pg_Listing_Card = ({ pgData }) => {
                 </div>
                 {pgData.description}
               </p>
-
-              <div
-                className="d-flex flex-wrap  justify-content-start"
-                style={{ marginTop: "-1.3 rem" }}
-              >
-                <Link
-                  to={`/pgdetails/${pgData.id}`}
-                  className="btn btn-danger mr-2"
-                >
-                  View more details
-                </Link>
-                <Link
-                  to={`contact-details/${pgData.id}`} // Link to the ContactDetailsPage with the product ID as a parameter
-                  className="btn2 mx-5"
-                >
-                  View Phone No.
-                </Link>
-                <span className="PgPropertyId">PgPropertyId:{pgData.id}</span>
-              </div>
+              <div className="d-flex flex-wrap justify-content-start flex-column flex-md-row">
+  <Link
+    to={`/pgdetails/${pgData.id}`}
+    className="btn btn-danger mb-2 mb-md-0 me-md-2"
+  >
+    View more details
+  </Link>
+  <Link
+    to={`contact-details/${pgData.id}`}
+    className="btn2 mx-5"
+  >
+    View Phone No.
+  </Link>
+  <span className="PgPropertyId mb-2 mb-md-4 mx-md-2  d-none d-sm-inline">PgPropertyId:{pgData.id}</span>
+</div>          
             </div>
           </div>
         </div>
