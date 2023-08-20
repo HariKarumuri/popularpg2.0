@@ -12,6 +12,7 @@ import Pg_Product_List from "./components/Pg-Listing/Pg_Product_List";
 import ProductFetchExample from './pages/ProductFetchExample';
 import Pg_Listing_Card from "./components/Pg-Listing/Cards/Pg_Listing_Card";
 import ContactDetailsPage from "./components/Pg-Listing/Util/ContactDetailPage";
+import SearchState from "./components/Appcontext/SearchState";
 function App() {
 
   const location = useLocation();
@@ -20,6 +21,7 @@ function App() {
   return (
     
       <div className="App">
+      <SearchState>
         <header>
         {/* {isHomePage && <HeaderTop />} */}
           <NavBar />
@@ -37,6 +39,7 @@ function App() {
         </Routes>
         <Cta />
         <Footer />
+        </SearchState>
       </div>
     
   );
