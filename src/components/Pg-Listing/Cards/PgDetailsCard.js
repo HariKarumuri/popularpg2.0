@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React,{useState} from 'react'
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PgAreaAmenities from "../Util/Pg_Area_Amenities";
@@ -7,25 +7,11 @@ import PgMap from "../Util/pg_map";
 import PGScrollBar from "../Util/pg_scroll_nav";
 import { Link } from "react-scroll";
 import { Link as Linker } from "react-router-dom";
-import axios from "axios";
-const PgDetailCard = () => {
-  const [pg, setpg] = useState(null);
-  const [showMore, setShowMore] = useState(false);
-  useEffect(() => {
-    const fetchdata = async (req, res)=>{
-      //get the id from the url
-      const url = new URL(window.location.href);
-      const idParam = url.pathname.split("/")[2];
-    const response = await axios.get(`https://popularpg.in/products/${idParam}/`);
-    console.log(response.data);
-    setpg(response.data);
-    }
-    fetchdata();
-  }, []);
-
-  var data = pg && pg.description;
+const PgDetailsCard = ({pg}) => {
+    const [showMore, setShowMore] = useState(false);
   return (
-    <div className="bg_color">
+    <div>
+        <div className="bg_color">
     <> {pg ? 
     <>
       <div
@@ -190,7 +176,7 @@ const PgDetailCard = () => {
                   </Link>
                 </div>
                 <div className="">
-                  <p>{showMore ? data : data.slice(0, 100)}</p>
+                  <p>{showMore ? pg.description : pg.description.slice(0, 100)}</p>
                   <div
                     onClick={() => {
                       setShowMore(!showMore);
@@ -409,7 +395,8 @@ const PgDetailCard = () => {
     }</>
   
     </div>
-  );
-};
+    </div>
+  )
+}
 
-export default PgDetailCard;
+export default PgDetailsCard

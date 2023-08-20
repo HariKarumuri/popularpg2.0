@@ -7,7 +7,7 @@ const SearchBar = ({ pgs, setpgs, copypgs,setloadingfalseafter3sec,setIsLoading,
   const [location, setLocation] = useState(locatio);
   const [gender, setGender] = useState(gende);
   const [occupancytype, setOccupancyType] = useState(occupancytyp);
-  const [sortType, setSortType] = useState(""); // New state for sorting
+  const [sortType, setSortType] = useState(""); 
   const dropdownRef = useRef(null);
 
   const handleMinValueChange = (e) => {
@@ -21,13 +21,8 @@ const SearchBar = ({ pgs, setpgs, copypgs,setloadingfalseafter3sec,setIsLoading,
   const handleSortChange = (e) => {
     setSortType(e.target.value);
   };
-  const [shouldRunSearch, setShouldRunSearch] = useState(false); // Add this state
 
-  useEffect(() => {
-    setShouldRunSearch(true);
-  }, []);
-
-const handleSearch = () => {
+let handleSearch = (occupancytypes, gendertype,locationtype, sortType) => {
       // Retrieve the data before the search without changing any properties
       const updatedPgs = copypgs.map((pg) => ({ ...pg }));
       setIsLoading(true);
@@ -38,14 +33,14 @@ const handleSearch = () => {
         const minVal = parseInt(minValue);
         const maxVal = parseInt(maxValue);
         const lowercasePgLocation = pg.city.toLowerCase();
-        const lowercaseSearchLocation = location.toLowerCase();
+        const lowercaseSearchLocation = locationtype.toLowerCase();
         
         const occupancyTypeMatch = () => {
-          if (occupancytype === "Single") {
+          if (occupancytypes === "Single") {
             return pg.single_sharing;
-          } else if (occupancytype === "Double") {
+          } else if (occupancytypes === "Double") {
             return pg.double_sharing;
-          } else if (occupancytype === "Triple") {
+          } else if (occupancytypes === "Triple") {
             return pg.triple_sharing;
           } else {
             return true; // Return true if occupancytype is not specified
@@ -53,11 +48,11 @@ const handleSearch = () => {
         };
     
         const genderType = () => {
-          if (gender.toLowerCase() === "boys") {
+          if (gendertype.toLowerCase() === "boys") {
             return pg.pg_for === "boys";
-          } else if (gender.toLowerCase() === "girls") {
+          } else if (gendertype.toLowerCase() === "girls") {
             return pg.pg_for === "girls";
-          } else if (gender.toLowerCase() === "coliving") {
+          } else if (gendertype.toLowerCase() === "coliving") {
             return pg.pg_for === "coliving";
           } else {
             return true; // Return true if gender is not specified
@@ -180,7 +175,17 @@ const handleSearch = () => {
     }
     return data;
   };
-
+  useEffect(() => {
+    if (locatio || gende || occupancytyp) {
+      let locationins = locatio ? locatio : "";
+      let genderins = gende ? gende : "";
+      let occupancytypeins = occupancytyp ? occupancytyp : "";
+      handleSearch(locationins, genderins, occupancytypeins, sortType);
+      console.log("searching");
+    }
+  }, []);
+  
+  
   return (
     <div>
       <section
@@ -418,7 +423,7 @@ const handleSearch = () => {
                       </select>
                     </div>
                     <div className="d-flex col-md-1">
-  <button className="btn btn-primary" onClick={handleSearch}>
+  <button className="btn btn-primary" onClick={()=>handleSearch(occupancytype, gender,location, sortType)}>
     Search
   </button>
 </div>

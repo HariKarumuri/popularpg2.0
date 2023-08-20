@@ -5,16 +5,13 @@ import NavBar from "./components/navBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import Cta from "./components/CTA/Cta";
 import Home from "./pages/Home";
-import Pgdetails from "./components/Pg-Listing/Cards/Pg_details_Card"
+import Pgdetails from "./components/Pg-Listing/Pg_details"
 import ContactPage from './pages/ContactPage';
 import Employee from './components/Employee/Employee';
 import Pg_Product_List from "./components/Pg-Listing/Pg_Product_List";
 import ProductFetchExample from './pages/ProductFetchExample';
 import Pg_Listing_Card from "./components/Pg-Listing/Cards/Pg_Listing_Card";
 import ContactDetailsPage from "./components/Pg-Listing/Util/ContactDetailPage";
-
-
-
 function App() {
 
   const location = useLocation();
