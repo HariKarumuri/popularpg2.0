@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
-
-const SearchBar = ({ pgs, setpgs, copypgs,setloadingfalseafter3sec,setIsLoading,gende,occupancytyp,locatio }) => {
-  const [data, setData] = useState("Budget");
-  const [minValue, setMinValue] = useState("");
-  const [maxValue, setMaxValue] = useState("");
-  const [location, setLocation] = useState(locatio);
-  const [gender, setGender] = useState(gende);
-  const [occupancytype, setOccupancyType] = useState(occupancytyp);
-  const [sortType, setSortType] = useState(""); // New state for sorting
+import React, {useContext, useEffect, useRef } from "react";
+import SearchContext from "../Appcontext/SearchContext";
+const SearchBar = () => {
   const dropdownRef = useRef(null);
+  const { data, setData,
+    minValue, setMinValue,
+    maxValue, setMaxValue,
+    location, setLocation,
+    gender, setGender,
+    occupancytype, setOccupancyType,
+    sortType, setSortType,
+    handleSearch}= useContext(SearchContext);
 
   const handleMinValueChange = (e) => {
     setMinValue(e.target.value);
@@ -21,134 +22,6 @@ const SearchBar = ({ pgs, setpgs, copypgs,setloadingfalseafter3sec,setIsLoading,
   const handleSortChange = (e) => {
     setSortType(e.target.value);
   };
-  const [shouldRunSearch, setShouldRunSearch] = useState(false); // Add this state
-
-  useEffect(() => {
-    setShouldRunSearch(true);
-  }, []);
-
-const handleSearch = () => {
-      // Retrieve the data before the search without changing any properties
-      const updatedPgs = copypgs.map((pg) => ({ ...pg }));
-      setIsLoading(true);
-      // Filter the pgs based on the selected value from the dropdown, location, occupancy type, and gender
-      const filteredPgs = updatedPgs.filter((pg) => {
-        const val = parseInt(pg.min_price);
-        const dataval = parseInt(data);
-        const minVal = parseInt(minValue);
-        const maxVal = parseInt(maxValue);
-        const lowercasePgLocation = pg.city.toLowerCase();
-        const lowercaseSearchLocation = location.toLowerCase();
-        
-        const occupancyTypeMatch = () => {
-          if (occupancytype === "Single") {
-            return pg.single_sharing;
-          } else if (occupancytype === "Double") {
-            return pg.double_sharing;
-          } else if (occupancytype === "Triple") {
-            return pg.triple_sharing;
-          } else {
-            return true; // Return true if occupancytype is not specified
-          }
-        };
-    
-        const genderType = () => {
-          if (gender.toLowerCase() === "boys") {
-            return pg.pg_for === "boys";
-          } else if (gender.toLowerCase() === "girls") {
-            return pg.pg_for === "girls";
-          } else if (gender.toLowerCase() === "coliving") {
-            return pg.pg_for === "coliving";
-          } else {
-            return true; // Return true if gender is not specified
-          }
-        };
-    
-        const locationMatch = () => {
-          if (lowercaseSearchLocation) {
-            return lowercasePgLocation.includes(lowercaseSearchLocation) || lowercasePgLocation.startsWith(lowercaseSearchLocation);
-          } else {
-            return true; // Return true if no search location is specified
-          }
-        };
-        
-        if (
-          !minVal &&
-          !maxVal &&
-          !dataval &&
-          !location &&
-          occupancyTypeMatch() &&
-          genderType() 
-        ) {
-          return true;
-        }
-
-        if (minVal && maxVal) {
-          return (
-            val >= minVal &&
-            val <= maxVal &&
-            locationMatch() &&
-            occupancyTypeMatch() &&
-            genderType()
-          );
-        } else if(minVal) {
-          return (
-            val >= minVal &&
-            locationMatch() &&
-            occupancyTypeMatch() &&
-            genderType()
-          );
-        } else if (maxVal) {
-          return (
-            val <= maxVal &&
-            locationMatch() &&
-            occupancyTypeMatch() &&
-            genderType()
-          );
-        } else if (dataval) {
-          return (
-            val === dataval &&
-            locationMatch() &&
-            occupancyTypeMatch() &&
-            genderType()
-          );
-        }else if(location){
-          return (
-            locationMatch() &&
-            occupancyTypeMatch() &&
-            genderType()
-          );
-        }else if(location && occupancyTypeMatch()){
-          return (
-            locationMatch() &&
-            occupancyTypeMatch() &&
-            genderType()
-          );
-        }         
-        return false;
-      });
-      setIsLoading(false);
-      const sortedPgs = sortData(filteredPgs, sortType);
-      if(filteredPgs.length===0){
-        console.log("No pgs found")
-        setloadingfalseafter3sec()
-      }
-      if (
-        !location &&
-        (!occupancytype || occupancytype === "occupancy Type") &&
-        (!minValue || isNaN(parseInt(minValue))) &&
-        (!maxValue || isNaN(parseInt(maxValue))) &&
-        (gender === "Gender" || gender === "") &&
-        (sortType === "sort" || sortType === "") &&
-        (!data || isNaN(parseInt(data)))
-      ) {
-        console.log("No filters applied");
-        setpgs(pgs);
-        setpgs(copypgs);
-      } else {
-        setpgs(sortedPgs);
-      }
-    };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -169,18 +42,9 @@ const handleSearch = () => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [minValue, maxValue, data]);
-
-  // Helper function to sort the data based on sort type
-  const sortData = (data, sortType) => {
-    if (sortType === "Price : Low to High") {
-      return [...data].sort((a, b) => parseInt(a.min_price) - parseInt(b.min_price));
-    } else if (sortType === "Price : High to Low") {
-      return [...data].sort((a, b) => parseInt(b.min_price) - parseInt(a.min_price));
-    }
-    return data;
-  };
-
+  
   return (
     <div>
       <section
@@ -418,7 +282,7 @@ const handleSearch = () => {
                       </select>
                     </div>
                     <div className="d-flex col-md-1">
-  <button className="btn btn-primary" onClick={handleSearch}>
+  <button className="btn btn-primary" onClick={()=>handleSearch()}>
     Search
   </button>
 </div>

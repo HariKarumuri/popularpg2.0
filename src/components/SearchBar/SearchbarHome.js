@@ -1,20 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-
-const SearchBarHome = ({
-  pgs,
-  setpgs,
-  copypgs,
-  setloadingfalseafter3sec,
-  setIsLoading,
-}) => {
-  const [location, setLocation] = useState("");
-  const [gender, setGender] = useState("");
-  const [occupancytype, setOccupancyType] = useState("");
-
-  
-
-  
+import SearchContext from "../Appcontext/SearchContext";
+const SearchBarHome = () => {
+  const { 
+    location, setLocation,
+    gender, setGender,
+    occupancytype, setOccupancyType,
+    handleSearch}= useContext(SearchContext);  
   return (
     <div>
       <section className="search-bar-home mt-5">
@@ -88,7 +80,7 @@ const SearchBarHome = ({
             <div className="col-md-1">
               <Link
                 to="/listings"
-                state={{ gender, occupancytype, location }}
+                onClick={handleSearch}
                 style={{
                   backgroundColor: "#E8DF41",
                   color: "black",
