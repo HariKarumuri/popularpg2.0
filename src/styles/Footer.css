@@ -105,6 +105,13 @@
   color: var(--orange-soda);
 }
 
+.addressMap > li{
+  
+  border-right: 1px solid white;
+
+}
+
+
 /*-----------------------------------*\
   #MEDIA QUERIES
 \*-----------------------------------*/

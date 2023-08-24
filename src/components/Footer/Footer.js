@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/images/popular pg logo.png"
+import Logo from "../../assets/images/popular pg logo.png";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -9,11 +9,15 @@ const Footer = () => {
         <div className="container">
           <div className="footer-brand">
             <a href="#" className="logo">
-              <img src={Logo} alt="Popular PG logo" width="200px"/>
+              <img src={Logo} alt="Popular PG logo" width="200px" />
             </a>
 
             <p className="section-text">
-            Popular PG is a marketplace for paying guest (PG) accommodation in Bangalore. We connect PG seekers with PG providers, making it easy to find the perfect PG for your needs. Whether you are looking for a PG near your college or workplace, or you are on a budget, we have the PG for you.
+              Popular PG is a marketplace for paying guest (PG) accommodation in
+              Bangalore. We connect PG seekers with PG providers, making it easy
+              to find the perfect PG for your needs. Whether you are looking for
+              a PG near your college or workplace, or you are on a budget, we
+              have the PG for you.
             </p>
 
             <ul className="contact-list">
@@ -83,98 +87,90 @@ const Footer = () => {
 
               <li>
                 <a href="#" className="footer-link">
-                Contact us
+                  Contact us
                 </a>
               </li>
 
               <li>
                 <a href="#" className="footer-link">
-                Privacy Policy
+                  Privacy Policy
                 </a>
               </li>
               <li>
                 <a href="#" className="footer-link">
-                Terms & Conditions
+                  Terms & Conditions
                 </a>
               </li>
 
-
               <li>
                 <a href="#" className="footer-link">
-                Grievances
+                  Grievances
                 </a>
               </li>
               <li>
                 <a href="#" className="footer-link">
-                Safety Guide
+                  Safety Guide
                 </a>
               </li>
             </ul>
 
-            <ul className="footer-list">
+            <ul className="footer-list ">
               <li>
                 <p className="footer-list-title">PGs in Bangalore</p>
               </li>
-
-              <li>
-                <Link to="" className="footer-link">
-                 Pg in  Marthahalli
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="footer-link">
-                 Pg in  Manyata Tech Park
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="footer-link">
-                 Pg in BTM Layout
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="footer-link">
-                 Pg in BTM Layout
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="footer-link">
-                 Pg in Whitefield
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="footer-link">
-                 Pg in Electronic city
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="footer-link">
-                 Pg in Sarjapur Road
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="footer-link">
-                 Pg in Madiwala
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="footer-link">
-                 Pg in Kormangala
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="footer-link">
-                 Pg in HSR Layout
-                </Link>
-              </li>
-              <li>
-                <Link to="" className="footer-link">
-                 Pg in Bellandur
-                </Link>
-              </li>
-              
-
-
-              
+              <div className="addressMap row">
+                <li className="col m-1">
+                  <Link to="" className="footer-link">
+                    Pg in Marthahalli
+                  </Link>
+                </li>
+                
+                <li className="col m-1">
+                  <Link to="" className="footer-link">
+                    Pg in BTM Layout
+                  </Link>
+                </li>
+                <li className="col m-1">
+                  <Link to="" className="footer-link">
+                    Pg in Whitefield
+                  </Link>
+                </li>
+                <li className="col m-1">
+                  <Link to="" className="footer-link">
+                    Pg in Electronic city
+                  </Link>
+                </li>
+                <li className="col m-1">
+                  <Link to="" className="footer-link">
+                    Pg in Sarjapur Road
+                  </Link>
+                </li>
+                <li className="col m-1">
+                  <Link to="" className="footer-link">
+                    Pg in Madiwala
+                  </Link>
+                </li>
+                <li className="col m-1">
+                  <Link to="" className="footer-link">
+                    Pg in Kormangala
+                  </Link>
+                </li>
+                <li className="col m-1">
+                  <Link to="" className="footer-link">
+                    Pg in HSR Layout
+                  </Link>
+                </li>
+                <li className="col m-1">
+                  <Link to="" className="footer-link">
+                    Pg in Bellandur
+                  </Link>
+                </li>
+                <li className="col m-1">
+                  <Link to="" className="footer-link">
+                    Pg in Manyata Tech Park
+                  </Link>
+                </li>
+              </div>
             </ul>
 
             {/* <ul className="footer-list">
@@ -217,15 +213,28 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-      <div className="container">
-
-        <p className="copyright">
-          {/* &copy; 2022 <a href="#">harikarumuri</a>. All Rights Reserved */}
-          Disclaimer: Popularpg is only an intermediary offering its platform to advertise properties of Seller for a Customer/Buyer/User coming on its Website and is not and cannot be a party to or privy to or control in any manner any transactions between the Seller and the Customer/Buyer/User. All the offers and discounts on this Website have been extended by various Builder(s)/Developer(s) who have advertised their products. PopularPG is only communicating the offers and not selling or rendering any of those products or services. It neither warrants nor is it making any representations with respect to offer(s) made on the site. PopularPG shall neither be responsible nor liable to mediate or resolve any disputes or disagreements between the Customer/Buyer/User and the Seller and both Seller and Customer/Buyer/User shall settle all such disputes without involving PopularPG in any manner. All trademarks, logos and names are properties of their respective owners. All Rights Reserved. © Copyright 2023 PopularPG.
-        </p>
-
+        <div className="container">
+          <p className="copyright">
+            {/* &copy; 2022 <a href="#">harikarumuri</a>. All Rights Reserved */}
+            Disclaimer: Popularpg is only an intermediary offering its platform
+            to advertise properties of Seller for a Customer/Buyer/User coming
+            on its Website and is not and cannot be a party to or privy to or
+            control in any manner any transactions between the Seller and the
+            Customer/Buyer/User. All the offers and discounts on this Website
+            have been extended by various Builder(s)/Developer(s) who have
+            advertised their products. PopularPG is only communicating the
+            offers and not selling or rendering any of those products or
+            services. It neither warrants nor is it making any representations
+            with respect to offer(s) made on the site. PopularPG shall neither
+            be responsible nor liable to mediate or resolve any disputes or
+            disagreements between the Customer/Buyer/User and the Seller and
+            both Seller and Customer/Buyer/User shall settle all such disputes
+            without involving PopularPG in any manner. All trademarks, logos and
+            names are properties of their respective owners. All Rights
+            Reserved. © Copyright 2023 PopularPG.
+          </p>
+        </div>
       </div>
-    </div>
     </footer>
   );
 };
