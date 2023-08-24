@@ -1,18 +1,51 @@
-.backcolor{
-    background-color: var(--orange-soda);
+.addBorder {
+  border: 1px solid var(--orange-soda);
 }
-.addBorder{
-    border: 1px solid var(--orange-soda);
+
+.form-select {
+  outline: none !important ;
+  border: none !important;
 }
-.form-select{
-    outline: none !important ;
-    border : none !important;
+
+.location_input_select {
+  width: 500px;
+  z-index: 99;
 }
+.seachbar-icons {
+  font-size: 1.5rem;
+  color: var(--orange-soda);
+}
+.Search-Listing ion-icon {
+  color: var(--orange-soda);
+}
+.Filter-Search-Btn ion-icon {
+  color: white;
+  
+}
+.Filter-Search-Btn {
+  position: relative;
+  background: var(--orange-soda);
+  color: var(--white);
+  font-family: var(--ff-poppins);
+  font-size: var(--fs-5);
+  text-transform: var(--text-transform, capitalize);
+  border: 1px solid var(--orange-soda);
+  padding: 10px 20px;
+  z-index: 1;
+  border-radius: 0.5rem;
+}
+
+.Search-Listing {
+  padding: 1rem;
+  background-color: var(--orange-soda-transparent);
+  border-radius: 1.2rem;
+}
+
 @media (max-width: 770px) {
-    .rounded-pill{
-        border-radius: 0px !important;
-    }
+  .rounded-pill {
+    border-radius: 0px !important;
+  }
 }
 .custom-dropdown-toggle::after {
-    content: none;
-  }
+  content: none;
+}
