@@ -4,7 +4,7 @@ import AboutUs from "./AboutUs";
 import Services from "./../components/Services/Services";
 
 import BlogList from "./../components/Blog/BlogList";
-import Popular from "../components/PopularProjectsHome/Popular";
+
 
 import LandingAds from './../components/LandingAdsHome/LandingAds';
 import Popular_Ads from "../components/Listing_Ads_Home/Popular_Ads/Popular_Ads";
