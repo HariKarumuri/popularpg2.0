@@ -15,6 +15,7 @@
 .property-card {
   border: 1px solid var(--alice-blue);
   box-shadow: var(--shadow-2);
+  padding: 0;
 }
 .property-list {
   display: flex;
@@ -24,22 +25,25 @@
 .property-list > .property-card {
   flex: 0 0 auto;
   width: 320px;
+  
 }
 
 .property-card .card-banner {
   position: relative;
-  aspect-ratio: 2 / 1.5;
   overflow: hidden;
-  width: 300px !important;
+  height: 180px;
+  width: 100%;
+ 
 }
+
 
 .property-card .card-banner a {
   height: 100%;
 }
 
 .property-card .card-banner img {
-  height: 100%;
-  object-fit: cover;
+  
+  object-fit: cover !important;
   transition: 0.5s ease;
 }
 

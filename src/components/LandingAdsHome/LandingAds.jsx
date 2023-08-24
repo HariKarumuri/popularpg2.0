@@ -1,13 +1,13 @@
-import React,{useState ,useEffect} from 'react'
-import ImageAd from "./../../assets/images/Ads banner test.png";
-import ImageAd2 from "./../../assets/images/ads side.jpg";
-import SearchBar from "../SearchBar/SearchbarHome";
+import React, { useState, useEffect } from 'react';
+import SearchBar from '../SearchBar/SearchbarHome';
 import axios from 'axios';
+import defaultBannerImage from "../../assets/images/Banner.jpg"
+import defaultSkyScrapperImage from "../../assets/images/SkyScarpper.jpg"
 
 const LandingAds = () => {
   const [bannerAdData, setBannerAdData] = useState(null);
   const [skyScrapperAdData, setSkyScrapperAdData] = useState(null);
-
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Fetch data from the API using Axios
@@ -26,6 +26,9 @@ const LandingAds = () => {
       })
       .catch(error => {
         console.error('Error fetching sky scrapper ad data:', error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
 
@@ -37,32 +40,34 @@ const LandingAds = () => {
             <div className="row">
               <SearchBar />
             </div>
-            
+
             <div className="row homeTitle ">
-              <h1 className="d-flex justify-content-center mx-2 font-weight-bold"> <span >Simplifying </span>  <span style={{ 
-                marginTop: "30px",marginLeft: "20px",marginRight: "20px",
-              }} >PG </span> Life</h1>
+              <h1 className="d-flex justify-content-center mx-2 font-weight-bold">
+                <span>Simplifying</span> <span style={{
+                  marginTop: "30px", marginLeft: "20px", marginRight: "20px",
+                }}>PG</span> Life
+              </h1>
             </div>
             <div className="row BannerAd">
-          {bannerAdData ? (
-            <img src={bannerAdData.image} alt="Banner Ad" width="728px" height="90px" />
-          ) : (
-            <p>Loading banner ad...</p>
-          )}
-        </div>
+              {!isLoading && bannerAdData ? (
+                <img src={bannerAdData.image} alt="Banner Ad" width="728px" height="90px" />
+              ) : (
+                <img src={defaultBannerImage} alt="Default Banner Ad" width="728px" height="90px" />
+              )}
+            </div>
           </div>
           <div className="col-lg-3 SkyScrapperAd">
-            {skyScrapperAdData ? (
+            {!isLoading && skyScrapperAdData ? (
               <img src={skyScrapperAdData.image} className="p-3 mt-4" width="300px" height="600px" alt="SkyScrapper Ad" />
             ) : (
-              <p>Loading sky scrapper ad...</p>
+              <img src={defaultSkyScrapperImage} className="p-3 mt-4" width="300px" height="600px" alt="Default SkyScrapper Ad" />
             )}
           </div>
         </div>
-        
+
       </div>
     </div>
   )
 }
 
-export default LandingAds
+export default LandingAds;
