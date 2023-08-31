@@ -10,7 +10,7 @@ const Pg_Product_List = () => {
   }=useContext(SearchContext);
   return (
     <div className="row">
-        {/*  <SearchBar  /> */}
+         <SearchBar  />
       
       <div className="col-lg-10 mt-3 col-sm-12">
         {isLoading ? ( // Use isLoading state to conditionally render the loading spinner

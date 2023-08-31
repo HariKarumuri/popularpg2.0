@@ -9,7 +9,10 @@
 
 .location_input_select {
   width: 500px;
-  z-index: 99;
+  z-index: 4;
+}
+.sharing_input_select {
+  z-index: 3;
 }
 .seachbar-icons {
   font-size: 1.5rem;
@@ -31,7 +34,6 @@
   text-transform: var(--text-transform, capitalize);
   border: 1px solid var(--orange-soda);
   padding: 10px 20px;
-  z-index: 1;
   border-radius: 0.5rem;
 }
 
@@ -48,4 +50,28 @@
 }
 .custom-dropdown-toggle::after {
   content: none;
+}
+
+@media (max-width: 600px) {
+
+  .location_input_select ,.sharing_input_select {
+    width: 320px;
+    
+  }
+  .SearchBar-listing .card-body{
+    text-align: left !important;
+    
+  }
+  .Search-listing-Location , .Search-listing-gender , .Search-listing-sharing{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    margin-top: 0.5rem;
+  }
+  .margin-0-mobile{
+    margin-top: 0 !important;
+    
+  }
+
+
 }
