@@ -13,6 +13,7 @@ import ProductFetchExample from './pages/ProductFetchExample';
 import Pg_Listing_Card from "./components/Pg-Listing/Cards/Pg_Listing_Card";
 import ContactDetailsPage from "./components/Pg-Listing/Util/ContactDetailPage";
 import SearchState from "./components/Appcontext/SearchState";
+import Login from './components/Login/Login';
 function App() {
 
   const location = useLocation();
@@ -35,9 +36,11 @@ function App() {
           <Route path="/newListings" element={<Pg_Listing_Card />} />
           <Route path="/tester" element={<ProductFetchExample/>} />
           <Route  path="/employee/:uniqueId" element={<Employee/>} />
+          {/* <Route  path="/login" element={<Login/>} /> */}
+          
 
         </Routes>
-        <Cta />
+{/*         <Cta /> */}
         <Footer />
         </SearchState>
       </div>

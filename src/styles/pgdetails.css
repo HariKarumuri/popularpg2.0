@@ -1,3 +1,19 @@
+.Amenitie-icons{
+  color: var(--orange-soda);
+  font-size: 1.3em;
+  
+}
+.deposite-price-tag{
+  font-size: small;
+}
+.sharing-price-tag{
+  font-size: larger;
+}
+.gallery-img{
+  height: 400px;
+  width: 650px;
+}
+
 /*-----------------------------------*\
   #MEDIA QUERIES
 \*-----------------------------------*/

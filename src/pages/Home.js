@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <div>
       <LandingAds/>
-      <Hero />
+      {/* <Hero /> */}
       <Premium_Ads/>
       <Popular_Ads/>
       {/* <Featured />
