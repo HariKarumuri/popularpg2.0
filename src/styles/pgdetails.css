@@ -73,7 +73,7 @@
     align-items: center;
   }
 }
-
+/* for the mobile view  */
 @media(max-width:600px){
     .trapez1 {
         border-left: 0px solid transparent;
@@ -94,6 +94,9 @@
       }
       .hideonsmall{
         display:none;
+      }
+      .PgDetailsCard-topsec{
+        background: var(--orange-soda-transparent) !important;
       }
       
 }

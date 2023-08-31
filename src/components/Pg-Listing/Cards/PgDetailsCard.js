@@ -19,14 +19,14 @@ const PgDetailsCard = ({ pg }) => {
     setIsGalleryModalOpen(false);
   };
   return (
-    <div>
+    <div className="PgDetailsCard">
       <div className="bg_color">
         <>
           {" "}
           {pg ? (
             <>
               <div
-                className=" bg-white"
+                className="PgDetailsCard-topsec bg-white"
                 style={{
                   paddingLeft: "10%",
                   paddingRight: "10%",

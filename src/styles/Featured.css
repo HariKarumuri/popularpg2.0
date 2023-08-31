@@ -2,6 +2,8 @@
   #PROPERTY
 \*-----------------------------------*/
 
+
+
 .container-custom{
   width: 1080px;
   margin: auto;
@@ -229,6 +231,11 @@
 .otherbtn {
   color: var(--orange-soda) !important;
   background-color: var(--white) !important;
+}
+
+.property-card a{
+  text-decoration: none;
+  color: var(--black);
 }
 
 
