@@ -10,9 +10,9 @@ const Pg_Product_List = () => {
   }=useContext(SearchContext);
   return (
     <div className="row">
-         <SearchBar  />
+        {/*  <SearchBar  /> */}
       
-      <div className="col-lg-10 mt-3">
+      <div className="col-lg-10 mt-3 col-sm-12">
         {isLoading ? ( // Use isLoading state to conditionally render the loading spinner
           <div className="d-flex justify-content-center">
             <div className="loading-container">
@@ -33,7 +33,7 @@ const Pg_Product_List = () => {
           ))
         )}
       </div>
-      <div className="col-lg-2">
+      <div className="col-lg-2  display-none-mobile">
         <AdsCard/>
       </div>
     </div>

@@ -1,3 +1,4 @@
+
 .rate{
   font-weight: 600;
 }
@@ -124,6 +125,55 @@
      z-index: 2;
      font-size: 12px;
   }
+  .trapezoid3{
+    font-size: 0.7rem;
+  }
+
+  /* here are the mobile styles for the listing cards */
+  .listing-card{
+    margin: 0.5rem;
+    margin-top: 0 ;
+    position: relative;
+    padding-bottom:45px ;
+  }
+  .button-box{
+    position: absolute;
+    left: 10%;
+
+  }
+  .button-box .d-flex a{
+    font-size: 10px;
+    width: 135px;
+
+  }
+  .view-number-btn{
+    
+    margin: 0;
+    height: 37px;
+  }
+  .Listing-card-body .card-body{
+    text-align: left;
+    margin-left: 0.5rem;
+  }
+  .display-none-mobile{
+    display: none;
+  }
+  .Listing-card-body h5 {
+    font-size: 0.9rem;
+  }
+  .Listing-card-body h6{
+    font-size: 0.8rem;
+  }
+  .listing-address{
+    font-size: 0.7rem;
+  }
+  .listing-product-name{
+    font-size: 12px !important;
+  }
+  .line-divider {
+    width: 100% !important;
+  }
+  
 
  }
 /**

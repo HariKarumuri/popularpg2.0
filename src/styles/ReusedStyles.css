@@ -72,23 +72,12 @@ button, a { transition: var(--transition); }
   border: 1px solid var(--orange-soda);
   padding: 10px 20px;
   z-index: 1;
+  border-radius: 3px;
 }
 
 
 
-.btn2::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: var(--white);
-  transition: var(--transition);
-  z-index: -1;
-}
 
-.btn2:is(:hover, :focus)::before { width: 100%; }
 
 .w-100 { width: 100%; }
 
@@ -154,4 +143,5 @@ button, a { transition: var(--transition); }
 }
 
 .has-scrollbar::-webkit-scrollbar-button { width: 15%; }
+
 
