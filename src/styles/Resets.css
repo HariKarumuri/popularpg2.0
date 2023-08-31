@@ -33,6 +33,7 @@ ion-icon { pointer-events: none; }
 html {
   font-family: var(--ff-nunito-sans);
   scroll-behavior: smooth;
+  overflow-x:hidden ;
 }
 
 body {
