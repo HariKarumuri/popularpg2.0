@@ -73,5 +73,10 @@
     
   }
 
+  /* home search styling below */
+  
+  .search-bar-container{
+    padding: 0.9rem 0;
+  }
 
 }
