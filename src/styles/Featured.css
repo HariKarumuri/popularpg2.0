@@ -243,6 +243,19 @@
   #MEDIA QUERIES
 \*-----------------------------------*/
 
+@media (max-width: 600px) {
+  /**
+   * PROPERTY
+   */
+  .property-card{
+    width: 250px !important;
+  }
+  .property-card .card-badge{
+    font-size: 0.5rem;
+  }
+  
+}
+
 /**
  * responsive for larger than 600px screen
  */
