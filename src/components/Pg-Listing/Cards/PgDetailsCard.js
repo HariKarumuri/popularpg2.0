@@ -38,7 +38,7 @@ const PgDetailsCard = ({ pg }) => {
                       <h6>
                         <small className="text-muted mx-2">Rent/Bed</small>
                       </h6>
-                      <div className="d-flex flex-wrap">
+                      <div className="d-flex flex-wrap pg-details-price ">
                         <div className="fs-3"> Rs.{pg.min_price}</div>
                         <p
                           className="text-secondary"
@@ -169,9 +169,9 @@ const PgDetailsCard = ({ pg }) => {
                     </div>
                     <div className="col-md-8">
                       <div className="card-body">
-                        <div className="line1 d-flex justify-content-between flex-wrap">
+                        <div className="line1 d-flex justify-content-between align-items-center flex-wrap">
                           <h6 className="name mr-2 text-dark fw-bold">
-                            {pg.locality}
+                            {pg.product_name}
                           </h6>
                           <Link
                             to="PgMap"
@@ -179,124 +179,24 @@ const PgDetailsCard = ({ pg }) => {
                             smooth={true}
                             offset={-100}
                             duration={300}
-                            className="d-flex fw-light fs-6"
+                            className="d-flex fw-light fs-6 d-flex justify-content-center align-items-center"
                           >
-                            <ion-icon name="location-outline"></ion-icon>view on
-                            map
+                            <ion-icon name="location-outline"></ion-icon>
+                            view on map
                           </Link>
                         </div>
-                        <div className="">
+                        <div className="pg-details-address">
                           <p>{pg.address}</p>
                         </div>
-                        <table className="table visibleon360">
-                          <div className="d-flex justify-content-between visibleon360 flex-wrap">
-                            <div className="text-muted fw-light mx-3">
-                              Deposit Amount
-                              <span className="fw-normal mx-3">
-                                {pg.security_deposite
-                                  ? pg.security_deposite
-                                  : "-"}
-                              </span>
-                            </div>
-                            <div className="text-muted fw-light mx-3">
-                              Maintenance{" "}
-                              <span className="fw-normal mx-3">-</span>
-                            </div>
-                            <div className="text-muted fw-light mx-3">
-                              Notice Period
-                              <span className="fw-normal mx-3">
-                                {pg.notice_period ? pg.notice_period : "-"}
-                              </span>
-                            </div>
-                            <div className="text-muted fw-light mx-3">
-                              Electricity Charges
-                              <span className="fw-normal mx-3">
-                                {pg.electric_charge ? pg.electric_charge : "-"}
-                              </span>
-                            </div>
-                          </div>
-                        </table>
-                        <table className="table visibleon360 ">
-                          <div className="d-flex justify-content-center visibleon360 flex-wrap">
-                            <div className="text-muted fw-light rounded my-2">
-                              <div
-                                className="column-bg rounded "
-                                style={{
-                                  backgroundColor: "#e6e6e6",
-                                  width: "10rem",
-                                }}
-                              >
-                                Single Sharing
-                                <span className="fw-normal">
-                                  ₹
-                                  {pg.single_sharing_price
-                                    ? pg.single_sharing_price
-                                    : "NA"}
-                                </span>
-                              </div>
-                            </div>
-                            <div className="text-muted fw-light rounded my-2">
-                              <div
-                                className="column-bg rounded "
-                                style={{
-                                  backgroundColor: "#e6e6e6",
-                                  width: "10rem",
-                                }}
-                              >
-                                Double Sharing
-                                <span className="fw-normal">
-                                  ₹
-                                  {pg.double_sharing_price
-                                    ? pg.double_sharing_price
-                                    : "NA"}
-                                </span>
-                              </div>
-                            </div>
-                            <div className="text-muted fw-light rounded my-2">
-                              <div
-                                className="column-bg rounded "
-                                style={{
-                                  backgroundColor: "#e6e6e6",
-                                  width: "10rem",
-                                }}
-                              >
-                                Triple Sharing
-                                <span className="fw-normal">
-                                  ₹
-                                  {pg.triple_sharing_price
-                                    ? pg.triple_sharing_price
-                                    : "NA"}
-                                </span>
-                              </div>
-                            </div>
-                            <div className="text-muted fw-light rounded my-2">
-                              <div
-                                className="column-bg rounded "
-                                style={{
-                                  backgroundColor: "#e6e6e6",
-                                  width: "10rem",
-                                }}
-                              >
-                                Four Sharing
-                                <span className="fw-normal">
-                                  ₹
-                                  {pg.four_sharing_price
-                                    ? pg.four_sharing_price
-                                    : "NA"}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </table>
 
-                        <table className="table  visible360">
-                          <tbody>
-                            <tr className=" mx-4">
+                        <table className="table  visible360 d-flex flex-column">
+                          <tbody className="d-flex pg-details-info1">
+                            <tr className=" ">
                               <th
                                 className="text-muted fw-light mx-4"
                                 scope="row"
                               >
-                                Property Mangaged
+                                Property Mangaged by
                                 <span className="fw-normal mx-4 text-capitalize">
                                   {pg.property_managed_by
                                     ? pg.property_managed_by
@@ -326,11 +226,7 @@ const PgDetailsCard = ({ pg }) => {
                               </td>
                             </tr>
                           </tbody>
-                          <div
-                            style={{
-                              marginLeft: "-10rem",
-                            }}
-                          >
+                          <div className="pg-details-occupancy">
                             <div className="d-flex justify-content-center my-2">
                               {pg.single_sharing_price && (
                                 <div
@@ -409,7 +305,7 @@ const PgDetailsCard = ({ pg }) => {
                             </div>
                           </div>
                         </table>
-                        <p className="desc text-muted ">
+                        {/* <p className="desc text-muted ">
                           {pg.topAmenities_in_property.map((amenity) => {
                             return (
                               <div className="d-flex">
@@ -423,7 +319,7 @@ const PgDetailsCard = ({ pg }) => {
                               </div>
                             );
                           })}
-                        </p>
+                        </p> */}
                         <div className="d-flex ">
                           <Linker
                             className="btn btn-danger mr-2"

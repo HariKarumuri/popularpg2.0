@@ -13,6 +13,10 @@
   height: 400px;
   width: 650px;
 }
+.pg-details-occupancy{
+  display: flex;
+}
+
 
 /*-----------------------------------*\
   #MEDIA QUERIES
@@ -98,6 +102,18 @@
       .PgDetailsCard-topsec{
         background: var(--orange-soda-transparent) !important;
       }
+      .pg-details-address{
+        text-align: start;
+      }
+      .pg-details-info1{
+        
+        font-size: 0.8rem;
+       
+      }
+      .pg-details-price{
+        color: var(--orange-soda);
+      }
+
       
 }
  
