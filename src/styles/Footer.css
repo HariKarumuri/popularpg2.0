@@ -6,19 +6,17 @@
   background: var(--raisin-black-1);
   color: var(--white);
   margin-bottom: 68px;
+  
 }
 
-.footer .container {
-  padding-inline: 30px;
-}
+
 
 .footer a {
   color: inherit;
 }
 
 .footer-top {
-  padding-top: 80px;
-  padding-bottom: 40px;
+  padding: 2rem 0;
 }
 
 .footer-brand {
@@ -110,16 +108,31 @@
   border-right: 1px solid white;
 
 }
+.addressMap a{
+  font-size: 0.8rem;}
+
+
+.section-text {
+  font-size: 0.8rem;
+}
+
 
 
 /*-----------------------------------*\
   #MEDIA QUERIES
 \*-----------------------------------*/
 
+
+ @media (max-width: 600px) {
+  
+  .addressMap a{
+    font-size: 0.5rem;
+  }
+  
+}
 /**
  * responsive for larger than 600px screen
  */
-
 @media (min-width: 600px) {
   /**
    * FOOTER
@@ -130,6 +143,7 @@
     justify-content: space-between;
     gap: 20px;
   }
+  
 }
 
 /**

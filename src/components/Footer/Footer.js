@@ -5,214 +5,186 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer-top">
+      <div className="footer-top ">
         <div className="container">
-          <div className="footer-brand">
-            <a href="#" className="logo">
-              <img src={Logo} alt="Popular PG logo" width="200px" />
-            </a>
-
-            <p className="section-text">
-              Popular PG is a marketplace for paying guest (PG) accommodation in
-              Bangalore. We connect PG seekers with PG providers, making it easy
-              to find the perfect PG for your needs. Whether you are looking for
-              a PG near your college or workplace, or you are on a budget, we
-              have the PG for you.
-            </p>
-
-            <ul className="contact-list">
-              <li>
-                <a href="#" className="contact-link">
-                  <ion-icon name="location-outline"></ion-icon>
-
-                  <address>electronic city Phase 2</address>
+          <div className="row">
+            <div className="col-lg-4 col-sm-8 col-6">
+              <div className="footer-brand">
+                <a href="#" className="logo">
+                  <img src={Logo} alt="Popular PG logo" width="150px" />
                 </a>
-              </li>
 
-              <li>
-                <a href="tel:+0123456789" className="contact-link">
-                  <ion-icon name="call-outline"></ion-icon>
+                <p className="section-text">
+                  Popular PG is a marketplace for paying guest (PG)
+                  accommodation in Bangalore. We connect PG seekers with PG
+                  providers, making it easy to find the perfect PG for your
+                  needs. Whether you are looking for a PG near your college or
+                  workplace, or you are on a budget, we have the PG for you.
+                </p>
 
-                  <span>9874563210</span>
-                </a>
-              </li>
+                <ul className="contact-list">
+                  <li>
+                    <a href="#" className="contact-link">
+                      <ion-icon name="location-outline"></ion-icon>
 
-              <li>
-                <a href="mailto:contact@homeverse.com" className="contact-link">
-                  <ion-icon name="mail-outline"></ion-icon>
+                      <address>electronic city Phase 2</address>
+                    </a>
+                  </li>
 
-                  <span>popularpg629@gmail.com</span>
-                </a>
-              </li>
-            </ul>
+                  <li>
+                    <a href="tel:+0123456789" className="contact-link">
+                      <ion-icon name="call-outline"></ion-icon>
 
-            <ul className="social-list">
-              <li>
-                <a href="#" className="social-link">
-                  <ion-icon name="logo-facebook"></ion-icon>
-                </a>
-              </li>
+                      <span>9874563210</span>
+                    </a>
+                  </li>
 
-              <li>
-                <a href="#" className="social-link">
-                  <ion-icon name="logo-twitter"></ion-icon>
-                </a>
-              </li>
+                  <li>
+                    <a
+                      href="mailto:contact@homeverse.com"
+                      className="contact-link"
+                    >
+                      <ion-icon name="mail-outline"></ion-icon>
 
-              <li>
-                <a href="#" className="social-link">
-                  <ion-icon name="logo-linkedin"></ion-icon>
-                </a>
-              </li>
+                      <span>popularpg629@gmail.com</span>
+                    </a>
+                  </li>
+                </ul>
 
-              <li>
-                <a href="#" className="social-link">
-                  <ion-icon name="logo-youtube"></ion-icon>
-                </a>
-              </li>
-            </ul>
-          </div>
+                <ul className="social-list">
+                  <li>
+                    <a href="#" className="social-link">
+                      <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                  </li>
 
-          <div className="footer-link-box">
-            <ul className="footer-list">
-              <li>
-                <p className="footer-list-title">Company</p>
-              </li>
+                  <li>
+                    <a href="#" className="social-link">
+                      <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                  </li>
 
-              <li>
-                <a href="#" className="footer-link">
-                  About Us
-                </a>
-              </li>
+                  <li>
+                    <a href="#" className="social-link">
+                      <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                  </li>
 
-              <li>
-                <a href="#" className="footer-link">
-                  Contact us
-                </a>
-              </li>
-
-              <li>
-                <a href="#" className="footer-link">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="footer-link">
-                  Terms & Conditions
-                </a>
-              </li>
-
-              <li>
-                <a href="#" className="footer-link">
-                  Grievances
-                </a>
-              </li>
-              <li>
-                <a href="#" className="footer-link">
-                  Safety Guide
-                </a>
-              </li>
-            </ul>
-
-            <ul className="footer-list ">
-              <li>
-                <p className="footer-list-title">PGs in Bangalore</p>
-              </li>
-              <div className="addressMap row">
-                <li className="col m-1">
-                  <Link to="" className="footer-link">
-                    Pg in Marthahalli
-                  </Link>
-                </li>
-                
-                <li className="col m-1">
-                  <Link to="" className="footer-link">
-                    Pg in BTM Layout
-                  </Link>
-                </li>
-                <li className="col m-1">
-                  <Link to="" className="footer-link">
-                    Pg in Whitefield
-                  </Link>
-                </li>
-                <li className="col m-1">
-                  <Link to="" className="footer-link">
-                    Pg in Electronic city
-                  </Link>
-                </li>
-                <li className="col m-1">
-                  <Link to="" className="footer-link">
-                    Pg in Sarjapur Road
-                  </Link>
-                </li>
-                <li className="col m-1">
-                  <Link to="" className="footer-link">
-                    Pg in Madiwala
-                  </Link>
-                </li>
-                <li className="col m-1">
-                  <Link to="" className="footer-link">
-                    Pg in Kormangala
-                  </Link>
-                </li>
-                <li className="col m-1">
-                  <Link to="" className="footer-link">
-                    Pg in HSR Layout
-                  </Link>
-                </li>
-                <li className="col m-1">
-                  <Link to="" className="footer-link">
-                    Pg in Bellandur
-                  </Link>
-                </li>
-                <li className="col m-1">
-                  <Link to="" className="footer-link">
-                    Pg in Manyata Tech Park
-                  </Link>
-                </li>
+                  <li>
+                    <a href="#" className="social-link">
+                      <ion-icon name="logo-youtube"></ion-icon>
+                    </a>
+                  </li>
+                </ul>
               </div>
-            </ul>
+            </div>
 
-            {/* <ul className="footer-list">
-              <li>
-                <p className="footer-list-title">Customer Care</p>
-              </li>
+            <div className="  col-lg-2 col-6 ">
+              <ul className="footer-list company-footer">
+                <li>
+                  <p className="footer-list-title">Company</p>
+                </li>
 
-              <li>
-                <a href="#" className="footer-link">
-                  Login
-                </a>
-              </li>
+                <li>
+                  <a href="#" className="footer-link">
+                    About Us
+                  </a>
+                </li>
 
-              <li>
-                <a href="#" className="footer-link">
-                  My account
-                </a>
-              </li>
+                <li>
+                  <a href="#" className="footer-link">
+                    Contact us
+                  </a>
+                </li>
 
-              <li>
-                <a href="#" className="footer-link">
-                  Saved List
-                </a>
-              </li>
+                <li>
+                  <a href="#" className="footer-link">
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="footer-link">
+                    Terms & Conditions
+                  </a>
+                </li>
 
-              <li>
-                <a href="#" className="footer-link">
-                  FAQ
-                </a>
-              </li>
+                <li>
+                  <a href="#" className="footer-link">
+                    Grievances
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="footer-link">
+                    Safety Guide
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className=" col-lg-6 ">
+              <ul className="footer-list ">
+                <li>
+                  <p className="footer-list-title">PGs in Bangalore</p>
+                </li>
+                <div className="addressMap row">
+                  <li className="col-2  m-1">
+                    <Link to="" className="footer-link">
+                      Pg in Marthahalli
+                    </Link>
+                  </li>
 
-              <li>
-                <a href="#" className="footer-link">
-                  Contact us
-                </a>
-              </li>
-            </ul> */}
+                  <li className="col-2  m-1">
+                    <Link to="" className="footer-link">
+                      Pg in BTM Layout
+                    </Link>
+                  </li>
+                  <li className="col-2  m-1">
+                    <Link to="" className="footer-link">
+                      Pg in Whitefield
+                    </Link>
+                  </li>
+                  <li className="col-2  m-1">
+                    <Link to="" className="footer-link">
+                      Pg in Electronic city
+                    </Link>
+                  </li>
+                  <li className="col-2  m-1">
+                    <Link to="" className="footer-link">
+                      Pg in Sarjapur Road
+                    </Link>
+                  </li>
+                  <li className="col-2  m-1">
+                    <Link to="" className="footer-link">
+                      Pg in Madiwala
+                    </Link>
+                  </li>
+                  <li className="col-2  m-1">
+                    <Link to="" className="footer-link">
+                      Pg in Kormangala
+                    </Link>
+                  </li>
+                  <li className="col-2  m-1">
+                    <Link to="" className="footer-link">
+                      Pg in HSR Layout
+                    </Link>
+                  </li>
+                  <li className="col-2  m-1">
+                    <Link to="" className="footer-link">
+                      Pg in Bellandur
+                    </Link>
+                  </li>
+                  <li className="col-2  m-1">
+                    <Link to="" className="footer-link">
+                      Pg in Manyata Tech Park
+                    </Link>
+                  </li>
+                </div>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="footer-bottom">
+      <div className="footer-bottom d-none">
         <div className="container">
           <p className="copyright">
             {/* &copy; 2022 <a href="#">harikarumuri</a>. All Rights Reserved */}
