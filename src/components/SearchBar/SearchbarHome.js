@@ -11,8 +11,8 @@ const SearchBarHome = () => {
     <div>
       <section className="search-bar-home mt-5">
         <div className="container">
-          <div className="row" style={{ border: "1px solid black", borderRadius: "10px" }}>
-            <div className="col-md-5">
+          <div className="row search-bar-container" style={{ border: "1px solid black", borderRadius: "10px" }}>
+            <div className="col-md-5 col-8">
               <div className="d-flex justify-content-between align-items-center">
                 <ion-icon
                   style={{
@@ -35,7 +35,7 @@ const SearchBarHome = () => {
                 />
               </div>
             </div>
-            <div className="col-md-2" style={{ borderLeft: "1px solid black" }}>
+            <div className="col-md-2 display-none-mobile" style={{ borderLeft: "1px solid black" }}>
               <div className="form-group">
                 <select
                   className="form-select"
@@ -55,7 +55,7 @@ const SearchBarHome = () => {
                 </select>
               </div>
             </div>
-            <div className="col-md-3" style={{ borderLeft: "1px solid black" }}>
+            <div className="col-md-3 display-none-mobile" style={{ borderLeft: "1px solid black" }}>
               <span></span>
               <div className="form-group">
                 <select
@@ -77,7 +77,7 @@ const SearchBarHome = () => {
               </div>
             </div>
 
-            <div className="col-md-1">
+            <div className="col-md-1 col-2 home-search-btn">
               <Link
                 to="/listings"
                 onClick={handleSearch}

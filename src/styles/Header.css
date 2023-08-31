@@ -173,6 +173,8 @@
   font-weight: var(--fw-500);
 }
 
+
+
 /*-----------------------------------*\
   #MEDIA QUERIES
 \*-----------------------------------*/
@@ -207,6 +209,9 @@ padding: 7px;
 }
 .MobileViewAlign{
   margin: auto 0 !important;
+}
+.AddListing{
+  display: none !important;
 }
 
 }
@@ -266,6 +271,8 @@ padding: 7px;
     height: 50px;
     box-shadow: var(--shadow-2);
   }
+  
+
 }
 
 /**

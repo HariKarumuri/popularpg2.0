@@ -2,6 +2,8 @@
   #PROPERTY
 \*-----------------------------------*/
 
+
+
 .container-custom{
   width: 1080px;
   margin: auto;
@@ -231,10 +233,28 @@
   background-color: var(--white) !important;
 }
 
+.property-card a{
+  text-decoration: none;
+  color: var(--black);
+}
+
 
 /*-----------------------------------*\
   #MEDIA QUERIES
 \*-----------------------------------*/
+
+@media (max-width: 600px) {
+  /**
+   * PROPERTY
+   */
+  .property-card{
+    width: 250px !important;
+  }
+  .property-card .card-badge{
+    font-size: 0.5rem;
+  }
+  
+}
 
 /**
  * responsive for larger than 600px screen

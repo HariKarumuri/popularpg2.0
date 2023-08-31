@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Testimg from "../../assets/images/imgage2.jpg";
 
-const Popular_Ads_Cards = () => {
+const Popular_Ads_Cards = (props) => {
+  const product = props.product;
+
   return (
     <div className="property-card col-lg-4 col-md-5 col-sm-10 col-10 d-flex flex-column">
       <figure className="card-banner">
         <Link to="">
           <img
-            src={Testimg}
+            src={product.cover_image}
             alt="New Apartment Nice View"
             className="img-fluid"
           />
@@ -19,22 +20,26 @@ const Popular_Ads_Cards = () => {
         <div className="banner-actions ">
           <button className="banner-actions-btn d-flex align-items-center">
             <ion-icon name="location"></ion-icon>
-            <address>Electronic city</address>
+            <address>{product.locality}</address>
           </button>
 
           <button className="banner-actions-btn">
             <ion-icon name="camera"></ion-icon>
 
-            <span>4</span>
+            {/* Use the actual number of images here */}
+            <span>{product.additional_images.length}</span>
           </button>
         </div>
       </figure>
       <div className="card-content p-2">
-        <div className="h4 card-title">Dozo Moon</div>
-        <div className="card-address">Electronic city , 530046</div>
+        <div className="h4 card-title">{product.product_name}</div>
+        <div className="card-address">
+          {product.locality}, {product.city}
+        </div>
 
+        {/* Use the actual price here */}
         <div className="card-price">
-          <strong>₹11,500</strong>/Month
+          <strong>₹{product.min_price}</strong>/Month
         </div>
       </div>
     </div>

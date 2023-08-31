@@ -50,7 +50,6 @@ const SearchBar = () => {
     { value: "Single", label: "Single" },
     { value: "Double", label: "Double" },
     { value: "Triple", label: "Triple" },
-    // Add more occupancy type options here...
   ];
 
   useEffect(() => {
@@ -76,7 +75,7 @@ const SearchBar = () => {
   }, [minValue, maxValue, data]);
 
   return (
-    <div>
+    <div className="SearchBar-listing">
       <section
         className="search-banner backcolor text-white "
         id="search-banner"
@@ -87,7 +86,7 @@ const SearchBar = () => {
               <div className="card-body">
                 <div className="row">
                   {/* location below */}
-                  <div className="col-lg-6 justify-content-center align-items-center">
+                  <div className="col-lg-6 justify-content-center align-items-center Search-listing-Location">
                     <div className="form-group d-flex ">
                       <div className="d-flex ">
                         <ion-icon
@@ -118,7 +117,7 @@ const SearchBar = () => {
                     </div>
                   </div>
                   {/* gender below */}
-                  <div className="col-lg-2 d-flex  justify-content-center align-items-center">
+                  <div className="col-lg-2 d-flex  justify-content-center align-items-center Search-listing-gender">
                     <div className="form-group d-flex ">
                       <div className="py-2">
                         <ion-icon
@@ -148,42 +147,45 @@ const SearchBar = () => {
                   </div>
                   {/* sharing below */}
                   <div className="col-lg-4 ">
-                    <div className="form-group d-flex justify-content-center align-items-center">
-                      <div className="py-2">
-                        <ion-icon
-                        
-                          style={{
-                            paddingTop: "5px",
-                            marginRight: "10px",
-                            fontWeight: "bold",
-                            fontSize: "20px",
-                          }}
-                          name="home"
-                        ></ion-icon>
+                    <div className="form-group d-flex justify-content-center align-items-center Search-listing-sharing">
+                      <div className="form-group d-flex">
+                        <div className="d-flex justify-content-center align-items-center ">
+                          <ion-icon
+                            style={{
+                              paddingTop: "5px",
+                              marginRight: "10px",
+                              fontWeight: "bold",
+                              fontSize: "20px",
+                            }}
+                            name="home"
+                          ></ion-icon>
+
+                          <Select
+                            className="sharing_input_select"
+                            isMulti
+                            value={occupancyTypeOptions.filter((option) =>
+                              occupancytype.includes(option.value)
+                            )}
+                            options={occupancyTypeOptions}
+                            onChange={(selectedOptions) => {
+                              const selectedValues = selectedOptions.map(
+                                (option) => option.value
+                              );
+                              setOccupancyType(selectedValues);
+                            }}
+                            placeholder="Select Occupancy Type"
+                          />
+                        </div>
                       </div>
-                      <Select
-                        isMulti
-                        value={occupancyTypeOptions.filter((option) =>
-                          occupancytype.includes(option.value)
-                        )}
-                        options={occupancyTypeOptions}
-                        onChange={(selectedOptions) => {
-                          const selectedValues = selectedOptions.map(
-                            (option) => option.value
-                          );
-                          setOccupancyType(selectedValues);
-                        }}
-                        placeholder="Select Occupancy Type"
-                      />
                     </div>
                   </div>
                 </div>
-                <div className="row  mt-3 ">
+                <div className="row  mt-3 margin-0-mobile ">
                   {/* budget below */}
-                  <div className="col-lg-5">
-                    <div className="row justify-content-center align-items-center">
+                  <div className="col-lg-5 col-6">
+                    <div className="row justify-content-center align-items-center ">
                       <div className="col-auto py-2 seachbar-icons">
-                        &#x20B9;
+                       &#x20B9;
                       </div>
                       <div className="col">
                         <div className="dropdown" ref={dropdownRef}>
@@ -312,7 +314,7 @@ const SearchBar = () => {
                     </div>
                   </div>
                   {/* sort below */}
-                  <div className="d-flex col-lg-4 justify-content-center align-items-center">
+                  <div className="d-flex col-lg-4 col-6 justify-content-center align-items-center">
                     <select
                       id="inputState"
                       className="form-select "
@@ -330,7 +332,8 @@ const SearchBar = () => {
                       className=" Filter-Search-Btn d-flex justify-content-center align-items-center"
                       onClick={() => handleSearch()}
                     >
-                      <ion-icon name="search-outline"></ion-icon> <span className="mx-2">Search</span>
+                      <ion-icon name="search-outline"></ion-icon>{" "}
+                      <span className="mx-2">Search</span>
                     </button>
                   </div>
                 </div>

@@ -1,3 +1,23 @@
+.Amenitie-icons{
+  color: var(--orange-soda);
+  font-size: 1.3em;
+  
+}
+.deposite-price-tag{
+  font-size: small;
+}
+.sharing-price-tag{
+  font-size: larger;
+}
+.gallery-img{
+  height: 400px;
+  width: 650px;
+}
+.pg-details-occupancy{
+  display: flex;
+}
+
+
 /*-----------------------------------*\
   #MEDIA QUERIES
 \*-----------------------------------*/
@@ -57,7 +77,7 @@
     align-items: center;
   }
 }
-
+/* for the mobile view  */
 @media(max-width:600px){
     .trapez1 {
         border-left: 0px solid transparent;
@@ -79,6 +99,21 @@
       .hideonsmall{
         display:none;
       }
+      .PgDetailsCard-topsec{
+        background: var(--orange-soda-transparent) !important;
+      }
+      .pg-details-address{
+        text-align: start;
+      }
+      .pg-details-info1{
+        
+        font-size: 0.8rem;
+       
+      }
+      .pg-details-price{
+        color: var(--orange-soda);
+      }
+
       
 }
  

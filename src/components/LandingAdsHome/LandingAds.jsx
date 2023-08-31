@@ -35,20 +35,20 @@ const LandingAds = () => {
   return (
     <div>
       <div className="container">
-        <div className="row">
+        <div className="row ">
           <div className="col-lg-9">
             <div className="row">
               <SearchBar />
             </div>
 
             <div className="row homeTitle ">
-              <h1 className="d-flex justify-content-center mx-2 font-weight-bold">
+              <h1 className="d-flex justify-content-center align-items-center mx-2 font-weight-bold">
                 <span>Simplifying</span> <span style={{
                   marginTop: "30px", marginLeft: "20px", marginRight: "20px",
                 }}>PG</span> Life
               </h1>
             </div>
-            <div className="row BannerAd">
+            <div className="row BannerAd d-flex justify-content-center align-items-center">
               {!isLoading && bannerAdData ? (
                 <img src={bannerAdData.image} alt="Banner Ad" width="728px" height="90px" />
               ) : (
@@ -56,11 +56,11 @@ const LandingAds = () => {
               )}
             </div>
           </div>
-          <div className="col-lg-3 SkyScrapperAd">
+          <div className="col-lg-3 SkyScrapperAd d-flex justify-content-center align-items-center">
             {!isLoading && skyScrapperAdData ? (
-              <img src={skyScrapperAdData.image} className="p-3 mt-4" width="300px" height="600px" alt="SkyScrapper Ad" />
+              <img src={skyScrapperAdData.image} className="p-3 mt-4" width="300px" height="250px" alt="SkyScrapper Ad" />
             ) : (
-              <img src={defaultSkyScrapperImage} className="p-3 mt-4" width="300px" height="600px" alt="Default SkyScrapper Ad" />
+              <img src={defaultSkyScrapperImage} className="p-3 mt-4" width="300px" height="250px" alt="Default SkyScrapper Ad" />
             )}
           </div>
         </div>
