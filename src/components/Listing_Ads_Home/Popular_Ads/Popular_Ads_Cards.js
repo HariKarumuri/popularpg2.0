@@ -31,7 +31,7 @@ const Popular_Ads_Cards = ({ popularAd }) => {
         </figure>
         <div className="card-content p-2">
           <div className="h4 card-title">{popularAd.product.product_name}</div>
-          <div className="card-address">{popularAd.product.address}</div>
+          <div className="card-address">{popularAd.locality}</div>
           <div className="card-price">
             <strong>₹{popularAd.product.min_price}</strong>/Month
           </div>

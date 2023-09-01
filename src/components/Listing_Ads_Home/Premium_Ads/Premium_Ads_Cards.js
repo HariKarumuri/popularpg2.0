@@ -30,7 +30,7 @@ const Premium_Ads_Cards = ({ premiumAd }) => {
         </figure>
         <div className="card-content p-2">
           <div className="h4 card-title">{premiumAd.product.product_name}</div>
-          <div className="card-address">{premiumAd.product.address}</div>
+          <div className="card-address">{premiumAd.locality}</div>
           <div className="card-price">
             <strong>₹{premiumAd.product.min_price}</strong>/Month
           </div>
