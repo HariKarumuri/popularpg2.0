@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PgAreaAmenities from "../Util/Pg_Area_Amenities";
@@ -9,15 +9,7 @@ import { Link as Linker } from "react-router-dom";
 import GalleryModal from "./../Util/GalleryModal";
 
 const PgDetailsCard = ({ pg }) => {
-  const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
 
-  const openGalleryModal = () => {
-    setIsGalleryModalOpen(true);
-  };
-
-  const closeGalleryModal = () => {
-    setIsGalleryModalOpen(false);
-  };
   return (
     <div className="PgDetailsCard">
       <div className="bg_color">
@@ -159,7 +151,7 @@ const PgDetailsCard = ({ pg }) => {
                           <div className="col rounded text-center px-3 badge-color my-2 mx-2 ">
                             <button
                               className="text-dark fs-6"
-                              onClick={openGalleryModal}
+                              type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                             >
                               More Photos
                             </button>
@@ -371,6 +363,7 @@ const PgDetailsCard = ({ pg }) => {
           onClose={closeGalleryModal}
         />
       )} */}
+      <GalleryModal images={pg.additional_images || []} Coverimage={pg.cover_image} title={pg.product_name ||"More PG Images" } />
     </div>
   );
 };

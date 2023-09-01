@@ -33,129 +33,126 @@ const SearchState = ({children}) => {
       }, 2000);
     };
     let handleSearch = () => {
-        console.log("handle search called")
-        // Retrieve the data before the search without changing any properties
-        const updatedPgs = copypgs.map((pg) => ({ ...pg }));
-        setIsLoading(true);
-        // Filter the pgs based on the selected value from the dropdown, location, occupancy type, and gender
-        const filteredPgs = updatedPgs.filter((pg) => {
-          const val = parseInt(pg.min_price);
-          const dataval = parseInt(data);
-          const minVal = parseInt(minValue);
-          const maxVal = parseInt(maxValue);
-          const lowercasePgLocation = pg.city.toLowerCase();
-          const lowercaseSearchLocation = location.toLowerCase();
-          
-          const occupancyTypeMatch = () => {
-            if (occupancytype === "Single") {
-              return pg.single_sharing;
-            } else if (occupancytype === "Double") {
-              return pg.double_sharing;
-            } else if (occupancytype === "Triple") {
-              return pg.triple_sharing;
-            } else {
-              return true; // Return true if occupancytype is not specified
-            }
-          };
-      
-          const genderType = () => {
-            if (gender.toLowerCase() === "boys") {
-              return pg.pg_for === "boys";
-            } else if (gender.toLowerCase() === "girls") {
-              return pg.pg_for === "girls";
-            } else if (gender.toLowerCase() === "coliving") {
-              return pg.pg_for === "coliving";
-            } else {
-              return true; // Return true if gender is not specified
-            }
-          };
-      
-          const locationMatch = () => {
-            if (lowercaseSearchLocation) {
-              return lowercasePgLocation.includes(lowercaseSearchLocation) || lowercasePgLocation.startsWith(lowercaseSearchLocation);
-            } else {
-              return true; // Return true if no search location is specified
-            }
-          };
-          
-          if (
-            !minVal &&
-            !maxVal &&
-            !dataval &&
-            !location &&
-            occupancyTypeMatch() &&
-            genderType() 
-          ) {
+      const updatedPgs = copypgs.map((pg) => ({ ...pg }));
+      setIsLoading(true);
+      const filteredPgs = updatedPgs.filter((pg) => {
+        const val = parseInt(pg.min_price);
+        const dataval = parseInt(data);
+        const minVal = parseInt(minValue);
+        const maxVal = parseInt(maxValue);        
+        const occupancyTypeMatch = () => {
+          if (occupancytype === "Single") {
+            return pg.single_sharing;
+          } else if (occupancytype === "Double") {
+            return pg.double_sharing;
+          } else if (occupancytype === "Triple") {
+            return pg.triple_sharing;
+          } else {
             return true;
           }
-  
-          if (minVal && maxVal) {
-            return (
-              val >= minVal &&
-              val <= maxVal &&
-              locationMatch() &&
-              occupancyTypeMatch() &&
-              genderType()
-            );
-          } else if(minVal) {
-            return (
-              val >= minVal &&
-              locationMatch() &&
-              occupancyTypeMatch() &&
-              genderType()
-            );
-          } else if (maxVal) {
-            return (
-              val <= maxVal &&
-              locationMatch() &&
-              occupancyTypeMatch() &&
-              genderType()
-            );
-          } else if (dataval) {
-            return (
-              val === dataval &&
-              locationMatch() &&
-              occupancyTypeMatch() &&
-              genderType()
-            );
-          }else if(location){
-            return (
-              locationMatch() &&
-              occupancyTypeMatch() &&
-              genderType()
-            );
-          }else if(location && occupancyTypeMatch()){
-            return (
-              locationMatch() &&
-              occupancyTypeMatch() &&
-              genderType()
-            );
-          }         
-          return false;
-        });
-        
-        setIsLoading(false);
-        const sortedPgs = sortData(filteredPgs, sortType);
-        if(filteredPgs.length===0){
-          console.log("No pgs found")
-          setloadingfalseafter3sec()
-        }
+        };
+        const genderType = () => {
+          if (gender.toLowerCase() === "boys") {
+            return pg.pg_for === "boys";
+          } else if (gender.toLowerCase() === "girls") {
+            return pg.pg_for === "girls";
+          } else if (gender.toLowerCase() === "coliving") {
+            return pg.pg_for === "coliving";
+          } else {
+            return true; 
+          }
+        };
+        const locationMatch = () => {
+          if (location && location.length > 0) {
+            const lowercasePgLocation = pg.locality.toLowerCase();
+            console.log(lowercasePgLocation);
+            for (let i = 0; i < location.length; i++) {
+              const lowercaseSearchLocation = location[i].toLowerCase();
+              if (
+                lowercasePgLocation.includes(lowercaseSearchLocation) ||
+                lowercasePgLocation.startsWith(lowercaseSearchLocation)
+              ) {
+                return true;
+              }
+            }
+            return false; 
+          } else {
+            return true; 
+          }
+        };
+    
         if (
-          !location &&
-          (!occupancytype || occupancytype === "occupancy Type") &&
-          (!minValue || isNaN(parseInt(minValue))) &&
-          (!maxValue || isNaN(parseInt(maxValue))) &&
-          (gender === "Gender" || gender === "") &&
-          (sortType === "sort" || sortType === "") &&
-          (!data || isNaN(parseInt(data)))
+          !minVal &&
+          !maxVal &&
+          !dataval &&
+          (!location || location.length === 0) &&
+          occupancyTypeMatch() &&
+          genderType()
         ) {
-          console.log("No filters applied");
-          setpgs(pgs);
-          setpgs(copypgs);
-        } else {
-          setpgs(sortedPgs);
+          return true;
         }
-      };
+    
+        if (minVal && maxVal) {
+          return (
+            val >= minVal &&
+            val <= maxVal &&
+            locationMatch() &&
+            occupancyTypeMatch() &&
+            genderType()
+          );
+        } else if (minVal) {
+          return (
+            val >= minVal &&
+            locationMatch() &&
+            occupancyTypeMatch() &&
+            genderType()
+          );
+        } else if (maxVal) {
+          return (
+            val <= maxVal &&
+            locationMatch() &&
+            occupancyTypeMatch() &&
+            genderType()
+          );
+        } else if (dataval) {
+          return (
+            val === dataval &&
+            locationMatch() &&
+            occupancyTypeMatch() &&
+            genderType()
+          );
+        } else if (location && location.length > 0) {
+          return (
+            locationMatch() &&
+            occupancyTypeMatch() &&
+            genderType()
+          );
+        }
+        return false;
+      });
+    
+      setIsLoading(false);
+      const sortedPgs = sortData(filteredPgs, sortType);
+      if (filteredPgs.length === 0) {
+        console.log("No pgs found");
+        setloadingfalseafter3sec();
+      }
+      if (
+        !location &&
+        (!occupancytype || occupancytype === "occupancy Type") &&
+        (!minValue || isNaN(parseInt(minValue))) &&
+        (!maxValue || isNaN(parseInt(maxValue))) &&
+        (gender === "Gender" || gender === "") &&
+        (sortType === "sort" || sortType === "") &&
+        (!data || isNaN(parseInt(data)))
+      ) {
+        console.log("No filters applied");
+        setpgs(pgs);
+        setpgs(copypgs);
+      } else {
+        setpgs(sortedPgs);
+      }
+    };
       const sortData = (data, sortType) => {
         if (sortType === "Price : Low to High") {
           return [...data].sort((a, b) => parseInt(a.min_price) - parseInt(b.min_price));
