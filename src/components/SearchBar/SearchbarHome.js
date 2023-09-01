@@ -1,12 +1,27 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import SearchContext from "../Appcontext/SearchContext";
+import Select from "react-select"; // Import react-select
+
 const SearchBarHome = () => {
   const { 
     location, setLocation,
     gender, setGender,
     occupancytype, setOccupancyType,
     handleSearch}= useContext(SearchContext);  
+
+    const locationOptions = [
+      { value: "Marthahalli", label: "Marthahalli" },
+      { value: "Manyata Tech Park", label: "Manyata Tech Park" },
+      { value: "BTM Layout", label: "BTM Layout" },
+      { value: "Whitefield", label: "Whitefield" },
+      { value: "Electronic city", label: "Electronic city" },
+      { value: "Sarjapur Road", label: "Sarjapur Road" },
+      { value: "Madiwala", label: "Madiwala" },
+      { value: "Kormangala", label: "Kormangala" },
+      { value: "HSR Layout", label: "HSR Layout" },
+      { value: "Bellandur", label: "Bellandur" },
+    ];
   return (
     <div>
       <section className="search-bar-home mt-5">
@@ -23,15 +38,27 @@ const SearchBarHome = () => {
                   }}
                   name="location"
                 ></ion-icon>
-                <input
-                  id="inputState"
-                  className="form-select"
-                  value={location}
-                  onChange={(e) => {
-                    setLocation(e.target.value);
+                <Select
+                className="location_input_select"
+                  isMulti
+                  value={locationOptions.filter((option) =>
+                    location.includes(option.value)
+                  )}
+                  options={locationOptions}
+                  onChange={(selectedOptions) => {
+                    const selectedValues = selectedOptions.map(
+                      (option) => option.value
+                    );
+                    setLocation(selectedValues);
                   }}
                   placeholder="Locality"
-                  style={{ border: "none", outline: "none" }}
+                  styles={{ // Add any additional styles here if needed
+                    control: (base) => ({
+                      ...base,
+                      border: "none",
+                      outline: "none",
+                    }),
+                  }}
                 />
               </div>
             </div>

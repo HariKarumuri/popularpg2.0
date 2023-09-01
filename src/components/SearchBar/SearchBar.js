@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef } from "react";
-import Select from "react-select";
 import SearchContext from "../Appcontext/SearchContext";
+import Select from "react-select"; // Import react-select
 
 const SearchBar = () => {
   const dropdownRef = useRef(null);
