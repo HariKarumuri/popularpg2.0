@@ -143,7 +143,7 @@ const PgDetailsCard = ({ pg }) => {
                           )
                         ) : null}
                       </Carousel>
-                      <div className="container hideonsmall">
+                      <div className="container d-flex ">
                         <div
                           className="row"
                           style={{ maxHeight: "100px", margin: "auto" }}
@@ -356,13 +356,7 @@ const PgDetailsCard = ({ pg }) => {
           )}
         </>
       </div>
-      {/* {isGalleryModalOpen && (
-        <GalleryModal
-          images={pg.additional_images || []}
-          heading="Additional Images"
-          onClose={closeGalleryModal}
-        />
-      )} */}
+      
       <GalleryModal images={pg.additional_images || []} Coverimage={pg.cover_image} title={pg.product_name ||"More PG Images" } />
     </div>
   );
