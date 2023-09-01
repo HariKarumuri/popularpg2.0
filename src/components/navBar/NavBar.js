@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import Logo from "../../assets/images/popular pg logo.png";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [navbarActive, setNavbarActive] = useState(false);
+  const navbarRef = useRef(null);
 
   const toggleNavbar = () => {
     setNavbarActive(!navbarActive);
@@ -21,7 +22,20 @@ const NavBar = () => {
     }
   };
 
-  window.addEventListener("scroll", handleScroll);
+  const handleDocumentClick = (event) => {
+    if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+      closeNavbar();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    document.addEventListener("click", handleDocumentClick);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, []);
 
   return (
     <div className="header-bottom">
@@ -30,17 +44,22 @@ const NavBar = () => {
           <img src={Logo} alt="Homeverse logo" height="55px" />
         </Link>
 
-        <nav className={`navbar ${navbarActive ? "active" : ""}`}>
+        <nav className={`navbar ${navbarActive ? "active" : ""}`} >
           <div className="navbar-top">
             <Link to="/" className="logo">
-              <img src={Logo} alt="Homeverse logo" height="40px" />
+              <img src={Logo} alt="Homeverse logo" />
             </Link>
             <button
               className="nav-close-btn"
               onClick={closeNavbar}
               aria-label="Close Menu"
+             
             >
-              <ion-icon name="close-outline"></ion-icon>
+              {navbarActive ? (
+                <ion-icon name="close-outline"></ion-icon>
+              ) : (
+                <ion-icon name="menu-outline"></ion-icon>
+              )}
             </button>
           </div>
           <div className="navbar-bottom">
@@ -50,16 +69,6 @@ const NavBar = () => {
                   Home
                 </Link>
               </li>
-              {/* <li>
-            <Link to="/about" className="navbar-link" onClick={closeNavbar}>
-              About
-            </Link>
-          </li> */}
-              {/* <li>
-            <Link to="/service" className="navbar-link" onClick={closeNavbar}>
-              Service
-            </Link>
-          </li> */}
               <li>
                 <Link
                   to="/listings"
@@ -69,11 +78,6 @@ const NavBar = () => {
                   Explore Pg
                 </Link>
               </li>
-              {/* <li>
-            <Link to="/blog" className="navbar-link" onClick={closeNavbar}>
-              Blog
-            </Link>
-          </li> */}
               <li>
                 <Link
                   to="/contact"
@@ -88,14 +92,10 @@ const NavBar = () => {
         </nav>
 
         <div className="header-bottom-actions">
-          {/* <button className="header-bottom-actions-btn" aria-label="Search">
-        <ion-icon name="search-outline"></ion-icon>
-        <span>Search</span>
-      </button>*/}
-      <button className="header-bottom-actions-btn" aria-label="Profile">
-        <ion-icon name="person-outline"></ion-icon>
-        <span>Profile</span>
-      </button> 
+          <button className="header-bottom-actions-btn" aria-label="Profile">
+            <ion-icon name="person-outline"></ion-icon>
+            <span>Profile</span>
+          </button>
           <div className="wrapper">
             <button className="header-top-btn AddListing">Add Listing</button>
           </div>
@@ -103,9 +103,13 @@ const NavBar = () => {
           <button
             className="header-bottom-actions-btn"
             onClick={toggleNavbar}
-            aria-label="Open Menu"
+            aria-label={navbarActive ? "Close Menu" : "Open Menu"}
           >
-            <ion-icon name="menu-outline"></ion-icon>
+            {navbarActive ? (
+              <ion-icon name="close-outline"></ion-icon>
+            ) : (
+              <ion-icon name="menu-outline"></ion-icon>
+            )}
             <span>Menu</span>
           </button>
         </div>
