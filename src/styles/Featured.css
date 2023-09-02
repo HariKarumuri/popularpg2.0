@@ -10,7 +10,8 @@
 }
 
 .property {
-  padding-block: var(--section-padding);
+  /* padding-block: var(--section-padding); */
+  padding-top: 3rem;
   
 }
 
