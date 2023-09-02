@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="footer-top ">
         <div className="container">
           <div className="row">
-            <div className="col-lg-4 col-sm-8 col-6">
+            <div className="col-lg-3 col-sm-8 col-6">
               <div className="footer-brand">
                 <a href="#" className="logo">
                   <img src={Logo} alt="Popular PG logo" width="150px" />
@@ -22,7 +22,7 @@ const Footer = () => {
                   workplace, or you are on a budget, we have the PG for you.
                 </p>
 
-                <ul className="contact-list">
+               {/*  <ul className="contact-list">
                   <li>
                     <a href="#" className="contact-link">
                       <ion-icon name="location-outline"></ion-icon>
@@ -49,7 +49,7 @@ const Footer = () => {
                       <span>popularpg629@gmail.com</span>
                     </a>
                   </li>
-                </ul>
+                </ul> */}
 
                 <ul className="social-list">
                   <li>
@@ -120,59 +120,59 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className=" col-lg-6 ">
+            <div className=" col-lg-7 ">
               <ul className="footer-list ">
                 <li>
                   <p className="footer-list-title">PGs in Bangalore</p>
                 </li>
-                <div className="addressMap row">
-                  <li className="col-2  m-1">
+                <div className="addressMap ">
+                  <li className="  m-1">
                     <Link to="" className="footer-link">
-                      Pg in Marthahalli
+                      Pg in Marathalli
                     </Link>
                   </li>
 
-                  <li className="col-2  m-1">
+                  <li className="  m-1">
                     <Link to="" className="footer-link">
                       Pg in BTM Layout
                     </Link>
                   </li>
-                  <li className="col-2  m-1">
+                  <li className="  m-1">
                     <Link to="" className="footer-link">
                       Pg in Whitefield
                     </Link>
                   </li>
-                  <li className="col-2  m-1">
+                  <li className="  m-1">
                     <Link to="" className="footer-link">
                       Pg in Electronic city
                     </Link>
                   </li>
-                  <li className="col-2  m-1">
+                  <li className="  m-1">
                     <Link to="" className="footer-link">
                       Pg in Sarjapur Road
                     </Link>
                   </li>
-                  <li className="col-2  m-1">
+                  <li className="  m-1">
                     <Link to="" className="footer-link">
                       Pg in Madiwala
                     </Link>
                   </li>
-                  <li className="col-2  m-1">
+                  <li className="  m-1">
                     <Link to="" className="footer-link">
                       Pg in Kormangala
                     </Link>
                   </li>
-                  <li className="col-2  m-1">
+                  <li className="  m-1">
                     <Link to="" className="footer-link">
                       Pg in HSR Layout
                     </Link>
                   </li>
-                  <li className="col-2  m-1">
+                  <li className="  m-1">
                     <Link to="" className="footer-link">
                       Pg in Bellandur
                     </Link>
                   </li>
-                  <li className="col-2  m-1">
+                  <li className="m-1">
                     <Link to="" className="footer-link">
                       Pg in Manyata Tech Park
                     </Link>

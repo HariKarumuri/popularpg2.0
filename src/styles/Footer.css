@@ -109,13 +109,22 @@
 
 }
 .addressMap a{
-  font-size: 0.8rem;}
+  font-size: 0.8rem;
+display: block;}
 
 
-.section-text {
+.section-text,.company-footer a{
   font-size: 0.8rem;
 }
 
+.addressMap li{
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right:0.5rem ;
+}
 
 
 /*-----------------------------------*\
