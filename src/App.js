@@ -14,10 +14,21 @@ import Pg_Listing_Card from "./components/Pg-Listing/Cards/Pg_Listing_Card";
 import ContactDetailsPage from "./components/Pg-Listing/Util/ContactDetailPage";
 import SearchState from "./components/Appcontext/SearchState";
 import Login from './components/Login/Login';
+import { useEffect } from "react";
 function App() {
 
   const location = useLocation();
   const isHomePage = location.pathname === "/";
+
+  useEffect(() => {
+    // Check if the current path is "/admin"
+    if (location.pathname === "/admin") {
+      // Redirect to the admin page
+      window.location.href = "http://13.53.149.253/admin/";
+    }
+  }, [location.pathname]); // Listen for changes in pathname
+
+  
 
   return (
     
