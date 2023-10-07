@@ -16,7 +16,7 @@ const Pg_Listing_Card = ({ pgData }) => {
           </div>
         </div>
         <div className="listing-card row g-0">
-          <div className=" col-md-4 Carosel-div col-4" style={{ zIndex: 1 }}>
+          <div className=" col-md-4 Carosel-div col-4 mb-4" style={{ zIndex: 1 }}>
             <Carousel
               autoPlay
               infiniteLoop
