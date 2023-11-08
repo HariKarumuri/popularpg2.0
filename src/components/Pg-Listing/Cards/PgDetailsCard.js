@@ -16,36 +16,34 @@ const PgDetailsCard = ({ pg }) => {
   
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    document.getElementById("exampleModalCenter").classList.remove("show");
-    // document.querySelector(".modal-backdrop").classList.remove("show");
-    //remove black transparant layer that come on the opening of the modal on opening the modal 
-    // try {
-    //   // Make a POST request to send the contact details
-    //   const response = await axios.post("https://popularpg.in/booking/", {
-    //     customer_name: contactData.name,
-    //     customer_email: contactData.email,
-    //     customer_phone: contactData.phone,
-    //     product: pg.id, // Assuming 'id' is the product ID from the URL parameter
-    //   });
+    try {
+      // Make a POST request to send the contact details
+      const response = await axios.post("https://popularpg.in/booking/", {
+        customer_name: contactData.name,
+        customer_email: contactData.email,
+        customer_phone: contactData.phone,
+        product: pg.id, // Assuming 'id' is the product ID from the URL parameter
+      });
 
-    //   if (response.status === 201) {
-    //     console.log("Contact details submitted successfully");
-    //     contactData.name="";
-    //     contactData.email="";
-    //     contactData.message="";
-       
-    //   // alert("Contact details submitted successfully");
-    //   } else {
-    //     console.error("Failed to submit contact details");
-    //   }
-    // } catch (error) {
-    //   console.error(
-    //     "An error occurred while submitting contact details",
-    //     error
-    //   );
-    // } finally {
-    //   // setSubmitting(false);
-    // }
+      if (response.status === 201) {
+        console.log("Contact details submitted successfully");
+        contactData.name="";
+        contactData.email="";
+        contactData.message="";
+        document.getElementById("exampleModalCenter").classList.remove("show",'d-block');
+        document.querySelectorAll(".modal-backdrop").forEach(el => el.classList.remove("modal-backdrop"));
+        alert("Contact details submitted successfully");
+      } else {
+        console.error("Failed to submit contact details");
+      }
+    } catch (error) {
+      console.error(
+        "An error occurred while submitting contact details",
+        error
+      );
+    } finally {
+      // setSubmitting(false);
+    }
   };
   const [selectedPG, setSelectedPG] = useState({});
   const pgselectfunc=(pg)=>{

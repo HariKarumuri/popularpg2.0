@@ -17,7 +17,6 @@ const Pg_Listing_Card = ({ pgData }) => {
   }
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
     try {
       // Make a POST request to send the contact details
       const response = await axios.post("https://popularpg.in/booking/", {
@@ -32,7 +31,9 @@ const Pg_Listing_Card = ({ pgData }) => {
         contactData.name="";
         contactData.email="";
         contactData.message="";
-        
+        document.getElementById("exampleModalCenter").classList.remove("show",'d-block');
+        document.querySelectorAll(".modal-backdrop").forEach(el => el.classList.remove("modal-backdrop"));
+        alert("Contact details submitted successfully");
       } else {
         console.error("Failed to submit contact details");
       }
