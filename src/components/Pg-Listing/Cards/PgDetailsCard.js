@@ -1,20 +1,61 @@
-import React, { } from "react";
+import React, { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PgAreaAmenities from "../Util/Pg_Area_Amenities";
 import PgMap from "../Util/pg_map";
 import PGScrollBar from "../Util/pg_scroll_nav";
 import { Link } from "react-scroll";
-import { Link as Linker } from "react-router-dom";
 import GalleryModal from "./../Util/GalleryModal";
-
+import axios from "axios";
 const PgDetailsCard = ({ pg }) => {
+  const [contactData, setContactData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    document.getElementById("exampleModalCenter").classList.remove("show");
+    // document.querySelector(".modal-backdrop").classList.remove("show");
+    //remove black transparant layer that come on the opening of the modal on opening the modal 
+    // try {
+    //   // Make a POST request to send the contact details
+    //   const response = await axios.post("https://popularpg.in/booking/", {
+    //     customer_name: contactData.name,
+    //     customer_email: contactData.email,
+    //     customer_phone: contactData.phone,
+    //     product: pg.id, // Assuming 'id' is the product ID from the URL parameter
+    //   });
 
+    //   if (response.status === 201) {
+    //     console.log("Contact details submitted successfully");
+    //     contactData.name="";
+    //     contactData.email="";
+    //     contactData.message="";
+       
+    //   // alert("Contact details submitted successfully");
+    //   } else {
+    //     console.error("Failed to submit contact details");
+    //   }
+    // } catch (error) {
+    //   console.error(
+    //     "An error occurred while submitting contact details",
+    //     error
+    //   );
+    // } finally {
+    //   // setSubmitting(false);
+    // }
+  };
+  const [selectedPG, setSelectedPG] = useState({});
+  const pgselectfunc=(pg)=>{
+    console.log(pg);
+    setSelectedPG(pg);
+  }
   return (
     <div className="PgDetailsCard">
       <div className="bg_color">
         <>
-          {" "}
           {pg ? (
             <>
               <div
@@ -53,7 +94,6 @@ const PgDetailsCard = ({ pg }) => {
                       </div>
                       <div className="trapez2">
                         <span className="brand d-flex">
-                          {" "}
                           &#x2713;Partner verified
                         </span>
                       </div>
@@ -151,7 +191,9 @@ const PgDetailsCard = ({ pg }) => {
                           <div className="col rounded text-center px-3 badge-color my-2 mx-2 ">
                             <button
                               className="text-dark fs-6"
-                              type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                              type="button"
+                              data-bs-toggle="modal"
+                              data-bs-target="#staticBackdrop"
                             >
                               More Photos
                             </button>
@@ -297,28 +339,13 @@ const PgDetailsCard = ({ pg }) => {
                             </div>
                           </div>
                         </table>
-                        {/* <p className="desc text-muted ">
-                          {pg.topAmenities_in_property.map((amenity) => {
-                            return (
-                              <div className="d-flex">
-                                <div className="para_icons text-success">
-                                  <ion-icon name="checkmark-circle-outline"></ion-icon>
-                                </div>
-                                <span className="mx-2" key={amenity}>
-                                  {amenity}
-                                </span>
-                                <div className="para_icons_grp d-flex justify-content-end"></div>
-                              </div>
-                            );
-                          })}
-                        </p> */}
                         <div className="d-flex ">
-                          <Linker
-                            className="btn btn-danger mr-2"
-                            to={`/listings/contact-details/${pg.id}`}
-                          >
-                            View Phone No.
-                          </Linker>
+                        <button type="button" className="btn2 mx-5" data-bs-toggle="modal"  data-bs-target="#exampleModalCenter" onClick={(e)=>{
+                  e.preventDefault();
+                  pgselectfunc(pg)
+                  }}>
+                  View Phone No.
+                </button>
                         </div>
                       </div>
                     </div>
@@ -356,14 +383,57 @@ const PgDetailsCard = ({ pg }) => {
           )}
         </>
       </div>
-      {/* {isGalleryModalOpen && (
-        <GalleryModal
-          images={pg.additional_images || []}
-          heading="Additional Images"
-          onClose={closeGalleryModal}
-        />
-      )} */}
-      <GalleryModal images={pg.additional_images || []} Coverimage={pg.cover_image} title={pg.product_name ||"More PG Images" } />
+      <GalleryModal
+        images={pg.additional_images || []}
+        Coverimage={pg.cover_image}
+        title={pg.product_name || "More PG Images"}
+      />
+        <div className="modal fade" id="exampleModalCenter"  tabIndex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered" role="document" >
+          <div className="modal-content">
+            <div className="d-flex justify-content-between mx-3 mt-2">
+              <h5 className="modal-title " >Contact Owner</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <form>
+              <label htmlFor="PGname" className="fs-4 " style={{marginTop:"-1 rem" }} > <b>{selectedPG.product_name}</b> </label>
+              <p className="text-dark" style={{
+                  fontSize:"0.9 rem"
+                }} >{selectedPG.locality}</p>
+                <div className="form-group">
+                  <label htmlFor="name" className="modal-label">Name</label>
+                  <input type="text" className="form-control" id="name" placeholder="Enter your name" onChange={()=>{
+                    setContactData({...contactData,name:document.getElementById("name").value})
+                  }} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email" className="modal-label">Email</label>
+                  <input type="email" className="form-control" id="email" placeholder="Enter your email" 
+                  onChange={()=>{
+                    setContactData({...contactData,email:document.getElementById("email").value})
+                  }
+                  }
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="message" className="modal-label">Message</label>
+                  <textarea className="form-control" id="message" rows="3" placeholder="Enter your message"
+                  onChange={()=>{
+                    setContactData({...contactData,message:document.getElementById("message").value})
+                  }
+                  }
+                  ></textarea>
+                </div>
+                <p className="text-dark" style={{
+                  fontSize:"0.8rem"
+                }} >{selectedPG.description}</p>
+              </form>
+                 <button type="button" className="btn2 my-2 btn-primary" onClick={handleFormSubmit} >Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

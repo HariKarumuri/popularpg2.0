@@ -1,10 +1,50 @@
-import React from "react";
+import React,{useState} from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
-import NoimgAvailable from "../../../assets/images/NO-Img-Avil.png";
-
+// import NoimgAvailable from "../../../assets/images/NO-Img-Avil.png";
+import axios from "axios";
 const Pg_Listing_Card = ({ pgData }) => {
+  const [contactData, setContactData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [selectedPG, setSelectedPG] = useState({});
+  const pgselectfunc=(pg)=>{
+    console.log(pg);
+    setSelectedPG(pg);
+  }
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Make a POST request to send the contact details
+      const response = await axios.post("https://popularpg.in/booking/", {
+        customer_name: contactData.name,
+        customer_email: contactData.email,
+        customer_phone: contactData.phone,
+        product: pgData.id, // Assuming 'id' is the product ID from the URL parameter
+      });
+
+      if (response.status === 201) {
+        console.log("Contact details submitted successfully");
+        contactData.name="";
+        contactData.email="";
+        contactData.message="";
+        
+      } else {
+        console.error("Failed to submit contact details");
+      }
+    } catch (error) {
+      console.error(
+        "An error occurred while submitting contact details",
+        error
+      );
+    } finally {
+      // setSubmitting(false);
+    }
+  };
   return (
     <div className="Pg_Listing_Card">
       <div className="card mb-3 mx-auto position-relative cbackgrnd responsiveness ">
@@ -158,22 +198,68 @@ const Pg_Listing_Card = ({ pgData }) => {
             </div>
             <div className="row button-box">
               <div className="d-flex ">
-                <Link
+              <Link
                   to={`/pgdetails/${pgData.id}`}
-                  className="btn btn-danger mb-2 mb-md-0 me-md-2"
+                  className="btn2 btn-danger mb-2 mb-md-0 me-md-2"
                 >
                   View more details
                 </Link>
-                <Link
-                  to={`contact-details/${pgData.id}`}
-                  className="btn2 mx-5 view-number-btn"
-                >
+                <button type="button" className="btn2 mx-5" data-bs-toggle="modal"  data-bs-target="#exampleModalCenter" onClick={(e)=>{
+                  e.preventDefault();
+                  pgselectfunc(pgData)
+                  }}>
                   View Phone No.
-                </Link>
+                </button>
                 <span className="PgPropertyId mb-2 mb-md-4 mx-md-2  d-none d-sm-inline">
                   PgPropertyId:{pgData.id}
                 </span>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="modal fade" id="exampleModalCenter"  tabIndex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered" role="document" >
+          <div className="modal-content">
+            <div className="d-flex justify-content-between mx-3 mt-2">
+              <h5 className="modal-title " >Contact Owner</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <form>
+              <label htmlFor="PGname" className="fs-4 " style={{marginTop:"-1 rem" }} > <b>{selectedPG.product_name}</b> </label>
+              <p className="text-dark" style={{
+                  fontSize:"0.9 rem"
+                }} >{selectedPG.locality}</p>
+                <div className="form-group">
+                  <label htmlFor="name" className="modal-label">Name</label>
+                  <input type="text" className="form-control" id="name" placeholder="Enter your name" onChange={()=>{
+                    setContactData({...contactData,name:document.getElementById("name").value})
+                  }} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email" className="modal-label">Email</label>
+                  <input type="email" className="form-control" id="email" placeholder="Enter your email" 
+                  onChange={()=>{
+                    setContactData({...contactData,email:document.getElementById("email").value})
+                  }
+                  }
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="message" className="modal-label">Message</label>
+                  <textarea className="form-control" id="message" rows="3" placeholder="Enter your message"
+                  onChange={()=>{
+                    setContactData({...contactData,message:document.getElementById("message").value})
+                  }
+                  }
+                  ></textarea>
+                </div>
+                <p className="text-dark" style={{
+                  fontSize:"0.8rem"
+                }} >{selectedPG.description}</p>
+              </form>
+                 <button type="button" className="btn2 my-2 btn-primary" onClick={handleFormSubmit} >Submit</button>
             </div>
           </div>
         </div>
