@@ -35,16 +35,25 @@ const SearchBar = () => {
   };
 
   const locationOptions = [
-    { value: "Marthahalli", label: "Marthahalli" },
-    { value: "Manyata Tech Park", label: "Manyata Tech Park" },
+    { value: "Marathahalli", label: "Marathahalli" },
     { value: "BTM Layout", label: "BTM Layout" },
+    { value: "BTM Layout Stage 1", label: "BTM Layout Stage 1" },
+    { value: "BTM Layout Stage 2", label: "BTM Layout Stage 2" },
+    { value: "Electronic City", label: "Electronic City" },
+    { value: "Electronic City Phase 1", label: "Electronic City Phase 1" },
+    { value: "Electronic City Phase 2", label: "Electronic City Phase 2" },
+    { value: "Manyata Tech Park", label: "Manyata Tech Park" },
     { value: "Whitefield", label: "Whitefield" },
-    { value: "Electronic city", label: "Electronic city" },
     { value: "Sarjapur Road", label: "Sarjapur Road" },
     { value: "Madiwala", label: "Madiwala" },
-    { value: "Kormangala", label: "Kormangala" },
+    { value: "Koramangala", label: "Koramangala" },
     { value: "HSR Layout", label: "HSR Layout" },
     { value: "Bellandur", label: "Bellandur" },
+    { value: "Lalbagh", label: "Lalbagh" },
+    { value: "Kr Market", label: "Kr Market" },
+    { value: "Jaynagar", label: "Jaynagar" },
+    { value: "Banashankari", label: "Banashankari" },
+    { value: "JP Nagar", label: "JP Nagar" },
   ];
   const occupancyTypeOptions = [
     { value: "Single", label: "Single" },
@@ -185,7 +194,7 @@ const SearchBar = () => {
                   <div className="col-lg-5 col-6">
                     <div className="row justify-content-center align-items-center ">
                       <div className="col-auto py-2 seachbar-icons">
-                       &#x20B9;
+                        &#x20B9;
                       </div>
                       <div className="col">
                         <div className="dropdown" ref={dropdownRef}>

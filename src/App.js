@@ -45,7 +45,7 @@ function App() {
           <Route path="/pgdetails/:id" element={<Pgdetails />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/newListings" element={<Pg_Listing_Card />} />
-          <Route path="/tester" element={<ProductFetchExample/>} />
+          
           <Route  path="/employee/:uniqueId" element={<Employee/>} />
           {/* <Route  path="/login" element={<Login/>} /> */}
           

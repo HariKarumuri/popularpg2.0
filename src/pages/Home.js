@@ -9,6 +9,7 @@ import BlogList from "./../components/Blog/BlogList";
 import LandingAds from './../components/LandingAdsHome/LandingAds';
 import Popular_Ads from "../components/Listing_Ads_Home/Popular_Ads/Popular_Ads";
 import Premium_Ads from "../components/Listing_Ads_Home/Premium_Ads/Premium_Ads";
+import LocalityAds from './../components/Listing_Ads_Home/Locality_Ads/LocalityAds';
 
 
 
@@ -19,6 +20,7 @@ const Home = () => {
       {/* <Hero /> */}
       <Premium_Ads/>
       <Popular_Ads/>
+      <LocalityAds/>
       {/* <Featured />
       <Popular />
       <AboutUs />

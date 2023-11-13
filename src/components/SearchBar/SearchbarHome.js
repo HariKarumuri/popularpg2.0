@@ -4,29 +4,45 @@ import SearchContext from "../Appcontext/SearchContext";
 import Select from "react-select"; // Import react-select
 
 const SearchBarHome = () => {
-  const { 
-    location, setLocation,
-    gender, setGender,
-    occupancytype, setOccupancyType,
-    handleSearch}= useContext(SearchContext);  
+  const {
+    location,
+    setLocation,
+    gender,
+    setGender,
+    occupancytype,
+    setOccupancyType,
+    handleSearch,
+  } = useContext(SearchContext);
 
-    const locationOptions = [
-      { value: "Marthahalli", label: "Marthahalli" },
-      { value: "Manyata Tech Park", label: "Manyata Tech Park" },
-      { value: "BTM Layout", label: "BTM Layout" },
-      { value: "Whitefield", label: "Whitefield" },
-      { value: "Electronic city", label: "Electronic city" },
-      { value: "Sarjapur Road", label: "Sarjapur Road" },
-      { value: "Madiwala", label: "Madiwala" },
-      { value: "Kormangala", label: "Kormangala" },
-      { value: "HSR Layout", label: "HSR Layout" },
-      { value: "Bellandur", label: "Bellandur" },
-    ];
+  const locationOptions = [
+    { value: "Marathahalli", label: "Marathahalli" },
+    { value: "BTM Layout", label: "BTM Layout" },
+    { value: "BTM Layout Stage 1", label: "BTM Layout Stage 1" },
+    { value: "BTM Layout Stage 2", label: "BTM Layout Stage 2" },
+    { value: "Electronic City", label: "Electronic City" },
+    { value: "Electronic City Phase 1", label: "Electronic City Phase 1" },
+    { value: "Electronic City Phase 2", label: "Electronic City Phase 2" },
+    { value: "Manyata Tech Park", label: "Manyata Tech Park" },
+    { value: "Whitefield", label: "Whitefield" },
+    { value: "Sarjapur Road", label: "Sarjapur Road" },
+    { value: "Madiwala", label: "Madiwala" },
+    { value: "Koramangala", label: "Koramangala" },
+    { value: "HSR Layout", label: "HSR Layout" },
+    { value: "Bellandur", label: "Bellandur" },
+    { value: "Lalbagh", label: "Lalbagh" },
+    { value: "Kr Market", label: "Kr Market" },
+    { value: "Jaynagar", label: "Jaynagar" },
+    { value: "Banashankari", label: "Banashankari" },
+    { value: "JP Nagar", label: "JP Nagar" },
+  ];
   return (
     <div>
       <section className="search-bar-home mt-5">
         <div className="container">
-          <div className="row search-bar-container" style={{ border: "1px solid black", borderRadius: "10px" }}>
+          <div
+            className="row search-bar-container"
+            style={{ border: "1px solid black", borderRadius: "10px" }}
+          >
             <div className="col-md-5 col-8">
               <div className="d-flex justify-content-between align-items-center">
                 <ion-icon
@@ -39,7 +55,7 @@ const SearchBarHome = () => {
                   name="location"
                 ></ion-icon>
                 <Select
-                className="location_input_select"
+                  className="location_input_select"
                   isMulti
                   value={locationOptions.filter((option) =>
                     location.includes(option.value)
@@ -52,7 +68,8 @@ const SearchBarHome = () => {
                     setLocation(selectedValues);
                   }}
                   placeholder="Locality"
-                  styles={{ // Add any additional styles here if needed
+                  styles={{
+                    // Add any additional styles here if needed
                     control: (base) => ({
                       ...base,
                       border: "none",
@@ -62,7 +79,10 @@ const SearchBarHome = () => {
                 />
               </div>
             </div>
-            <div className="col-md-2 display-none-mobile" style={{ borderLeft: "1px solid black" }}>
+            <div
+              className="col-md-2 display-none-mobile"
+              style={{ borderLeft: "1px solid black" }}
+            >
               <div className="form-group">
                 <select
                   className="form-select"
@@ -82,7 +102,10 @@ const SearchBarHome = () => {
                 </select>
               </div>
             </div>
-            <div className="col-md-3 display-none-mobile" style={{ borderLeft: "1px solid black" }}>
+            <div
+              className="col-md-3 display-none-mobile"
+              style={{ borderLeft: "1px solid black" }}
+            >
               <span></span>
               <div className="form-group">
                 <select

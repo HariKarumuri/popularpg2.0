@@ -34,6 +34,16 @@ const Data =  [
     "Unique-Id":"3ea2b29c-b45f-4fc7-aca2-f54115e68dbc",
     "certificate":"https://i.postimg.cc/W4JHwHHb/Karthik-Popular-PG-Internship-Certificate.png",
   }, 
+  {
+    "name":"Munugoti Sai Ruthvik",
+    "Unique-Id":"e2c08491-47d2-457a-9425-a8d5fa955ccc",
+    "certificate":"https://i.postimg.cc/Kz89JddY/Sai-Popular-PG-Internship-Certificate-pdf.png",
+  }, 
+  {
+    "name":"Nutalapati Jaideep",
+    "Unique-Id":"44ff80ac-74d4-11ee-b962-0242ac120002",
+    "certificate":"https://i.postimg.cc/dV7BW9kF/Jaideep-Popular-PG-Internship-Certificate-pdf.png",
+  }, 
 ]
 
 export default Data;
