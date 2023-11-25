@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import LocalityAdsCard from './LocalityAdsCard';
 
 const LocalityAds = () => {
@@ -48,6 +48,8 @@ const LocalityAds = () => {
       });
   }, []);
 
+  const memoizedData = useMemo(() => data, [data]);
+
   return (
     <div>
       {localities.map((locality, index) => (
@@ -66,14 +68,14 @@ const LocalityAds = () => {
                     />
                   </div>
                 </div>
-              ) : data[index].length === 0 ? (
+              ) : memoizedData[index].length === 0 ? (
                 // Display a message if no data is found
                 <div className="d-flex justify-content-center">
                   <div className="no-record-found fs-1">No data found.</div>
                 </div>
               ) : (
                 // Map through data and render LocalityAdsCard for each
-                data[index].map((item) => (
+                memoizedData[index].map((item) => (
                   <LocalityAdsCard key={item.id} item={item} />
                 ))
               )}

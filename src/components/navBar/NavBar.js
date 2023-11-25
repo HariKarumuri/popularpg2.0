@@ -2,6 +2,7 @@ import React, { useState, useEffect,useRef } from "react";
 import Logo from "../../assets/images/popular pg logo.png";
 import { Link } from "react-router-dom";
 
+
 const NavBar = () => {
   const [navbarActive, setNavbarActive] = useState(false);
   const navbarRef = useRef(null);
@@ -78,7 +79,7 @@ const NavBar = () => {
                   Explore Pg
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/contact"
                   className="navbar-link"
@@ -86,14 +87,14 @@ const NavBar = () => {
                 >
                   Contact
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </nav>
 
         <div className="header-bottom-actions">
           <button className="header-bottom-actions-btn" aria-label="Profile">
-            <ion-icon name="person-outline"></ion-icon>
+            <Link to="/user/profile"><ion-icon name="person-outline"></ion-icon></Link> 
             <span>Profile</span>
           </button>
           <div className="wrapper">

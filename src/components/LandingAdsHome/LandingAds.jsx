@@ -48,21 +48,21 @@ const LandingAds = () => {
                 }}>PG</span> Life
               </h1>
             </div>
-            <div className="row BannerAd d-flex justify-content-center align-items-center">
+            {/* <div className="row BannerAd d-flex justify-content-center align-items-center">
               {!isLoading && bannerAdData ? (
                 <img src={bannerAdData.image} alt="Banner Ad" width="728px" height="90px" />
               ) : (
                 <img src={defaultBannerImage} alt="Default Banner Ad" width="728px" height="90px" />
               )}
-            </div>
+            </div> */}
           </div>
-          <div className="col-lg-3 SkyScrapperAd d-flex justify-content-center align-items-center">
+          {/* <div className="col-lg-3 SkyScrapperAd d-flex justify-content-center align-items-center">
             {!isLoading && skyScrapperAdData ? (
               <img src={skyScrapperAdData.image} className="p-3 mt-4" width="300px" height="250px" alt="SkyScrapper Ad" />
             ) : (
               <img src={defaultSkyScrapperImage} className="p-3 mt-4" width="300px" height="250px" alt="Default SkyScrapper Ad" />
             )}
-          </div>
+          </div> */}
         </div>
 
       </div>

@@ -15,6 +15,8 @@ import ContactDetailsPage from "./components/Pg-Listing/Util/ContactDetailPage";
 import SearchState from "./components/Appcontext/SearchState";
 import Login from './components/Login/Login';
 import { useEffect } from "react";
+import ProfileDashboard from "./components/TenantProfile/profileDashBoard";
+import SendOTP from './pages/OTPtester';
 function App() {
 
   const location = useLocation();
@@ -45,6 +47,8 @@ function App() {
           <Route path="/pgdetails/:id" element={<Pgdetails />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/newListings" element={<Pg_Listing_Card />} />
+          <Route path="/user/profile"element={<ProfileDashboard/>}/>
+          <Route path="/testing" element={<SendOTP/>} />  
           
           <Route  path="/employee/:uniqueId" element={<Employee/>} />
           {/* <Route  path="/login" element={<Login/>} /> */}
