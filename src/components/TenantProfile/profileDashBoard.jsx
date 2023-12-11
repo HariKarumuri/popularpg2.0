@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import profilePic from "../../assets/images/profilepic.jpg";
 import { Link } from "react-router-dom";
+import AuthContext from './../../context/AuthContext';
+
 
 const ProfileDashboard = () => {
+  let {user} = useContext(AuthContext) 
   return (
     <div className="container profile-dashboard mt-4">
       <div className="profile-header mb-4 d-flex align-items-center">
@@ -13,7 +16,7 @@ const ProfileDashboard = () => {
           style={{ width: "50px", height: "50px" }}
         />
         <div>
-          <h4>User Name</h4>
+          <h4>User Name : {user.username}</h4>
           <h4>Tentant Id:</h4>
         </div>
       </div>

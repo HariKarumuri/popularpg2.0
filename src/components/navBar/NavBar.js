@@ -1,11 +1,15 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState, useEffect,useRef, useContext } from "react";
 import Logo from "../../assets/images/popular pg logo.png";
 import { Link } from "react-router-dom";
+import AuthContext from './../../context/AuthContext';
+
+
 
 
 const NavBar = () => {
   const [navbarActive, setNavbarActive] = useState(false);
   const navbarRef = useRef(null);
+  let {user ,logoutUser} = useContext(AuthContext)
 
   const toggleNavbar = () => {
     setNavbarActive(!navbarActive);
@@ -98,7 +102,7 @@ const NavBar = () => {
             <span>Profile</span>
           </button>
           <div className="wrapper">
-            <button className="header-top-btn AddListing">Add Listing</button>
+            <button className="header-top-btn AddListing">{user ?  (<p onClick={logoutUser}>logout</p>) : (<Link to='/login'>Login </Link>) }</button>
           </div>
 
           <button
