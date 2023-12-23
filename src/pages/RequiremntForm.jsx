@@ -132,6 +132,7 @@ const RequirementForm = () => {
                     id="room_type_preference"
                     value={formData.room_type_preference}
                     onChange={handleChange}
+
                     required
                   >
                     <option value="">Select an option</option>

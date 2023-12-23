@@ -58,10 +58,11 @@ function App() {
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
-          <Route element={<PrivateRoutes />}>
           <Route path="/user/profile" exact element={<ProfileDashboard />} />
           <Route path="/requirementsform" exact element={<RequirementForm/>}/>
+
+          <Route element={<PrivateRoutes />}>
+            {/* can add protetcetd routes in here  */}
           </Route>
         </Routes>
         {/*         <Cta /> */}

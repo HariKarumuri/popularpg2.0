@@ -1,32 +1,52 @@
-import React, { useState } from "react";
+import React,{useState} from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import NoimgAvailable from "../../../assets/images/NO-Img-Avil.png";
 import axios from "axios";
-import OTPWidget from "./../../../pages/OTPtester";
 
 const Pg_Listing_Card = ({ pgData }) => {
-  const [showOTPWidget, setShowOTPWidget] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const navigate = useNavigate();
+  const [contactData, setContactData] = useState({
+    name: "",
+    email: "",
+    Phone: "",
+  });
+  const [selectedPG, setSelectedPG] = useState({});
+  const pgselectfunc=(pg)=>{
+    console.log(pg);
+    setSelectedPG(pg);
+  }
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Make a POST request to send the contact details
+      const response = await axios.post("https://popularpg.in/booking/", {
+        customer_name: contactData.name,
+        customer_email: contactData.email,
+        customer_phone: contactData.Phone,
+        product: pgData.id, // Assuming 'id' is the product ID from the URL parameter
+      });
 
-
-  const handleViewPhoneNoClick = () => {
-    setShowOTPWidget(true);
+      if (response.status === 201) {
+        console.log("Contact details submitted successfully");
+        contactData.name="";
+        contactData.email="";
+        contactData.Phone="";
+        document.getElementById("exampleModalCenter").classList.remove("show",'d-block');
+        document.querySelectorAll(".modal-backdrop").forEach(el => el.classList.remove("modal-backdrop"));
+        alert("Contact details submitted successfully");
+      } else {
+        console.error("Failed to submit contact details");
+      }
+    } catch (error) {
+      console.error(
+        "An error occurred while submitting contact details",
+        error
+      );
+    } finally {
+      // setSubmitting(false);
+    }
   };
-
-  const handleOTPSuccess = (data) => {
-    // Close the OTPWidget
-    setShowOTPWidget(false);
-
-    // Set phone number
-    setPhoneNumber(pgData.phone_number);
-
-    // Alert the user with the phone number
-    alert(`Your phone number: ${pgData.phone_number}`);
-  };
-
   return (
     <div className="Pg_Listing_Card">
       <div className="card mb-3 mx-auto position-relative cbackgrnd responsiveness ">
@@ -38,10 +58,7 @@ const Pg_Listing_Card = ({ pgData }) => {
           </div>
         </div>
         <div className="listing-card row g-0">
-          <div
-            className=" col-md-4 Carosel-div col-4 mb-4"
-            style={{ zIndex: 1 }}
-          >
+          <div className=" col-md-4 Carosel-div col-4 mb-4" style={{ zIndex: 1 }}>
             <Carousel
               autoPlay
               infiniteLoop
@@ -128,6 +145,7 @@ const Pg_Listing_Card = ({ pgData }) => {
                     />
                   </div>
                 </div>
+                
 
                 <div className="line3 sharing">
                   <span className="d-inline-block mx-1">Available Beds :</span>
@@ -145,7 +163,7 @@ const Pg_Listing_Card = ({ pgData }) => {
                 <div class="d-lg-none">
                   <div className="d-flex justify-content-center">
                     <hr
-                      className="line-divider"
+                    className="line-divider"
                       style={{
                         background: "#a4a4a4",
                         color: "#cbcbcb",
@@ -160,7 +178,7 @@ const Pg_Listing_Card = ({ pgData }) => {
                 </div>
                 <div class="d-none d-lg-block ">
                   <hr
-                    className="line-divider"
+                  className="line-divider"
                     style={{
                       background: "#a4a4a4",
                       color: "#cbcbcb",
@@ -188,11 +206,10 @@ const Pg_Listing_Card = ({ pgData }) => {
                 >
                   View more details
                 </Link>
-                <button
-                  type="button"
-                  className="btn2 mx-5"
-                  onClick={()=>{alert(pgData.phone_number)}}
-                >
+                <button type="button" className="btn2 mx-5" data-bs-toggle="modal"  data-bs-target="#exampleModalCenter" onClick={(e)=>{
+                  e.preventDefault();
+                  pgselectfunc(pgData)
+                  }}>
                   View Phone No.
                 </button>
                 <span className="PgPropertyId mb-2 mb-md-4 mx-md-2  d-none d-sm-inline">
@@ -203,21 +220,54 @@ const Pg_Listing_Card = ({ pgData }) => {
           </div>
         </div>
       </div>
-      {/* OTPWidget */}
-      {showOTPWidget && (
-        <OTPWidget
-          onSuccess={handleOTPSuccess}
-          phone_number={pgData.phone_number}
-        />
-      )}
-
-      {/* Display phone number */}
-      {phoneNumber && (
-        <div className="alert alert-success" role="alert">
-          Your phone number: {phoneNumber}
+      <div className="modal fade" id="exampleModalCenter"  tabIndex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered" role="document" >
+          <div className="modal-content">
+            <div className="d-flex justify-content-between mx-3 mt-2">
+              <h5 className="modal-title " >Contact Owner</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <form>
+              <label htmlFor="PGname" className="fs-4 " style={{marginTop:"-1 rem" }} > <b>{selectedPG.product_name}</b> </label>
+              <p className="text-dark" style={{
+                  fontSize:"0.9 rem"
+                }} >{selectedPG.locality}</p>
+                <div className="form-group">
+                  <label htmlFor="name" className="modal-label">Name</label>
+                  <input type="text" className="form-control" id="name" placeholder="Enter your name" onChange={()=>{
+                    setContactData({...contactData,name:document.getElementById("name").value})
+                  }} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email" className="modal-label">Email</label>
+                  <input type="email" className="form-control" id="email" placeholder="Enter your email" 
+                  onChange={()=>{
+                    setContactData({...contactData,email:document.getElementById("email").value})
+                  }
+                  }
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="Phone" className="modal-label">Phone</label>
+                  <input className="form-control" id="Phone" rows="3" placeholder="Enter your Phone"
+                  onChange={()=>{
+                    setContactData({...contactData,Phone:document.getElementById("Phone").value})
+                  }
+                  }
+                  ></input>
+                </div>
+                <p className="text-dark" style={{
+                  fontSize:"0.8rem"
+                }} >{selectedPG.description}</p>
+              </form>
+                 <button type="button" className="btn2 my-2 btn-primary" onClick={handleFormSubmit} >Submit</button>
+            </div>
+          </div>
         </div>
-      )}
+      </div>
     </div>
+    
   );
 };
 

@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
         setAuthTokens(data);
         setUser(jwt_decode(data.access));
         localStorage.setItem('authTokens', JSON.stringify(data));
-        navigate('/'); // Navigate to the home page after successful login
+        navigate(-1); // This will go back one step in the navigation history
       } else {
         alert('Something went wrong!');
       }

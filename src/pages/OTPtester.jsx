@@ -1,89 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 
-const SendAndVerifyOTP = () => {
-  const [mobileNumber, setMobileNumber] = useState('');
-  const [otp, setOtp] = useState('');
+const OTPWidget = () => {
+  useEffect(() => {
+    const configuration = {
+      widgetId: "3368426d5242333736343738",
+      tokenAuth: "404534TIMvB7gwt2C654a6ec5P1",
+      identifier: "",
+      exposeMethods: "<true | false> (optional)", 
+      success: (data) => {
+        console.log('success response', data);
+        // Handle success, e.g., send the verified token to the server
+        // You may want to send the data to your server for verification
+      },
+      failure: (error) => {
+        console.log('failure reason', error);
+        // Handle failure
+      },
+      var1: "<var1>",
+    };
 
-  const sendOTP = async () => {
-    try {
-      const response = await fetch('/api/sendOTP', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'authkey': '404534TIMvB7gwt2C654a6ec5P1', // Include your MSG91 Auth Key here
-        },
-        body: JSON.stringify({
-          template_id: '6559e35dd6fc056fa0575512',
-          mobile: mobileNumber,
-          otp_expiry: 5, // Optional: OTP expiry time in minutes
-        }),
-      });
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.onload = () => {
+      window.initSendOTP(configuration);
+    };
+    script.src = 'https://control.msg91.com/app/assets/otp-provider/otp-provider.js';
 
-      if (response.ok) {
-        console.log('OTP sent successfully');
-        // Handle success, maybe redirect the user or show a success message
-      } else {
-        console.error('Failed to send OTP');
-        // Handle failure, show an error message to the user
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
+    document.body.appendChild(script);
 
-  const verifyOTP = async () => {
-    try {
-      const response = await fetch(`/api/verifyOTP?otp=${otp}&mobile=91${mobileNumber}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'authkey': '404534TIMvB7gwt2C654a6ec5P1', // Include your MSG91 Auth Key here
-        },
-      });
+    // Cleanup function to remove the script when the component is unmounted
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
-      if (response.ok) {
-        const responseData = await response.json();
-
-        if (responseData.type === 'success' && responseData.message === 'OTP verified successfully') {
-          console.log('OTP Verified Successfully');
-        } else {
-          console.error('Failed to verify OTP:', responseData.message);
-        }
-      } else {
-        console.error('Error verifying OTP. Status code:', response.status);
-      }
-    } catch (error) {
-      console.error('Error verifying OTP:', error);
-    }
-  };
-
-  return (
-    <div>
-      <h1>Send and Verify OTP</h1>
-      <div>
-        <label htmlFor="mobileNumber">Mobile Number:</label>
-        <input
-          type="text"
-          id="mobileNumber"
-          value={mobileNumber}
-          onChange={(e) => setMobileNumber(e.target.value)}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="otp">Custom OTP (Optional):</label>
-        <input
-          type="text"
-          id="otp"
-          value={otp}
-          onChange={(e) => setOtp(e.target.value)}
-        />
-      </div>
-
-      <button onClick={sendOTP}>Send OTP</button>
-      <button onClick={verifyOTP}>Verify OTP</button>
-    </div>
-  );
+  return <div></div>; // You can add any additional components or UI elements here
 };
 
-export default SendAndVerifyOTP;
+export default OTPWidget;
