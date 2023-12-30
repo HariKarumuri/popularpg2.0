@@ -20,6 +20,8 @@ import PrivateRoutes from "./util/PrivateRoutes";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import RequirementForm from './pages/RequiremntForm';
+import Otptest2 from './pages/Otptest2';
+import Otptester3 from './pages/Otptester3';
 
 function App() {
   const location = useLocation();
@@ -52,6 +54,8 @@ function App() {
           <Route path="/newListings" element={<Pg_Listing_Card />} />
           
           <Route path="/testing" element={<SendOTP />} />
+          <Route path="/testing2" element={<Otptest2 />} />
+          <Route path="/testing3" element={<Otptester3 />} />
 
           <Route path="/employee/:uniqueId" element={<Employee />} />
           {/* <Route  path="/login" element={<Login/>} /> */}
